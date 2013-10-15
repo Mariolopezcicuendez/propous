@@ -1,0 +1,142 @@
+
+.cms_main_table_div
+{
+	overflow: auto;
+	max-height: 630px;
+}
+
+table
+{
+	font-size: 10px;
+}
+
+.cms_input_change
+{
+	width: 500px;
+}
+
+.cms_options
+{
+	margin-top: 20px;
+	width: 660px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cms_options button
+{
+	margin-top: 10px;
+	margin-bottom: 10px !important;
+	display: inline-block !important;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.link_back
+{
+	margin-bottom: 20px;
+}
+
+.cms_icon_list
+{
+	width: 30px;
+	height: 30px;
+}
+
+.cms_icon_edit
+{
+	width: 64px;
+	height: 64px;
+	padding: 0 !important;
+}
+
+.input-large
+{
+	width: 397px !important;
+}
+
+.cms_options_button_one
+{
+	width: 100% !important;
+}
+
+.cms_options_button_three
+{
+	width: 33% !important;
+}
+
+.cms_image_carousel 
+{
+	margin: 0;
+	padding: 0 !important;
+	position: relative;
+	display: block;
+}
+
+.cms_image_carousel div.thumbnail
+{
+	display: block;
+	float: left;
+}
+
+.cms_image_carousel img
+{
+	background-color: #f0f0f0;
+	border: 5px solid #ccc;
+	width: 75px;
+	height: 75px;
+	padding: 0;
+	margin: 6px;
+	display: block;
+	cursor: pointer;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.cms_image_carousel div div.caption p
+{
+	margin: 0;
+}
+
+.cms_image_carousel div div.caption p a
+{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.cms_image_carousel a.prev, .cms_image_carousel a.next
+{
+	background: url(../js/libraries/carouFredSel/images/miscellaneous_sprite.png) no-repeat transparent;
+	width: 45px;
+	height: 50px;
+	display: block;
+	position: absolute;
+	top: 47px;
+}
+
+.cms_image_carousel a.prev
+{
+	left: -50px;
+	background-position: 0 0; 
+}
+
+.cms_image_carousel a.prev:hover
+{		
+	background-position: 0 -50px; 
+}
+
+.cms_image_carousel a.next
+{			
+	right: 220px;
+	background-position: -50px 0; 
+}
+
+.cms_image_carousel a.next:hover
+{		
+	background-position: -50px -50px; 
+}
+
+.cms_image_carousel a.prev span, .cms_image_carousel a.next span
+{
+	display: none;
+}

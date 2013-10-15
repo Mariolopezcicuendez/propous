@@ -1,0 +1,723 @@
+body 
+{
+	padding: 0;
+	margin: 0;
+}
+
+.span_validation_label
+{
+	color: red;
+}
+
+.hidden
+{
+	display: none;
+}
+
+.main_logo_link,
+.logout_link,
+.page_info_faq_question
+{
+	cursor: pointer;
+}
+
+.modal-content
+{
+	margin-top: 50%;
+}
+
+.div_header
+{
+	border-bottom: 1px solid silver;
+	margin-bottom: 12px;
+	padding: 5px;
+}
+
+.div_footer
+{
+	margin-top: 15px;
+	border-top: 1px solid silver;
+	min-height: 180px;
+}
+
+.img_info
+{
+	cursor: help;
+	width: 20px;
+	height: 20px;
+}
+
+.footer_main_link_single
+{
+	cursor: pointer;
+}
+
+.advanced_search_link
+{
+	cursor: pointer;
+}
+
+.div_statistics
+{
+	text-align: center !important;
+	margin: 10px 0 10px 0;
+}
+
+.div_statistics div 
+{
+	display: inline !important;
+}
+
+.div_footer_center
+{
+	text-align: center !important;
+}
+
+.header_main_buttons_button_single
+{
+	width: auto !important;
+}
+
+.header_main_buttons_button_group ul li a
+{
+	cursor: pointer;
+}
+
+.file-input-wrapper input
+{
+	cursor: pointer;
+}
+
+div.bootstrap-filestyle label.btn
+{
+	border: 1px solid silver;
+}
+
+input[disabled]
+{
+	display: inline-block;
+	margin-bottom: 0;
+	vertical-align: middle;
+	cursor: not-allowed;
+	background-color: #eeeeee;
+	border: 1px solid #cccccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border linear .2s, box-shadow linear .2s;
+	height: 30px;
+	padding: 4px 6px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #555555;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	width: 470px;
+}
+
+.input_inline_2_elements_full
+{
+	width: 50% !important; 
+	display: inline;
+}
+
+.input_inline_3_elements_full
+{
+	width: 33.3% !important; 
+	display: inline;	
+}
+
+textarea 
+{
+  resize: vertical;
+}
+
+.dataTables_paginate
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  float: none;
+  margin-top: 6px;
+}
+
+.content_page
+{
+	min-height: 700px;
+}
+
+.plink_zone,
+.contact_zone
+{
+	margin-bottom: 10px;
+}
+
+.div_content_panel
+{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.prop_main_table_props td:last-child, 
+.myprops_main_table_props td:last-child, 
+.favorites_main_table_props td:last-child
+{
+	width: 0px;
+	padding: 0 !important;
+}
+
+.prop_main_table_props, .myprops_main_table_props, .favorites_main_table_props 
+{
+	margin: 0 0 10px 0 !important;
+	border-bottom: 1px solid silver;
+}
+
+.alert_image
+{
+	width: 20px;
+	height: 20px;
+}
+
+.flag
+{
+	width: 20px;
+	height: 20px;
+}
+
+a.paginate_button
+{
+	border: 0 !important;
+	background-color: transparent !important;
+	color: #428bca !important;
+}
+
+a.paginate_button:hover
+{
+	border: 0 !important;
+	background-color: transparent !important;
+	color: #2a6496 !important;
+	text-decoration: underline !important;
+}
+
+a.paginate_button:focus
+{
+	border: 0 !important;
+	background-color: transparent !important;
+	color: #2a6496 !important;
+}
+
+.paging_full_numbers a.paginate_button
+{
+	border: 0 !important;
+	background-color: #ccc;
+	text-decoration: none !important;
+	color: #428bca !important;
+}
+
+.paging_full_numbers a.paginate_active 
+{
+	border: 0 !important;
+	background-color: transparent !important;
+	color: #2a6496 !important;
+	text-decoration: underline !important;
+}
+
+.paging_full_numbers a.paginate_button:hover 
+{
+	border: 0 !important;
+	background-color: #ccc;
+	text-decoration: underline !important;
+}
+
+.paging_full_numbers a.paginate_button:focus
+{
+	border: 0 !important;
+	background-color: #ccc;
+	text-decoration: underline !important;
+}
+
+.content_premium_mod_div
+{
+	cursor: pointer;
+}
+
+.prop_list_select_length
+{
+	width: 75px !important;
+}
+
+.prop_list_images_img
+{
+	width: 20px;
+	height: 20px;
+}
+
+.prop_list_images_img_action
+{
+	cursor: pointer;
+}
+
+.image_captcha_refresh
+{
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+}
+
+.proposal_main_view_link, .proposal_main_edit_link
+{	
+	cursor: pointer;
+}
+
+.content_viewprofile_data_left,
+.content_editprofile_data_left
+{
+	min-height: 300px;
+}
+
+.content_editprofile_data, .content_viewprofile_data,
+.content_editprop_data, .content_viewprop_data, .content_newprop_data,
+.div_content_prop
+{
+	margin-bottom: 0;
+}
+
+.image_carousel 
+{
+	padding: 15px 0 15px 40px;
+	position: relative;
+	display: block;
+	left: 20px;
+}
+
+#editprofile_carousel, #viewprofile_carousel,
+#editprop_carousel, #viewprop_carousel
+{
+	margin: 0;
+	padding: 0;
+}
+
+#editprofile_carousel div.thumbnail, #viewprofile_carousel div.thumbnail,
+#editprop_carousel div.thumbnail, #viewprop_carousel div.thumbnail
+{
+	display: block;
+	float: left;
+}
+
+.image_carousel img
+{
+	background-color: #f0f0f0;
+	border: 5px solid #ccc;
+	width: 75px;
+	height: 75px;
+	padding: 0;
+	margin: 6px;
+	display: block;
+	cursor: pointer;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#editprofile_carousel div div.caption p,
+#editprop_carousel div div.caption p
+{
+	margin: 0;
+}
+
+#editprofile_carousel div div.caption p a,
+#editprop_carousel div div.caption p a
+{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.editprofile_photos_carousel a.prev, .editprofile_photos_carousel a.next, .viewprofile_photos_carousel a.prev, .viewprofile_photos_carousel a.next,
+.editprop_photos_carousel a.prev, .editprop_photos_carousel a.next, .viewprop_photos_carousel a.prev, .viewprop_photos_carousel a.next
+{
+	background: url(../js/libraries/carouFredSel/images/miscellaneous_sprite.png) no-repeat transparent;
+	width: 45px;
+	height: 50px;
+	display: block;
+	position: absolute;
+	top: 47px;
+}
+
+.editprofile_photos_carousel a.prev, .viewprofile_photos_carousel a.prev,
+.editprop_photos_carousel a.prev, .viewprop_photos_carousel a.prev
+{
+	left: -12px;
+	background-position: 0 0; 
+}
+
+.editprofile_photos_carousel a.prev:hover, .viewprofile_photos_carousel a.prev:hover,
+.editprop_photos_carousel a.prev:hover, .viewprop_photos_carousel a.prev:hover
+{		
+	background-position: 0 -50px; 
+}
+
+.editprofile_photos_carousel a.next, .viewprofile_photos_carousel a.next,
+.editprop_photos_carousel a.next, .viewprop_photos_carousel a.next
+{			
+	right: 30px;
+	background-position: -50px 0; 
+}
+
+.editprofile_photos_carousel a.next:hover, .viewprofile_photos_carousel a.next:hover,
+.editprop_photos_carousel a.next:hover, .viewprop_photos_carousel a.next:hover
+{		
+	background-position: -50px -50px; 
+}
+
+.editprofile_photos_carousel a.prev span, .editprofile_photos_carousel a.next span, .viewprofile_photos_carousel a.prev span, .viewprofile_photos_carousel a.next span,
+.editprop_photos_carousel a.prev span, .editprop_photos_carousel a.next span, .viewprop_photos_carousel a.prev span, .viewprop_photos_carousel a.next span 
+{
+	display: none;
+}
+
+.editprofile_sociality_images div.thumbnail img, .viewprofile_sociality_images div.thumbnail img,
+.editprop_category_images div.thumbnail img, .viewprop_category_images div.thumbnail img
+{
+	width: 48px;
+	height: 48px;
+}
+
+.editprofile_sociality_images div, .viewprofile_sociality_images div,
+.editprop_category_images div, .viewprop_category_images div
+{
+	display: inline-block !important;
+}
+
+.editprofile_sociality_images div img, .viewprofile_sociality_images div img,
+.editprop_category_images div img, .viewprop_category_images div img
+{
+	margin-top: 7px;
+}
+
+.editprofile_sociality_images div div.caption p, .viewprofile_sociality_images div div.caption p,
+.editprop_category_images div div.caption p, .viewprop_category_images div div.caption p
+{
+	text-align: center;
+	margin: 0;
+}
+
+.editprofile_sociality_images div div.caption p a,
+.editprop_category_images div div.caption p a
+{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.editprofile_sociality_images div div.caption p a:first-of-type,
+.editprop_category_images div div.caption p a:first-of-type
+{
+	margin-top: 17px;
+}
+
+.title_zone
+{
+	clear: both;
+	border-bottom: 1px solid silver;
+}
+
+.content_editprofile_data_right form div.form-group:last-child, .content_viewprofile_data_right form div.form-group:last-child,
+.content_editprofile_photos_right form div.form-group:last-child, .content_viewprofile_photos_right form div.form-group:last-child,
+.content_editprofile_sociality_right form div.form-group:last-child, .content_viewprofile_sociality_right form div.form-group:last-child,
+.content_editprop_data_right form div.form-group:last-child, .content_viewprop_data_right form div.form-group:last-child, .content_newprop_data_right form div.form-group:last-child,
+.content_editprop_photos_right form div.form-group:last-child, .content_viewprop_photos_right form div.form-group:last-child,
+.content_editprop_category_right form div.form-group:last-child, .content_viewprop_category_right form div.form-group:last-child
+{
+	margin-bottom: 0;
+	margin-top: 7px;
+}
+
+.content_editprofile_data_right form, .content_viewprofile_data_right form,
+.content_editprofile_photos_right form, .content_viewprofile_photos_right form,
+.content_editprop_data_right form, .content_viewprop_data_right form, .content_newprop_data_right form,
+.content_editprop_photos_right form, .content_viewprop_photos_right form
+{
+	margin-bottom: 10px;
+}
+
+.onoffswitch 
+{
+  position: relative; width: 100px;
+  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox 
+{
+  display: none;
+}
+.onoffswitch-label 
+{
+  display: block; overflow: hidden; cursor: pointer;
+  border: 2px solid #FFFFFF; border-radius: 50px;
+}
+.onoffswitch-inner 
+{
+  width: 200%; margin-left: -100%;
+  -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after 
+{
+  float: left; width: 50%; height: 24px; padding: 0; line-height: 24px;
+  font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before 
+{
+  content: "ON";
+  padding-left: 14px;
+  background-color: #EEEEEE; color: #FF822F;
+}
+.onoffswitch-inner:after 
+{
+  content: "OFF";
+  padding-right: 14px;
+  background-color: #EEEEEE; color: #999999;
+  text-align: right;
+}
+.onoffswitch-switch 
+{
+  width: 26px; margin: 2px;
+  background: #A1A1A1;
+  border: 2px solid #FFFFFF; border-radius: 50px;
+  position: absolute; top: -1px; bottom: 4px; right: 61px;
+  -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner 
+{
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch 
+{
+  right: 15px; 
+  background-color: #FF822F; 
+}
+
+.content_page_menu_div_search
+{
+	border: 1px solid silver;
+	padding-bottom: 0;
+}
+
+.content_page_menu_div_advanced_search
+{
+	margin-bottom: 7px;
+	padding-top: 10px;
+	border-top: 1px solid silver;
+}
+
+.content_page_menu_div_advanced_search_left
+{
+	width: 50%;
+	border-right: 1px solid silver;
+	padding: 5px;
+}
+
+.content_page_menu_div_advanced_search_left div.form-group:last-child, .content_page_menu_div_advanced_search_right div.form-group:last-child
+{
+	margin-bottom: 0;
+}
+
+.content_page_menu_div_advanced_search_right
+{
+	width: 50%;
+	padding: 5px;
+}
+
+#search_button_at_advance
+{
+	margin-bottom: 15px;
+}
+
+.btn-group > .btn-group:last-child > .btn:first-child 
+{
+  width: 250px;
+}
+
+/*
+	CHAT
+*/
+
+.chat_users_main_image, .conversation_chat_title_user_image
+{
+	width : 30px;
+	height: 30px;
+}
+
+.status_image
+{
+	width : 20px;
+	height: 20px;
+}
+
+.chat_users_list_user_selected
+{
+	font-weight: bold;
+	color: green;
+}
+
+.chat_users_list_user_noselected
+{
+	font-weight: normal;
+	color: black;
+}
+
+.div_content_chat_messages_conversation
+{
+	overflow:auto;
+	height: 370px;
+	border-bottom: 1px solid silver;
+}
+
+.conversation_chat_div_frommetouser
+{
+	float: left;
+	width: 400px;
+	margin: 5px;
+	margin-bottom: 0;
+}
+
+.conversation_chat_div_fromusertome
+{
+	float: right;
+	width: 400px;
+	margin: 5px;
+	margin-bottom: 0;
+	text-align: right;
+}
+
+.chat_text_joined_up
+{
+	margin-top: 0;
+}
+
+.chat_date_joined_off
+{
+	color: silver;
+	font-size: 10px;
+}
+
+.chat_date_joined_on
+{
+	color: gray;
+	font-size: 10px;
+}
+
+.conversation_chat_content_message
+{
+	margin: 0;
+}
+
+.conversation_chat_content_message_readen_image
+{
+	width: 10px;
+	height: 10px;
+}
+
+.div_content_chat_users_list
+{
+	overflow:auto;
+	height: 500px;
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+.div_content_chat_messages_title
+{
+	height: 50px;
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+.div_content_chat_users_list_div div.media
+{
+	cursor: pointer;
+}
+
+.user_in_user_list_container
+{
+	width: 240px;
+	margin-top: 7px;
+	display: inline-block;
+}
+
+.user_in_user_list
+{
+	width: 80%;
+}
+
+.user_in_user_list_button_div
+{
+	width: 20%;
+}
+
+.div_content_chat_users_count *, .div_content_chat_messages_pagination *
+{
+	font-size: 10px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.div_content_chat_users_count_select
+{
+	width: 25% !important;
+}
+
+.div_content_chat_messages_count_select
+{
+	width: 25% !important;
+}
+
+.div_content_chat_messages_actions_textbox
+{
+	width: 85%;
+	display: inline-block;
+}
+
+.div_content_chat_messages_actions_sendbutton
+{
+	width: 15%;
+	display: inline-block;
+	vertical-align: bottom;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+/*
+	POPOVERS HTML
+*/
+
+.popover_body
+{
+
+}
+
+.popover_body_ptext
+{
+	font-weight: bold;
+	color: #2a6496;
+}
+
+.popover_body_phr
+{
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.popover_body_pmoderated_invalid
+{
+	font-weight: bold;
+	color: red;
+}
+
+.user_text_connected
+{
+	color: green;
+}
+
+.user_text_disconnected
+{
+	color: gray;
+}

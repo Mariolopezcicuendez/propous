@@ -1,0 +1,74 @@
+Usuario FREE:            003 propuestas dia            => FREE
+Usuario PREMIUM:         010 propuestas dia (7 días)   => 1,99€
+Usuario PREMIUM_SILVER:  030 propuestas dia (7 días)   => 3,99€
+Usuario PREMIUM_GOLD:    100 propuestas dia (7 días)   => 9,99€
+Usuario PREMIUM_DIAMOND: 200 propuestas dia (30 días)  => 59,99€
+
+TODO:
+- Publicitar
+- Publicar nueva web en redes sociales
+- producción
+- minimizador
+- corrección de errores
+- prueba desde otro pais
+- prueba con gente
+- limpieza y puesta a punto BBDD
+- revisión de comportamiento final
+- capar ws conflictivos
+- Pago tarjeta, paypal
+- carta de pago
+- permisos del proyecto
+- subida a servidor
+- revisión de todo el código, configuraciones, etc...
+- crear G+, facebook, Tweeter
+- diseño mails
+- envio de mail de reestablecer contraseña con link de activación de cuenta
+- envio de mail de registro con link de activación de cuenta
+- pantalla Comming soon
+- Adquirir Hosting
+- Traduciones Ingles correctas + Revisión en ingles de categorías y socialities
+- Textos legales
+- Crear Empresa
+- Registro de copyright
+- Iconos de categorias
+- Iconos de socialitys
+- crear y meter favicon e info de pestañas
+- diseño final
+- Iconos finales y de acciones
+- comprar biblioteca de iconos usable
+- comprar biblioteca de imágenes usable
+- Metainfo para buscadores
+- Textos correctos
+- mirar carta de pago y Pago tarjeta, paypal, pruebas
+- pruebas en moviles y tablets
+- revisión de estilo y código funcional en navegadores
+- Nombre empresa
+- protección CSRF
+- protección XSS
+- correcto funcionamiento de errores de perdida de conexión
+- correcto funcionamiento de errores de formularios
+- placeholders en los inputs de los formularios y titulos de los selects
+- rellenar todos los hints del dom en los popover
+- tabindex en formularios
+- encontrar buen sonido de chat
+- revisión del rendimiento del chat en Firefox, mirar acumulación de eventos
+
+FUTURE:
+- Solo los usuarios premium, opción de ver predefinidas busquedas o categorias solo en las props del inicio
+- CMS: Busqueda avanzada
+- boton: ¿Has cambiado de localización, pulsa aqui para obtener automáticamente tu nueva localización?
+- google analytics
+- buscar por usuarios cuyo estado social principal es...
+- opción preferencias de usuario, englobando eliminar cuenta y cambiar password
+- usuario empresa
+- comentarios de las props
+- usuarios bloqueados por otros usaurios
+- usuarios amigos de otros usuarios
+- Emoticonos del chat y parseo de estos
+- Las propuestas pueden ir dirigidas a que las vea sólo usuarios con determinadas socialitys
+- Estudio de Integración de CometChat en el chat
+- Salas de chat
+
+
+http://192.168.5.3/propous/es/plink/activeaccount/b4271348177c77bca2cb27b27269a3bc26a5fe51
+http://192.168.5.3/propous/es/plink/forgetpassword/b4271348177c77bca2cb27b27269a3bc26a5fe51

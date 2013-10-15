@@ -1,0 +1,52 @@
+
+.analitycs_result_div
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
+  max-height: 630px;
+  font-size: 10px;
+}
+
+.analitycs_div_content_table
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.analitycs_table_tbody_tdn, .analitycs_table_tbody_tdt, .analitycs_table_tbody_tdtt
+{
+  font-weight: bold;
+}
+
+.analitycs_table_thead_thn,
+.analitycs_table_thead_th,
+.analitycs_table_thead_tht
+{
+  cursor: default !important;
+}
+
+.analitycs_table_thead_thn, .analitycs_table_tbody_tdn
+{
+  min-width: 150px;
+}
+
+.analitycs_table_thead_th, .analitycs_table_tbody_td
+{
+  min-width: 60px;
+}
+
+.analitycs_table_thead_tht, .analitycs_table_tbody_tdt
+{
+  min-width: 120px;
+}
+
+.press
+{
+  cursor: pointer;
+}
+
+.no-press
+{
+  cursor: default;
+}
