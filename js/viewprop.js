@@ -70,8 +70,14 @@ function success_get_proposal_data(data)
 
 function put_proposal_data_in_form()
 {
+  console.log(data_proposal);
 	$('.viewprop_prop_title').text(data_proposal.proposal);
-	$('.viewprop_prop_description').text(data_proposal.description);
+  if (data_proposal.description !== null)
+  {
+    $('.viewprop_prop_description').text(data_proposal.description);
+    $('.viewprop_prop_description').removeClass("hidden");
+    $('.viewprop_prop_description').parent().parent().removeClass("hidden");
+  }
 	$('.viewprop_prop_creationdate').text(format_date_creation(data_proposal.time));
 	$('.viewprop_prop_region').html("<img class='flag' src='"+baseurl + "/assets/icons/flags/"+get_icon_flag_name(data_proposal.country_tag)+".png'/> "+data_proposal.country[0].name + " / "+data_proposal.state[0].name);
   $('.viewprop_prop_visited').text(data_proposal.visited);

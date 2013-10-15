@@ -17,6 +17,7 @@ TODO:
 - capar ws conflictivos
 - Pago tarjeta, paypal
 - carta de pago
+- https, certificado
 - permisos del proyecto
 - subida a servidor
 - revisión de todo el código, configuraciones, etc...
@@ -47,11 +48,14 @@ TODO:
 - protección XSS
 - correcto funcionamiento de errores de perdida de conexión
 - correcto funcionamiento de errores de formularios
+- añadir validaciones de campos con textos en blanco
+- añadir más validaciones de passwords y campos...
 - placeholders en los inputs de los formularios y titulos de los selects
 - rellenar todos los hints del dom en los popover
 - tabindex en formularios
 - encontrar buen sonido de chat
-- revisión del rendimiento del chat en Firefox, mirar acumulación de eventos
+- hacer que no suene el sonido del chat la primera vez que entras en la web y tienes mensajes sin leer
+- Rehacer CHAT
 
 FUTURE:
 - Solo los usuarios premium, opción de ver predefinidas busquedas o categorias solo en las props del inicio

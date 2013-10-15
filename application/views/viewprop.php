@@ -32,7 +32,7 @@
 					    </div>
 					  </div>
 
-					  <div class="form-group">
+					  <div class="form-group hidden">
 					    <label for="viewprop_prop_description" class="col-md-3 control-label"><?php echo lang('p_proposal_description'); ?>:</label>
 					    <div class="col-md-9">
 					      <p id='viewprop_prop_description' class="viewprop_prop_description form-control-static"></p>
