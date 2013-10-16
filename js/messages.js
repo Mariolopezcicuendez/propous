@@ -2,15 +2,31 @@ var data_actualize_messages_info = null;
 var chating_now = null;
 var last_message_from = null;
 var user_id = null;
-var writing = false;
+var timeout_writing = null;
 
 $(document).ready(function() 
 {
   user_id = $(".gdata_user_id").val();
 
+  localStorage.setItem("users_list_count",DEFAULT_NUMBER_USERS_MESSAGED_SHOWED);
+  localStorage.setItem("messages_list_count",DEFAULT_NUMBER_MESSAGES_SHOWED);
+
   get_localstorage_messages_info_data();
 
   actualize_messages_info();
+
+  $('.div_content_chat_users_count_select').on("change", function()
+  {
+    var showed = $(this).val();
+    localStorage.setItem("users_list_count",showed);
+    actualize_messages_info();
+  });
+  $('.div_content_chat_messages_count_select').on("change", function()
+  {
+    var showed = $(this).val();
+    localStorage.setItem("messages_list_count",showed);
+    actualize_messages_info();
+  });
 
   $('.messages_send_button').on("click", function()
   {
@@ -25,15 +41,19 @@ $(document).ready(function()
     
     if (text !== '')
     {
-      writing = true;
+      if (localStorage.getItem("writing") !== true) localStorage.setItem("writing",true);
+      clearTimeout(timeout_writing);
+      timeout_writing = setTimeout( "set_no_writing()"  , TIME_SECONDS_LEAVE_WRITING_STATUS * 1000 );
     }
 
     if (event.which == 13)
     {
        event.preventDefault();
+       
+       if (localStorage.getItem("writing") !== false) localStorage.setItem("writing",false);
+       
        send_write_text();
        clear_send_textbox();
-       writing = false;
     }
   });
 
@@ -59,42 +79,7 @@ function print_user_list()
   {
     user = data_actualize_messages_info.users_list[i];
 
-    var user_container = $('<div></div>').addClass('user_in_user_list_container');
-
-    var user_to_chat = $('<div></div>').attr("user_id",user.id).addClass('media').addClass('user_in_user_list').addClass('pull-left');
-    var user_to_chat_button_close = $('<div></div>').attr("user_id",user.id).addClass('user_in_user_list_button_div').addClass('pull-left');
-
-    var user_to_chat_link = $('<a></a>').addClass('pull-left');
-    var user_to_chat_link_img = $('<img></img>').addClass('chat_users_main_image').attr("src",baseurl + "/" + user.photo);
-
-    var user_to_chat_div_body = $('<div></div>').addClass('media-body');
-    var user_to_chat_div_name = $('<span></span>').text(user.name);
-    var user_to_chat_div_noreaden = $('<span></span>').addClass('badge').addClass('hidden').text("");
-
-    var user_to_chat_img_connected = $("<img></img>").addClass('status_image').addClass("chat_users_online_image").attr("src",baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png");
-
-    var user_to_chat_button_close_img = $('<button type="button" user_id="'+user.id+'" class="close" aria-hidden="true">&times;</button>');
-
-    $(user_to_chat_div_body).append(user_to_chat_div_name);
-    $(user_to_chat_div_body).append(user_to_chat_img_connected);
-    $(user_to_chat_div_body).append(user_to_chat_div_noreaden);
-
-    $(user_to_chat_link).append(user_to_chat_link_img);
-    $(user_to_chat).append(user_to_chat_link);
-    $(user_to_chat).append(user_to_chat_div_body);
-
-    $(user_to_chat_button_close).append(user_to_chat_button_close_img);
-
-    $(user_container).append(user_to_chat);
-    $(user_container).append(user_to_chat_button_close);
-
-    $('.div_content_chat_users_list_div').prepend(user_container);
-
-    if (user.no_readen > 0) 
-    {
-      $(user_to_chat_div_noreaden).removeClass('hidden');
-      $(user_to_chat_div_noreaden).text(user.no_readen);
-    }
+    add_user_to_list(user);
   });
 
   $('.user_in_user_list').on("click", function()
@@ -111,6 +96,76 @@ function print_user_list()
     var id = $(this).attr("user_id");
     close_user_conversation(id);
   });
+}
+
+function actialize_print_user_list()
+{
+  var user;
+  $.each(data_actualize_messages_info.users_list, function (i) 
+  {
+    user = data_actualize_messages_info.users_list[i];
+
+    // Este usuario no está en la conversación, añadirlo
+    if (typeof $('.div_content_chat_users_list_div div.user_in_user_list_container div[user_id='+user.id+']').get(0) === 'undefined')
+    {
+      add_user_to_list(user);
+      
+      $('.user_in_user_list[user_id='+user.id+']').on("click", function()
+      {
+        var user_talking = $(this).attr("user_id");
+        chating_now = user_talking;
+        localStorage.setItem("chating_now",chating_now);
+        actualize_messages_info();
+        select_user_in_user_list();
+      });
+
+      $('.user_in_user_list_button_div[user_id='+user.id+'] button.close').on("click", function()
+      {
+        var id = $(this).attr("user_id");
+        close_user_conversation(id);
+      });
+    }
+  });
+}
+
+function add_user_to_list(user)
+{
+  var user_container = $('<div></div>').addClass('user_in_user_list_container');
+
+  var user_to_chat = $('<div></div>').attr("user_id",user.id).addClass('media').addClass('user_in_user_list').addClass('pull-left');
+  var user_to_chat_button_close = $('<div></div>').attr("user_id",user.id).addClass('user_in_user_list_button_div').addClass('pull-left');
+
+  var user_to_chat_link = $('<a></a>').addClass('pull-left');
+  var user_to_chat_link_img = $('<img></img>').addClass('chat_users_main_image').attr("src",baseurl + "/" + user.photo);
+
+  var user_to_chat_div_body = $('<div></div>').addClass('media-body');
+  var user_to_chat_div_name = $('<span></span>').text(user.name);
+  var user_to_chat_div_noreaden = $('<span></span>').addClass('badge').addClass('hidden').text("");
+
+  var user_to_chat_img_connected = $("<img></img>").addClass('status_image').addClass("chat_users_online_image").attr("src",baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png");
+
+  var user_to_chat_button_close_img = $('<button type="button" user_id="'+user.id+'" class="close" aria-hidden="true">&times;</button>');
+
+  $(user_to_chat_div_body).append(user_to_chat_div_name);
+  $(user_to_chat_div_body).append(user_to_chat_img_connected);
+  $(user_to_chat_div_body).append(user_to_chat_div_noreaden);
+
+  $(user_to_chat_link).append(user_to_chat_link_img);
+  $(user_to_chat).append(user_to_chat_link);
+  $(user_to_chat).append(user_to_chat_div_body);
+
+  $(user_to_chat_button_close).append(user_to_chat_button_close_img);
+
+  $(user_container).append(user_to_chat);
+  $(user_container).append(user_to_chat_button_close);
+
+  $('.div_content_chat_users_list_div').prepend(user_container);
+
+  if (user.no_readen > 0) 
+  {
+    $(user_to_chat_div_noreaden).removeClass('hidden');
+    $(user_to_chat_div_noreaden).text(user.no_readen);
+  }
 }
 
 function actualize_users_list_with_no_readen_messages()
@@ -165,7 +220,7 @@ function select_user_in_user_list()
 
 function load_chat_title()
 {
-  var user = data_actualize_messages_info.users_chating_now;
+  var user = data_actualize_messages_info.user_chating_now;
 
   var image_conected = "<img class='status_image chat_users_online_image' src='"+baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png'></img>";
   var image_user = "<img class='conversation_chat_title_user_image' src='" + baseurl + user.photo + "'></img>";
@@ -179,7 +234,7 @@ function actualize_conversation()
 
   $('.div_content_chat_messages_conversation').html('');
 
-  var conversation = data_actualize_messages_info.users_chating_now_conversation;
+  var conversation = data_actualize_messages_info.user_chating_now_conversation;
 
   if (conversation !== null)
   {
@@ -251,7 +306,7 @@ function actualize_conversation()
 
 function is_scroll_at_end()
 {
-  return false;
+  return true;
 }
 
 function move_chat_scroll_to_finish()
@@ -311,12 +366,14 @@ function convert_chat_timestamp_message(timestamp)
 
 function check_if_user_writing_me()
 {
-
-}
-
-function close_user_conversation()
-{
-
+  if (data_actualize_messages_info.user_chating_now.writing === '1')
+  {
+    $('.div_content_chat_messages_title_iswriting_span').removeClass("hidden");
+  }
+  else
+  {
+    $('.div_content_chat_messages_title_iswriting_span').addClass("hidden");
+  }
 }
 
 function clear_send_textbox()
@@ -333,4 +390,43 @@ function send_write_text()
 
   last_message_from = 'me';
   actualize_messages_info();
+}
+
+function set_no_writing()
+{
+  if (localStorage.getItem("writing") !== false) localStorage.setItem("writing",false);
+}
+
+function close_user_conversation(id)
+{
+  var conf_data = {};
+  conf_data.title = lang('p_delete_conversation');
+  conf_data.body = lang("p_confirm_delete_all_user_conversation");
+  conf_data.ok_text = lang('p_delete_conversation_yes');
+  conf_data.cancel_text = lang('p_no');
+  conf_data.ok = "delete_conversation_confirmed";
+  conf_data.ok_params = id;
+  show_confirm(conf_data);
+}
+
+function delete_conversation_confirmed(id)
+{
+  hide_confirm();
+  
+  localStorage.setItem("delete_user_conversation",id);
+
+  actualize_messages_info();
+
+  $('.user_in_user_list[user_id='+id+']').parent().remove();
+
+  show_success("messages_data_alert", lang('p_conversation_deleted_correctly'));
+
+  if (chating_now != id)
+  {
+    select_user_in_user_list(chating_now)
+  }
+  else
+  {
+    select_first_user_in_user_list();
+  }
 }

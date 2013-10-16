@@ -566,7 +566,8 @@ a.paginate_button:focus
 
 .div_content_chat_messages_conversation
 {
-	overflow:auto;
+	overflow-x:hidden;
+	overflow-y:auto;
 	height: 370px;
 	border-bottom: 1px solid silver;
 }

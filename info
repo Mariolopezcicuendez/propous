@@ -55,7 +55,9 @@ TODO:
 - tabindex en formularios
 - encontrar buen sonido de chat
 - hacer que no suene el sonido del chat la primera vez que entras en la web y tienes mensajes sin leer
-- Rehacer CHAT
+- scroll del chat solo cuando no estas viendo mensajes más arriba
+- limpieza del chat si borras todos los usuarios
+- Los mensajes no deberian de borrarse
 
 FUTURE:
 - Solo los usuarios premium, opción de ver predefinidas busquedas o categorias solo en las props del inicio

@@ -1123,24 +1123,18 @@ function messages_page_showed()
   return ((typeof $(".div_content_chat_users_list").get(0)) !== "undefined");
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function actualize_messages_info()
 {
   var user_id = $(".gdata_user_id").val();
   var chating_now = localStorage.getItem("chating_now");
   var users_list_count = localStorage.getItem("users_list_count");
+  var messages_list_count = localStorage.getItem("messages_list_count");
   var user_message = localStorage.getItem("user_message");
+  var writing = localStorage.getItem("writing");
+  var delete_user_conversation = localStorage.getItem("delete_user_conversation");
+
+  if (typeof users_list_count === "undefined") users_list_count = DEFAULT_NUMBER_USERS_MESSAGED_SHOWED;
+  if (typeof messages_list_count === "undefined") messages_list_count = DEFAULT_NUMBER_MESSAGES_SHOWED;
 
   if (typeof chating_now === "undefined") chating_now = null;
 
@@ -1150,7 +1144,10 @@ function actualize_messages_info()
   data_post.user_from_id = user_id;
   data_post.user_to_id = chating_now;
   data_post.users_list_count = users_list_count;
+  data_post.messages_list_count = messages_list_count;
   data_post.user_message = user_message;
+  data_post.writing = writing;
+  data_post.delete_user_conversation = delete_user_conversation;
 
   var req = {};
   req.url = '/message/actualize_messages_info';
@@ -1161,6 +1158,7 @@ function actualize_messages_info()
   ajaxp(req);
 
   delete localStorage["user_message"];
+  delete localStorage["delete_user_conversation"];
 }
 
 function success_actualize_messages_info(data)
@@ -1180,7 +1178,14 @@ function success_actualize_messages_info(data)
   {
     get_localstorage_messages_info_data();
     
-    if (empty_user_list()) print_user_list();
+    if (empty_user_list()) 
+    {
+      print_user_list();
+    }
+    else
+    {
+      actialize_print_user_list();
+    }
 
     if (chating_now === null)
     {
