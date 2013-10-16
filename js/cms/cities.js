@@ -86,6 +86,7 @@ function success_cms_all(data)
     "aaData": data_table,
     "fnDrawCallback": function( oSettings ) 
     {
+      $('.cms_main_table').removeClass('hidden');
       hide_loading();
     }
   });

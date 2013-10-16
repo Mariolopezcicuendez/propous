@@ -16,7 +16,7 @@
       <div class='cms_main_table_div col-md-12 content'>
         
 	      <div>
-	        <table id="cms_main_table" class="cms_main_table">
+	        <table id="cms_main_table" class="cms_main_table hidden">
 	          <thead>
 	            <tr>
 	              <th>id</th>

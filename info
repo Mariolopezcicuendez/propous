@@ -54,10 +54,11 @@ TODO:
 - rellenar todos los hints del dom en los popover
 - tabindex en formularios
 - encontrar buen sonido de chat
-- hacer que no suene el sonido del chat la primera vez que entras en la web y tienes mensajes sin leer
-- scroll del chat solo cuando no estas viendo mensajes más arriba
-- limpieza del chat si borras todos los usuarios
 - Los mensajes no deberian de borrarse
+- hacer que no suene el sonido del chat la primera vez que entras en la web y tienes mensajes sin leer
+- ver porque no selecciona bien el usuario chateando cuando venimos desde fuera
+- ver porque baja el scroll al repintarse de nuevo la lista al hacer select_user_in_user_list() desde el main
+- que la conversación no se pinte entera, sino que se haga una revisión de los readen y se actualicen estos
 
 FUTURE:
 - Solo los usuarios premium, opción de ver predefinidas busquedas o categorias solo en las props del inicio

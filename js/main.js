@@ -405,6 +405,12 @@ $(document).ready(function()
   		get_num_favorites();
   		get_num_myprops();
 
+      if (!messages_page_showed())
+      {
+        chating_now = null;
+        localStorage.setItem("chating_now",chating_now);
+      }
+
       actualize_messages_info();
 
       clearInterval(interval_actualize_chat);
@@ -1171,7 +1177,7 @@ function success_actualize_messages_info(data)
 
   if (data.no_readen_messages > 0)
   {
-    check_play_messages_sound(data.no_readen_messages);
+    play_messages_sound(); 
   }
 
   if (messages_page_showed())
@@ -1181,12 +1187,14 @@ function success_actualize_messages_info(data)
     if (empty_user_list()) 
     {
       print_user_list();
+      select_first_user_in_user_list();
     }
     else
     {
-      actialize_print_user_list();
+      actualize_print_user_list();
     }
 
+    var chating_now = localStorage.getItem("chating_now");
     if (chating_now === null)
     {
       select_first_user_in_user_list();
@@ -1227,17 +1235,9 @@ function print_messages_no_readen_in_messages_text(no_readen_messages)
   $(".messages_main_link_page_text_messages_noreaden").removeClass("hidden");
 }
 
-function check_play_messages_sound(no_readen_messages)
+function play_messages_sound()
 {
-  if (no_readen_messages > 0)
-  {
-    var messages_no_readen_already_alerted = ($(".messages_main_link_page_text_messages_noreaden").text() !== "") ? parseInt($(".messages_main_link_page_text_messages_noreaden").text()) : 0 ;
-
-    if ((messages_no_readen_already_alerted === 0) || (messages_no_readen_already_alerted < no_readen_messages))
-    {
-      console.log("played sound");
-      // var snd = new Audio(baseurl + "/assets/sounds/message.wav");
-      // snd.play();
-    }
-  }
+  console.log("played sound");
+  // var snd = new Audio(baseurl + "/assets/sounds/message.wav");
+  // snd.play();
 }

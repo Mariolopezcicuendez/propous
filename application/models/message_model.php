@@ -28,7 +28,7 @@ class Message_model extends CI_Model
     $messages_list_count = $this->input->post('messages_list_count');
     $message = $this->input->post('user_message');
     $writing = $this->input->post('writing');
-    $delete_user_conversation = $this->input->post('delete_user_conversation');
+    $delete_user_conversation = $this->input->post('delete_user_conversation');    
 
     $writing = (($writing === true) || ($writing === 'true') || ($writing === 1) || ($writing === '1')) ? 1 : 0 ;
     if (!isset($users_list_count) || ($users_list_count === null) || ($users_list_count === '') || ($users_list_count === 'null') || ($users_list_count == false)) $users_list_count = DEFAULT_NUMBER_USERS_MESSAGED_SHOWED;
@@ -64,9 +64,9 @@ class Message_model extends CI_Model
       {
         $data['users_list'][] = $data['user_chating_now'];
       }
-      $data['no_readen_messages'] = $this->get_no_readen_messages();
       $data['user_chating_now_conversation'] = $this->get_conversation($this->user_id,$user_to_id,$messages_list_count);
     }
+    $data['no_readen_messages'] = $this->get_no_readen_messages();
 
     return $data;
   }
