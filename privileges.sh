@@ -1,5 +1,5 @@
-sudo chmod 0775 ../propon
-sudo chmod 0775 application assets css js system user_guide work
+sudo chmod 0775 ../propous
+sudo chmod 0775 application assets css js system user_guide
 sudo chmod 0777 captcha
 sudo chmod 0775 application/cache application/config application/controllers application/core application/errors application/hooks application/language application/libraries application/logs application/models application/third_party application/views
 sudo chmod 0775 application/controllers/api application/controllers/cms application/controllers/analytics

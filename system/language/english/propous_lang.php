@@ -265,6 +265,7 @@ $lang['p_proposal_invalid'] = "Prop inválida";
 $lang['p_want_to_be_premium'] = "Dejame ver como ser usuario premium";
 $lang['p_page_restringed_message'] = "Has accedido a una zona privada";
 $lang['p_status'] = "Estado";
+$lang['p_writing'] = "Escribiendo";
 
 $lang['p_title_about_page'] = "About";
 $lang['p_paragraph_about_1'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra scelerisque nibh, nec elementum nibh luctus hendrerit. Donec quis dui id arcu malesuada tempor. Suspendisse at tempor ante, a commodo leo. Cras felis risus, sodales sed nulla bibendum, varius facilisis urna. Suspendisse a nisl eros. Fusce elit orci, tempor a vehicula et, aliquet quis enim. Mauris sollicitudin rutrum suscipit.";

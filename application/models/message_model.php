@@ -433,29 +433,37 @@ class Message_model extends CI_Model
     $this->user_id = $this->input->post('user_from_id');
     $user_to_id = $this->input->post('user_to_id');
     $users_list_count = $this->input->post('users_list_count');
+    $messages_list_count = $this->input->post('messages_list_count');
+    $message = $this->input->post('user_message');
+
     if (!isset($users_list_count) || ($users_list_count === null) || ($users_list_count === '') || ($users_list_count === 'null') || ($users_list_count == false)) $users_list_count = DEFAULT_NUMBER_USERS_MESSAGED_SHOWED;
+    if (!isset($messages_list_count) || ($messages_list_count === null) || ($messages_list_count === '') || ($messages_list_count === 'null') || ($messages_list_count == false)) $messages_list_count = DEFAULT_NUMBER_MESSAGES_SHOWED;
+
+    if (isset($message) && ($message !== null) && ($message !== '') && ($message !== 'null') && ($message != false))
+    {
+      $this->send_message($user_to_id,$message);
+    }
 
     $data = array();
-    $data['no_readen_messages'] = $this->get_no_readen_messages();
-    if (isset($user_to_id) && ($user_to_id !== null) && ($user_to_id !== '') && ($user_to_id !== 'null') && ($user_to_id != false))
-    {
-      $data['no_readen_messages_from_user'] = $this->get_no_readen_messages_from_user($user_to_id);
-    }
     $data['users_list'] = $this->get_users_list_with_messages($users_list_count);
 
     if (isset($user_to_id) && ($user_to_id !== null) && ($user_to_id !== '') && ($user_to_id !== 'null') && ($user_to_id != false))
     {
+      $this->set_all_message_readen($user_to_id,$this->user_id);
+      $data['no_readen_messages_from_user'] = $this->get_no_readen_messages_from_user($user_to_id);
       $data['users_chating_now'] = new StdClass();
       $data['users_chating_now']->id = $user_to_id;
       $data['users_chating_now']->name = $this->user_model->get_user_name($user_to_id);
       $data['users_chating_now']->no_readen = $this->get_no_readen_messages_from_user($user_to_id);
       $data['users_chating_now']->photo = $this->photo_model->get_user_photo($user_to_id);
       $data['users_chating_now']->connected = $this->user_model->get_is_online($user_to_id);
+      $data['users_chating_now']->writing = $this->check_user_writing($user_to_id,$this->user_id);
       if (!in_array($data['users_chating_now'],$data['users_list']))
       {
         $data['users_list'][] = $data['users_chating_now'];
-        unset($data['users_chating_now']);
       }
+      $data['no_readen_messages'] = $this->get_no_readen_messages();
+      $data['users_chating_now_conversation'] = $this->get_conversation($this->user_id,$user_to_id,$messages_list_count);
     }
 
     return $data;
@@ -511,6 +519,7 @@ class Message_model extends CI_Model
           $user_talked->no_readen = $this->get_no_readen_messages_from_user($user_talked->id);
           $user_talked->photo = $this->photo_model->get_user_photo($user_talked->id);
           $user_talked->connected = $this->user_model->get_is_online($user_talked->id);
+          $user_talked->writing = $this->check_user_writing($user_talked->id,$this->user_id);
 
           $results[] = $user_talked;
           $results_ids[] = $row->user_talked;
@@ -520,6 +529,116 @@ class Message_model extends CI_Model
     }
     return array();
   }
+
+  function check_user_writing($user_from_id, $user_to_id)
+  {
+    $query = $this->db->query("SELECT writing FROM message_writing WHERE user_from_id = {$user_from_id} AND user_to_id = {$user_to_id}");
+    if ($query->num_rows() > 0)
+    {
+      $row = $query->row();
+      return $row->writing;
+    }
+    else
+    {
+      $message_writing = array();
+      $message_writing['user_from_id'] = $user_from_id;
+      $message_writing['user_to_id'] = $user_to_id;
+      $message_writing['writing'] = 0;
+
+      $result = $this->db->insert('message_writing', $message_writing);
+      if ($result)
+      {
+        return 0;
+      }
+
+      return 0;
+    }
+  }
+
+  function get_conversation($user_from_id, $user_to_id, $count)
+  {
+    $query = $this->db->query("
+      SELECT id, user_from_id, user_to_id, time, readen, message
+      FROM  `message` 
+      WHERE user_from_id = {$user_from_id}
+      AND user_to_id = {$user_to_id}
+      UNION 
+      SELECT id, user_from_id, user_to_id, time, readen, message 
+      FROM  `message` 
+      WHERE user_from_id = {$user_to_id}
+      AND user_to_id = {$user_from_id}
+      ORDER BY TIME DESC
+      LIMIT 0, {$count}
+    ");
+    if ($query->num_rows() > 0)
+    {
+      $results = array();
+      foreach ($query->result() as $row)
+      {
+        $row->user_from_name = $this->user_model->get_user_name($row->user_from_id);
+        $row->user_to_name = $this->user_model->get_user_name($row->user_to_id);
+        $row->user_from_photo = $this->photo_model->get_user_photo($row->user_from_id);
+        $row->user_to_photo = $this->photo_model->get_user_photo($row->user_to_id);
+        $results[] = $row;
+      }
+      return array_reverse($results);
+    }
+    return null;
+  }
+
+  function send_message($user_to_id, $message_text)
+  {
+    $this->db->trans_begin();
+
+    $message = array();
+    $message['user_from_id'] = $this->user_id;
+    $message['user_to_id'] = $user_to_id;
+    $message['time'] = date("Y-m-d H:i:s");
+    $message['readen'] = 0;
+    $message['message'] = $message_text;
+
+    $this->db->insert('message', $message);
+
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === FALSE)
+    {
+      $this->db->trans_rollback();
+      throw new Exception("Error sending message", 1000);
+    }
+    else
+    {
+      $this->db->trans_commit();
+    }
+  }
+
+  function set_all_message_readen($user_from_id, $user_to_id)
+  {
+    $message['readen'] = 1;
+
+    $this->db->where('user_from_id', $user_from_id);
+    $this->db->where('user_to_id', $user_to_id);
+    $result = $this->db->update('message', $message);
+
+    return $result;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

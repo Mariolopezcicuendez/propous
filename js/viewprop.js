@@ -70,7 +70,6 @@ function success_get_proposal_data(data)
 
 function put_proposal_data_in_form()
 {
-  console.log(data_proposal);
 	$('.viewprop_prop_title').text(data_proposal.proposal);
   if (data_proposal.description !== null)
   {

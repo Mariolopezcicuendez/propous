@@ -1140,13 +1140,17 @@ function actualize_messages_info()
   var user_id = $(".gdata_user_id").val();
   var chating_now = localStorage.getItem("chating_now");
   var users_list_count = localStorage.getItem("users_list_count");
+  var user_message = localStorage.getItem("user_message");
 
   if (typeof chating_now === "undefined") chating_now = null;
+
+  if ((typeof user_message !== "undefined") && (user_message !== null)) user_message = user_message.substring(1,user_message.length-1);
 
   var data_post = {};
   data_post.user_from_id = user_id;
   data_post.user_to_id = chating_now;
   data_post.users_list_count = users_list_count;
+  data_post.user_message = user_message;
 
   var req = {};
   req.url = '/message/actualize_messages_info';
@@ -1155,6 +1159,8 @@ function actualize_messages_info()
   req.error = "error_actualize_messages_info";
   req.data = data_post;
   ajaxp(req);
+
+  delete localStorage["user_message"];
 }
 
 function success_actualize_messages_info(data)
@@ -1163,10 +1169,11 @@ function success_actualize_messages_info(data)
 
   save_localstorage_messages_info_data(data);
 
+  print_messages_no_readen_in_messages_text(data.no_readen_messages);
+
   if (data.no_readen_messages > 0)
   {
     check_play_messages_sound(data.no_readen_messages);
-    print_messages_no_readen_in_messages_text(data.no_readen_messages);
   }
 
   if (messages_page_showed())
@@ -1175,8 +1182,6 @@ function success_actualize_messages_info(data)
     
     if (empty_user_list()) print_user_list();
 
-    actualize_users_list_with_no_readen_messages();
-    
     if (chating_now === null)
     {
       select_first_user_in_user_list();
@@ -1188,7 +1193,7 @@ function success_actualize_messages_info(data)
 
     load_chat_title();
     actualize_conversation();
-    clear_messages_no_readen();
+    actualize_users_list_with_no_readen_messages();
     check_if_user_writing_me();
   }
 }

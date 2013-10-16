@@ -90,7 +90,7 @@ function make_request_detail()
   data_post.year = analytics_detail_year;
   data_post.month = analytics_detail_month;
   data_post.day = analytics_detail_day;
-console.log(data_post);
+
   var req = {};
   req.url = '/'+controller+'/analitycs_detail';
   req.type = 'POST';
