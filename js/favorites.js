@@ -14,6 +14,7 @@ function get_favorites_props()
 
   var data_post = {};
   data_post.favorites = user_id;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/proposal/list_proposals';
@@ -263,6 +264,7 @@ function save_prop_to_favorites(prop_id)
 
   var data_post = {};
   data_post.proposal_id = prop_id;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/favorite/add_favorite/'+user_id;

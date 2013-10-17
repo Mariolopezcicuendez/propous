@@ -6,6 +6,9 @@
     <?php $input_disabled = ''; ?>
   <?php endif; ?>
 
+  <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
   <input type='hidden' id='cms_action' value='edit'>
 
    <div class="div_content_info form-group page-cms">
@@ -37,7 +40,7 @@
             </div>
           <?php endforeach; ?>
 
-          <form class='cms_icon_upload_form' enctype="multipart/form-data" role="form">
+          <?php echo form_open('#',array("class"=>"cms_icon_upload_form","role"=>"form", "enctype"=>"multipart/form-data")); ?>
           <div class="form-group">
             <label class="col-md-3 control-label">Icon:</label>  
             <div class="col-md-9">
@@ -52,7 +55,7 @@
               <?php endif; ?>
             </div>
           </div>
-          </form>
+          <?php echo form_close(); ?>
 
         </div>
 

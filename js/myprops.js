@@ -19,6 +19,7 @@ function get_my_props()
   data_post.user_id = user_id;
   data_post.visibility = 'all';
   data_post.moderated_invalid = 'all';
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/proposal/list_proposals';
@@ -266,6 +267,7 @@ function save_prop_to_visible(prop_id)
 {
   var data_post = {};
   data_post.proposal_visibility = 1;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/proposal/set_proposal_visibility/'+prop_id;
@@ -280,6 +282,7 @@ function delete_prop_from_visible(prop_id)
 {
   var data_post = {};
   data_post.proposal_visibility = 0;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/proposal/set_proposal_visibility/'+prop_id;

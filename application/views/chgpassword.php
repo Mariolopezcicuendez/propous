@@ -10,7 +10,7 @@
 
     <div class='content_chgpassword_body panel-body'>
 
-      <form class="form-horizontal" role="form">
+      <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
       	<div class="form-group">
           <label for="chgpassword_user_oldpassword" class="col-md-3 control-label"><?php echo lang('p_oldpassword'); ?>:</label>  
@@ -51,8 +51,6 @@
           </div>
         </div>
 
-				<?php if (USE_CAPTHAS_IN_FORMS === "true") : ?>
-
         	<div class="form-group">
 	          <label class="col-md-3 control-label"></label>  
 	          <div class="col-md-9">
@@ -84,8 +82,6 @@
 	          </div>
 	        </div>
 
-        <?php endif; ?>
-
         <div class="form-group">
           <label for="chgpassword_button_enter" class="col-md-3 control-label"></label>
           <div class="col-md-9">
@@ -111,7 +107,7 @@
           </div>
         </div>
 
-      </form>
+      <?php echo form_close(); ?>
 
     </div>
 

@@ -45,18 +45,18 @@ $lang['cal_september']	= "Septiembre";
 $lang['cal_october']	= "Octubre";
 $lang['cal_november']	= "Noviembre";
 $lang['cal_december']	= "Diciembre";
-$lang['cal_month_01']		= "Ene";
-$lang['cal_month_02']		= "Feb";
-$lang['cal_month_03']		= "Mar";
-$lang['cal_month_04']		= "Abr";
-$lang['cal_month_05']		= "May";
-$lang['cal_month_06']		= "Jun";
-$lang['cal_month_07']		= "Jul";
-$lang['cal_month_08']		= "Ago";
-$lang['cal_month_09']		= "Sep";
-$lang['cal_month_10']		= "Oct";
-$lang['cal_month_11']		= "Nov";
-$lang['cal_month_12']		= "Dic";
+$lang['cal_month_01']		= "Enero";
+$lang['cal_month_02']		= "Febrero";
+$lang['cal_month_03']		= "Marzo";
+$lang['cal_month_04']		= "Abril";
+$lang['cal_month_05']		= "Mayo";
+$lang['cal_month_06']		= "Junio";
+$lang['cal_month_07']		= "Julio";
+$lang['cal_month_08']		= "Agosto";
+$lang['cal_month_09']		= "Septiembre";
+$lang['cal_month_10']		= "Octubre";
+$lang['cal_month_11']		= "Noviembre";
+$lang['cal_month_12']		= "Diciembre";
 
 /* End of file calendar_lang.php */
 /* Location: ./system/language/spanish/calendar_lang.php */

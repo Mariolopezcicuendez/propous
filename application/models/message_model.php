@@ -29,10 +29,12 @@ class Message_model extends CI_Model
     $message = $this->input->post('user_message');
     $writing = $this->input->post('writing');
     $delete_user_conversation = $this->input->post('delete_user_conversation');    
+    $last_id_message = $this->input->post('last_id_message_printed'); 
 
     $writing = (($writing === true) || ($writing === 'true') || ($writing === 1) || ($writing === '1')) ? 1 : 0 ;
     if (!isset($users_list_count) || ($users_list_count === null) || ($users_list_count === '') || ($users_list_count === 'null') || ($users_list_count == false)) $users_list_count = DEFAULT_NUMBER_USERS_MESSAGED_SHOWED;
     if (!isset($messages_list_count) || ($messages_list_count === null) || ($messages_list_count === '') || ($messages_list_count === 'null') || ($messages_list_count == false)) $messages_list_count = DEFAULT_NUMBER_MESSAGES_SHOWED;
+    if (!isset($last_id_message) || ($last_id_message === null) || ($last_id_message === '') || ($last_id_message === 'null') || ($last_id_message == false)) $last_id_message = 1;
 
     if (isset($message) && ($message !== null) && ($message !== '') && ($message !== 'null') && ($message != false))
     {
@@ -60,11 +62,12 @@ class Message_model extends CI_Model
       $data['user_chating_now']->photo = $this->photo_model->get_user_photo($user_to_id);
       $data['user_chating_now']->connected = $this->user_model->get_is_online($user_to_id);
       $data['user_chating_now']->writing = $this->check_user_writing($user_to_id,$this->user_id);
+      $data['user_chating_now']->last_message_readen = $this->get_last_message_readen($this->user_id,$user_to_id);
       if (!in_array($data['user_chating_now'],$data['users_list']))
       {
         $data['users_list'][] = $data['user_chating_now'];
       }
-      $data['user_chating_now_conversation'] = $this->get_conversation($this->user_id,$user_to_id,$messages_list_count);
+      $data['user_chating_now_conversation'] = $this->get_conversation($this->user_id,$user_to_id,$messages_list_count,$last_id_message);
     }
     $data['no_readen_messages'] = $this->get_no_readen_messages();
 
@@ -104,7 +107,7 @@ class Message_model extends CI_Model
       WHERE user_to_id = {$this->user_id}
       GROUP BY user_from_id 
       ORDER BY time DESC
-      LIMIT 0 , {$users_list_count}
+      LIMIT {$users_list_count}
     ");
 
     if ($query->num_rows() > 0)
@@ -122,6 +125,7 @@ class Message_model extends CI_Model
           $user_talked->photo = $this->photo_model->get_user_photo($user_talked->id);
           $user_talked->connected = $this->user_model->get_is_online($user_talked->id);
           $user_talked->writing = $this->check_user_writing($user_talked->id,$this->user_id);
+          $user_talked->last_message_readen = $this->get_last_message_readen($this->user_id,$user_talked->id);
 
           $results[] = $user_talked;
           $results_ids[] = $row->user_talked;
@@ -157,18 +161,20 @@ class Message_model extends CI_Model
     }
   }
 
-  function get_conversation($user_from_id, $user_to_id, $count)
+  function get_conversation($user_from_id, $user_to_id, $count, $last_id_message)
   {
     $query = $this->db->query("
       SELECT id, user_from_id, user_to_id, time, readen, message
       FROM  `message` 
       WHERE user_from_id = {$user_from_id}
       AND user_to_id = {$user_to_id}
+      AND id > {$last_id_message}
       UNION 
       SELECT id, user_from_id, user_to_id, time, readen, message 
       FROM  `message` 
       WHERE user_from_id = {$user_to_id}
-      AND user_to_id = {$user_from_id}
+      AND user_to_id = {$user_from_id} 
+      AND id > {$last_id_message}
       ORDER BY TIME DESC
       LIMIT 0, {$count}
     ");
@@ -251,6 +257,17 @@ class Message_model extends CI_Model
 
       $this->db->insert('message_writing', $message_writing);
     }
+  }
+
+  function get_last_message_readen($user_from_id, $user_to_id)
+  {
+    $query = $this->db->query("SELECT id FROM message WHERE user_from_id = {$user_from_id} AND user_to_id = {$user_to_id} AND readen = 1 ORDER BY id DESC LIMIT 1");
+    if ($query->num_rows() > 0)
+    {
+      $row = $query->row();
+      return $row->id;
+    }
+    return 0;
   }
 
   function delete_conversation($user_from_id, $user_to_id)

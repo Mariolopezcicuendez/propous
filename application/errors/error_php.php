@@ -5,5 +5,4 @@ $jsonresponse->set_file($filepath);
 $jsonresponse->set_line($line);
 $jsonresponse->set_message($message);
 echo  $jsonresponse->show_error($e);
-exit();
 ?>

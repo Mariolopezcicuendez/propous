@@ -20,11 +20,9 @@ $(document).ready(function()
 
     var data_post = {};
     data_post.user_email = $('.forgetpassword_user_email').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
-    if (USE_CAPTHAS_IN_FORMS)
-    {
-      data_post.captcha_word = $('.captcha_input').val();
-    }
+    data_post.captcha_word = $('.captcha_input').val();
 
     var error_occurred = validate_forgetpassword(data_post);
     if (!error_occurred)
@@ -51,11 +49,9 @@ $(document).ready(function()
     data_post.user_token = $('.forgetpasswordnew_token').val();
     data_post.user_password = $('.forgetpasswordnew_user_password').val();
     data_post.user_re_password = $('.forgetpasswordnew_user_repassword').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
-    if (USE_CAPTHAS_IN_FORMS)
-    {
-      data_post.captcha_word = $('.captcha_input').val();
-    }
+    data_post.captcha_word = $('.captcha_input').val();
 
     var error_occurred = validate_forgetpasswordnew(data_post);
     if (!error_occurred)
@@ -101,12 +97,9 @@ function forgetpassword_clean_form()
   $('.error_validation_forgetpassword_user_email').addClass('hidden');
   $('.forgetpassword_user_email_validation_error').text("");
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.forgetpassword_div_captcha').parent().parent().removeClass('has-error');
-    $('.error_validation_forgetpassword_captcha').addClass('hidden');
-    $('.forgetpassword_captcha_validation_error').text("");
-  }
+  $('.forgetpassword_div_captcha').parent().parent().removeClass('has-error');
+  $('.error_validation_forgetpassword_captcha').addClass('hidden');
+  $('.forgetpassword_captcha_validation_error').text("");
 }
 
 function validate_forgetpassword(data)
@@ -118,15 +111,12 @@ function validate_forgetpassword(data)
     $('.forgetpassword_user_email_validation_error').text(lang('p_email_not_valid'));
     return true;
   }
-  if (USE_CAPTHAS_IN_FORMS)
+  if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
   {
-    if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
-    {
-      $('.forgetpassword_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_forgetpassword_captcha').removeClass('hidden');
-      $('.forgetpassword_captcha_validation_error').text(lang('p_invalid_captcha'));
-      return true;
-    }
+    $('.forgetpassword_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_forgetpassword_captcha').removeClass('hidden');
+    $('.forgetpassword_captcha_validation_error').text(lang('p_invalid_captcha'));
+    return true;
   }
 
   return false;
@@ -138,11 +128,8 @@ function success_forgetpassword(data)
 
   show_success("forgetpassword_data_alert", lang('p_email_sent_correctly'));
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.captcha_input').val('');
-    image_captcha_refresh();
-  }
+  $('.captcha_input').val('');
+  image_captcha_refresh();
 }
 
 function error_forgetpassword(data)
@@ -167,15 +154,12 @@ function error_forgetpassword(data)
     show_fail("forgetpassword_data_alert", error_message);
     return;
   }
-  if (USE_CAPTHAS_IN_FORMS)
+  if (error_number === 1801)
   {
-    if (error_number === 1801)
-    {
-      $('.forgetpassword_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_forgetpassword_captcha').removeClass('hidden');
-      $('.forgetpassword_captcha_validation_error').text(error_message);
-      return;
-    }
+    $('.forgetpassword_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_forgetpassword_captcha').removeClass('hidden');
+    $('.forgetpassword_captcha_validation_error').text(error_message);
+    return;
   }
 }
 
@@ -189,12 +173,9 @@ function forgetpasswordnew_clean_form()
   $('.error_validation_forgetpasswordnew_user_repassword').addClass('hidden');
   $('.forgetpasswordnew_user_repassword_validation_error').text("");
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.forgetpasswordnew_div_captcha').parent().parent().removeClass('has-error');
-    $('.error_validation_forgetpasswordnew_captcha').addClass('hidden');
-    $('.forgetpasswordnew_captcha_validation_error').text("");
-  }
+  $('.forgetpasswordnew_div_captcha').parent().parent().removeClass('has-error');
+  $('.error_validation_forgetpasswordnew_captcha').addClass('hidden');
+  $('.forgetpasswordnew_captcha_validation_error').text("");
 }
 
 function validate_forgetpasswordnew(data)
@@ -227,15 +208,12 @@ function validate_forgetpasswordnew(data)
     $('.forgetpasswordnew_user_repassword_validation_error').text(lang('p_password_repassword_not_equals'));
     return;
   }
-  if (USE_CAPTHAS_IN_FORMS)
+  if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
   {
-    if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
-    {
-      $('.forgetpasswordnew_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_forgetpasswordnew_captcha').removeClass('hidden');
-      $('.forgetpasswordnew_captcha_validation_error').text(lang('p_invalid_captcha'));
-      return true;
-    }
+    $('.forgetpasswordnew_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_forgetpasswordnew_captcha').removeClass('hidden');
+    $('.forgetpasswordnew_captcha_validation_error').text(lang('p_invalid_captcha'));
+    return true;
   }
   return false;
 }
@@ -251,12 +229,9 @@ function success_forgetpasswordnew(data)
   $('.forgetpasswordnew_button_enter').parent().parent().addClass('hidden');
   $('.forgetpasswordnew_div_login').parent().parent().removeClass('hidden');
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.forgetpasswordnew_div_captcha').parent().parent().addClass('hidden');
-    $('.forgetpasswordnew_reload_captcha_zone').parent().parent().addClass('hidden');
-    $('.forgetpasswordnew_image_captcha').parent().parent().addClass('hidden');
-  }
+  $('.forgetpasswordnew_div_captcha').parent().parent().addClass('hidden');
+  $('.forgetpasswordnew_reload_captcha_zone').parent().parent().addClass('hidden');
+  $('.forgetpasswordnew_image_captcha').parent().parent().addClass('hidden');
 }
 
 function error_forgetpasswordnew(data)
@@ -312,14 +287,11 @@ function error_forgetpasswordnew(data)
     show_fail("forgetpasswordnew_data_alert", error_message);
     return;
   } 
-  if (USE_CAPTHAS_IN_FORMS)
+  if (error_number === 1801)
   {
-    if (error_number === 1801)
-    {
-      $('.forgetpasswordnew_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_forgetpasswordnew_captcha').removeClass('hidden');
-      $('.forgetpasswordnew_captcha_validation_error').text(error_message);
-      return;
-    }
+    $('.forgetpasswordnew_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_forgetpasswordnew_captcha').removeClass('hidden');
+    $('.forgetpasswordnew_captcha_validation_error').text(error_message);
+    return;
   }
 }

@@ -24,11 +24,9 @@ $(document).ready(function()
 
     var data_post = {};
     data_post.user_password = $('.deleteaccount_user_password').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
-    if (USE_CAPTHAS_IN_FORMS)
-    {
-      data_post.captcha_word = $('.captcha_input').val();
-    }
+    data_post.captcha_word = $('.captcha_input').val();
 
     var error_occurred = validate_deleteaccount(data_post);
     if (!error_occurred)
@@ -84,12 +82,9 @@ function deleteaccount_clean_form()
   $('.error_validation_deleteaccount_user_password').addClass('hidden');
   $('.deleteaccount_user_password_validation_error').text("");
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.deleteaccount_div_captcha').parent().parent().removeClass('has-error');
-    $('.error_validation_deleteaccount_captcha').addClass('hidden');
-    $('.deleteaccount_captcha_validation_error').text("");
-  }
+  $('.deleteaccount_div_captcha').parent().parent().removeClass('has-error');
+  $('.error_validation_deleteaccount_captcha').addClass('hidden');
+  $('.deleteaccount_captcha_validation_error').text("");
 }
 
 function success_delete_account(data)
@@ -104,12 +99,9 @@ function success_delete_account(data)
   $('.deleteaccount_user_password').parent().parent().addClass('hidden');
   $('.info_zone').parent().parent().addClass('hidden');
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.deleteaccount_div_captcha').parent().parent().addClass('hidden');
-    $('.deleteaccount_reload_captcha_zone').parent().parent().addClass('hidden');
-    $('.deleteaccount_image_captcha').parent().parent().addClass('hidden');
-  }
+  $('.deleteaccount_div_captcha').parent().parent().addClass('hidden');
+  $('.deleteaccount_reload_captcha_zone').parent().parent().addClass('hidden');
+  $('.deleteaccount_image_captcha').parent().parent().addClass('hidden');
 }
 
 function error_delete_account(data)
@@ -143,15 +135,12 @@ function error_delete_account(data)
     show_fail("deleteaccount_data_alert", data.error.message);
     return;
   }
-  if (USE_CAPTHAS_IN_FORMS)
+  if (error_number === 1801)
   {
-    if (error_number === 1801)
-    {
-      $('.deleteaccount_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_deleteaccount_captcha').removeClass('hidden');
-      $('.deleteaccount_captcha_validation_error').text(error_message);
-      return;
-    }
+    $('.deleteaccount_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_deleteaccount_captcha').removeClass('hidden');
+    $('.deleteaccount_captcha_validation_error').text(error_message);
+    return;
   }
 }
 

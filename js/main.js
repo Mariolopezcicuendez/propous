@@ -158,7 +158,9 @@ function show_success(element, message, static_time)
 
     if (static_time === null || typeof static_time === "undefined" || static_time !== true)
     {
-      setTimeout( 'hide_alert(".'+element+'_success")' , TIME_MILISECONDS_ALERTS_HIDE );
+      setTimeout(function() {
+        hide_alert("."+element+"_success");
+      }, TIME_MILISECONDS_ALERTS_HIDE * 1000);
     }
   }
 }
@@ -183,7 +185,9 @@ function show_fail(element, message, static_time)
 
     if (static_time === null || typeof static_time === "undefined" || static_time !== true)
     {
-      setTimeout( 'hide_alert(".'+element+'_fail")' , TIME_MILISECONDS_ALERTS_HIDE );
+      setTimeout(function() {
+        hide_alert("."+element+"_fail");
+      }, TIME_MILISECONDS_ALERTS_HIDE * 1000);
     }
   }
 }
@@ -414,7 +418,9 @@ $(document).ready(function()
       actualize_messages_info();
 
       clearInterval(interval_actualize_chat);
-      interval_actualize_chat = setInterval( "actualize_messages_info()"  , TIME_SECONDS_ACTUALIZE_MESSAGES_INFO * 1000 );
+      interval_actualize_chat = setInterval(function() {
+        actualize_messages_info();
+      }, TIME_SECONDS_ACTUALIZE_MESSAGES_INFO * 1000);
   	}
   }
   else
@@ -1138,6 +1144,7 @@ function actualize_messages_info()
   var user_message = localStorage.getItem("user_message");
   var writing = localStorage.getItem("writing");
   var delete_user_conversation = localStorage.getItem("delete_user_conversation");
+  var last_id_message_printed = localStorage.getItem("last_id_message_printed");
 
   if (typeof users_list_count === "undefined") users_list_count = DEFAULT_NUMBER_USERS_MESSAGED_SHOWED;
   if (typeof messages_list_count === "undefined") messages_list_count = DEFAULT_NUMBER_MESSAGES_SHOWED;
@@ -1154,6 +1161,8 @@ function actualize_messages_info()
   data_post.user_message = user_message;
   data_post.writing = writing;
   data_post.delete_user_conversation = delete_user_conversation;
+  data_post.last_id_message_printed = last_id_message_printed;
+  data_post.filter_t = $('input[name=filter_t]').val();
 
   var req = {};
   req.url = '/message/actualize_messages_info';
@@ -1173,12 +1182,13 @@ function success_actualize_messages_info(data)
 
   save_localstorage_messages_info_data(data);
 
-  print_messages_no_readen_in_messages_text(data.no_readen_messages);
-
-  if (data.no_readen_messages > 0)
+  if ((data.no_readen_messages > 0) && (data.no_readen_messages > get_last_no_readen_messages()))
   {
     play_messages_sound(); 
   }
+  
+  set_last_no_readen_messages(data.no_readen_messages);
+  print_messages_no_readen_in_messages_text(data.no_readen_messages);
 
   if (messages_page_showed())
   {
@@ -1206,6 +1216,12 @@ function success_actualize_messages_info(data)
 
     load_chat_title();
     actualize_conversation();
+
+    if (typeof data.user_chating_now !== "undefined")
+    {
+      actualize_conversation_with_readen(data.user_chating_now.last_message_readen);
+    }
+
     actualize_users_list_with_no_readen_messages();
     check_if_user_writing_me();
   }
@@ -1214,6 +1230,29 @@ function success_actualize_messages_info(data)
 function error_actualize_messages_info(data)
 {
   
+}
+
+function get_last_no_readen_messages()
+{
+  var no_readen_messages = localStorage.getItem("last_no_readen_messages");
+  if (no_readen_messages === null || typeof no_readen_messages === "undefined")
+  {
+    var no_readen_messages_in_text = $(".messages_main_link_page_text_messages_noreaden").text();
+    if (no_readen_messages_in_text === '') 
+    {
+      no_readen_messages = 0;
+    }
+    else
+    {
+      no_readen_messages = no_readen_messages_in_text;
+    }  
+  } 
+  return parseInt(no_readen_messages);
+}
+
+function set_last_no_readen_messages(no_readen)
+{
+  localStorage.setItem("last_no_readen_messages",no_readen);
 }
 
 function save_localstorage_messages_info_data(data)

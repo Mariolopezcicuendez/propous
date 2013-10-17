@@ -45,18 +45,18 @@ $lang['cal_september']	= "September";
 $lang['cal_october']	= "October";
 $lang['cal_november']	= "November";
 $lang['cal_december']	= "December";
-$lang['cal_month_01']		= "Jan";
-$lang['cal_month_02']		= "Feb";
-$lang['cal_month_03']		= "Mar";
-$lang['cal_month_04']		= "Apr";
+$lang['cal_month_01']		= "January";
+$lang['cal_month_02']		= "February";
+$lang['cal_month_03']		= "March";
+$lang['cal_month_04']		= "April";
 $lang['cal_month_05']		= "May";
-$lang['cal_month_06']		= "Jun";
-$lang['cal_month_07']		= "Jul";
-$lang['cal_month_08']		= "Aug";
-$lang['cal_month_09']		= "Sep";
-$lang['cal_month_10']		= "Oct";
-$lang['cal_month_11']		= "Nov";
-$lang['cal_month_12']		= "Dec";
+$lang['cal_month_06']		= "June";
+$lang['cal_month_07']		= "July";
+$lang['cal_month_08']		= "August";
+$lang['cal_month_09']		= "September";
+$lang['cal_month_10']		= "October";
+$lang['cal_month_11']		= "November";
+$lang['cal_month_12']		= "December";
 
 /* End of file calendar_lang.php */
 /* Location: ./system/language/english/calendar_lang.php */

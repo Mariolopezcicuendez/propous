@@ -371,20 +371,14 @@ class User_model extends CI_Model
   {
     $this->user_old_password = $this->input->post('user_password');
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $captcha_word = $this->input->post('captcha_word');
-      $ip = $this->input->ip_address();
-      $session_id = $this->session->userdata('session_id');
-    }
+    $captcha_word = $this->input->post('captcha_word');
+    $ip = $this->input->ip_address();
+    $session_id = $this->session->userdata('session_id');
 
     $this->validate_delete();
     $this->check_old_password($user_id);
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
-    }
+    $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
     
     $this->db->where('id', $user_id);
     $result = $this->db->delete('user');
@@ -427,20 +421,14 @@ class User_model extends CI_Model
     $this->user_password = $this->input->post('user_password');
     $this->user_re_password = $this->input->post('user_re_password');
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $captcha_word = $this->input->post('captcha_word');
-      $ip = $this->input->ip_address();
-      $session_id = $this->session->userdata('session_id');
-    }
+    $captcha_word = $this->input->post('captcha_word');
+    $ip = $this->input->ip_address();
+    $session_id = $this->session->userdata('session_id');
 
     $this->validate_change_password();
     $this->check_old_password($user_id);
     
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
-    }
+    $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
 
     $user = array();
     $user['password'] = sha1($this->user_password);
@@ -491,20 +479,14 @@ class User_model extends CI_Model
     $this->user_password = $this->input->post('user_password');
     $this->user_re_password = $this->input->post('user_re_password');
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $captcha_word = $this->input->post('captcha_word');
-      $ip = $this->input->ip_address();
-      $session_id = $this->session->userdata('session_id');
-    }
+    $captcha_word = $this->input->post('captcha_word');
+    $ip = $this->input->ip_address();
+    $session_id = $this->session->userdata('session_id');
 
     $this->validate_change_password();
     $this->check_token();
     
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
-    }
+    $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
 
     $user = array();
     $user['password'] = sha1($this->user_password);
@@ -727,19 +709,13 @@ class User_model extends CI_Model
   {
     $this->user_email = $this->input->post('user_email');
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $captcha_word = $this->input->post('captcha_word');
-      $ip = $this->input->ip_address();
-      $session_id = $this->session->userdata('session_id');
-    }
+    $captcha_word = $this->input->post('captcha_word');
+    $ip = $this->input->ip_address();
+    $session_id = $this->session->userdata('session_id');
 
     $this->validate_forgetpassword();
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
-    }
+    $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
 
     $query = $this->db->query("SELECT id, email FROM `user` WHERE email = '{$this->user_email}' AND activated = 1 LIMIT 1");
     if ($query->num_rows() > 0)
@@ -874,18 +850,13 @@ class User_model extends CI_Model
     $this->user_country_id = $this->input->post('user_country_id');
     $this->user_comment = $this->input->post('user_comment');
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $captcha_word = $this->input->post('captcha_word');
-      $ip = $this->input->ip_address();
-      $session_id = $this->session->userdata('session_id');
-    }
+    $captcha_word = $this->input->post('captcha_word');
+    $ip = $this->input->ip_address();
+    $session_id = $this->session->userdata('session_id');
 
     $this->validate_contact();
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
-    }
+
+    $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id); 
 
     $contact = array();
     $contact['name'] = $this->user_name;

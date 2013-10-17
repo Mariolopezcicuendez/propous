@@ -27,6 +27,7 @@ $(document).ready(function()
   	var id = $(this).attr('tag_id');
 
   	var data_post = {};
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var input;
     $.each(input = $(".cms_input_change"), function (i) 

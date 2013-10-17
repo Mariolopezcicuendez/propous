@@ -686,6 +686,15 @@ a.paginate_button:focus
 	padding-right: 5px;
 }
 
+.readen_message_draw
+{
+	background: url(../assets/icons/ok.png) no-repeat transparent;
+	background-size: 15px;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+}
+
 /*
 	POPOVERS HTML
 */

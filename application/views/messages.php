@@ -6,6 +6,9 @@
       <?php echo lang('p_messages'); ?><br/>
     </div>
 
+    <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
     <div class='content_chat_body col-md-12 content panel-body'>
 
       <div class='div_content_chat_users col-md-3'>

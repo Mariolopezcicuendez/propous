@@ -22,7 +22,9 @@ $(document).ready(function()
 
     $('.analitycs_result_div').html('');
 
-    setTimeout( 'make_request()' , 1000 );
+    setTimeout(function() {
+      make_request();
+    }, 1000);
   });
 
   if (action === 'detail')
@@ -72,6 +74,7 @@ function make_request()
   var data_post = {};
   data_post.agrupation = agrupation;
   data_post.time = time;
+  data_post.filter_t = $('input[name=filter_t]').val();
 
   var req = {};
   req.url = '/'+controller+'/analitycs_stats';
@@ -90,6 +93,7 @@ function make_request_detail()
   data_post.year = analytics_detail_year;
   data_post.month = analytics_detail_month;
   data_post.day = analytics_detail_day;
+  data_post.filter_t = $('input[name=filter_t]').val();
 
   var req = {};
   req.url = '/'+controller+'/analitycs_detail';

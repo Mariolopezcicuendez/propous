@@ -50,6 +50,7 @@ $(document).ready(function()
     data_post.user_hobbies = $('.editprofile_hobbies').val();
     data_post.user_phone = $('.editprofile_phone').val();
     data_post.user_description = $('.editprofile_description').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var error_occurred = validate_editprofile(data_post);
     if (!error_occurred)
@@ -110,6 +111,7 @@ $(document).ready(function()
     {
       var data_post = {};
       data_post.user_spoken_language = lang_to_add+":"+level;
+      data_post.filter_t = $('input[name=filter_t]').val();
 
       var req = {};
       req.url = '/language/save_spoken/'+user_id;
@@ -179,6 +181,7 @@ $(document).ready(function()
     
     var data_post = {};
     data_post.user_sociality_id = sociality;
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     if (typeof sociality !== "undefined" && sociality !== null && sociality !== '')
     {

@@ -34,11 +34,9 @@ $(document).ready(function()
     data_post.user_phone = $('.contact_user_phone').val();
     data_post.user_comment = $('.contact_comment').val();
     data_post.user_country_id = $('.contact_select_country').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
-    if (USE_CAPTHAS_IN_FORMS)
-    {
-      data_post.captcha_word = $('.captcha_input').val();
-    }
+    data_post.captcha_word = $('.captcha_input').val();
 
     var error_occurred = validate_contact(data_post);
     if (!error_occurred)
@@ -98,12 +96,9 @@ function contact_clean_form()
   $('.error_validation_contact_comment').addClass('hidden');
   $('.contact_comment_validation_error').text("");
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.contact_div_captcha').parent().parent().removeClass('has-error');
-    $('.error_validation_contact_captcha').addClass('hidden');
-    $('.contact_captcha_validation_error').text("");
-  }
+  $('.contact_div_captcha').parent().parent().removeClass('has-error');
+  $('.error_validation_contact_captcha').addClass('hidden');
+  $('.contact_captcha_validation_error').text("");
 }
 
 function validate_contact(data)
@@ -200,15 +195,12 @@ function error_contact(data)
     $('.contact_comment_validation_error').text(error_message);
     return;
   }    
-  if (USE_CAPTHAS_IN_FORMS)
+  if (error_number === 1801)
   {
-    if (error_number === 1801)
-    {
-      $('.contact_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_contact_captcha').removeClass('hidden');
-      $('.contact_captcha_validation_error').text(error_message);
-      return;
-    }
+    $('.contact_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_contact_captcha').removeClass('hidden');
+    $('.contact_captcha_validation_error').text(error_message);
+    return;
   }
 }
 
@@ -228,10 +220,7 @@ function error_get_countries(data)
 
 function contact_clean_data_form()
 {
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-	  $('.captcha_input').val('');
-  }
+	$('.captcha_input').val('');
   $('.contact_comment').val('');
 }
 

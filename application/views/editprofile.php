@@ -18,7 +18,7 @@
 
 				<div class='content_editprofile_data_right col-md-10'>
 
-					<form class="form-horizontal" role="form">
+					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 						<div class="form-group">
 							<label for="editprofile_user_name" class="col-md-3 control-label"><?php echo lang('p_username'); ?>:</label>	
@@ -267,7 +267,7 @@
 							</div>						
 						</div>
 
-					</form>
+					<?php echo form_close(); ?>
 
 				</div>
 
@@ -281,7 +281,7 @@
 
 			<div class='content_editprofile_photos_right col-md-10'>
 
-				<form class="editprofile_upload_photo_form form-horizontal" enctype="multipart/form-data" role="form">
+				<?php echo form_open('#',array("class"=>"editprofile_upload_photo_form form-horizontal","role"=>"form", "enctype"=>"multipart/form-data")); ?>
 
 					<div class="form-group">
 						<label for="editprofile_photos_carousel" class="col-md-3 control-label"><?php echo lang('p_uploaded_photos'); ?>:</label>
@@ -310,7 +310,7 @@
 						</div>
 					</div>
 
-				</form>
+				<?php echo form_close(); ?>
 
 			</div>
 
@@ -326,7 +326,7 @@
 
 			<div class='content_editprofile_sociality_right col-md-10'>
 
-				<form class="form-horizontal" role="form">
+				<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label"><?php echo lang('p_user_sociality'); ?>:</label>	
@@ -357,7 +357,7 @@
 						</div>
 					</div>
 
-				</form>
+				<?php echo form_close(); ?>
 
 			</div>
 

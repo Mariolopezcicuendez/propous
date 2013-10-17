@@ -241,6 +241,7 @@ function save_prop_to_favorites()
 
   var data_post = {};
   data_post.proposal_id = proposal_id;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/favorite/add_favorite/'+user_id;

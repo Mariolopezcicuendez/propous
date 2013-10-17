@@ -6,6 +6,9 @@
       <?php echo lang('p_myprops'); ?><br/>
     </div>
 
+    <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
     <div class='prop_content_main_table col-md-12 content panel-body'>
 
       <div class="table-responsive">

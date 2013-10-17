@@ -6,6 +6,9 @@
     <?php $input_disabled = ''; ?>
   <?php endif; ?>
 
+  <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
   <input type='hidden' id='cms_action' value='edit'>
 
    <div class="div_content_info form-group page-cms">

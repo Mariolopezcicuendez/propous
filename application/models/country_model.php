@@ -19,7 +19,7 @@ class Country_model extends CI_Model
   function all()
   {
     $lang = getActLang();
-    $query = $this->db->query("SELECT `country`.id, tag, name FROM `country` JOIN country_i18n ON ( country.id = country_i18n.country_id ) WHERE lang = '{$lang}' ORDER BY id");
+    $query = $this->db->query("SELECT `country`.id, tag, name FROM `country` JOIN country_i18n ON ( country.id = country_i18n.country_id ) WHERE lang = '{$lang}' ORDER BY name");
     if ($query->num_rows() > 0)
     {
       $results = array();

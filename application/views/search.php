@@ -3,7 +3,7 @@
 
     <div class='content_search_body content_page_menu_div_search col-md-12 content panel-body'>
 
-      <form class="form-horizontal" role="form">
+      <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
         <div class="row container form-group">
           <label class="col-md-3 control-label"><?php echo lang('p_search_any_text'); ?>: </label>  
           <div class="col-md-4">
@@ -15,11 +15,11 @@
           <a class='advanced_search_link advanced_search_link_show pull-right'><?php echo lang('p_advanced_search_show'); ?></a>
           <a class='advanced_search_link advanced_search_link_hide pull-right hidden'><?php echo lang('p_advanced_search_hide'); ?></a>
         </div>
-      </form>
+      <?php echo form_close(); ?>
 
       <div class='row container content_page_menu_div_advanced_search hidden'>
       
-        <form class="form-horizontal" role="form">
+        <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
           <div class='content_page_menu_div_advanced_search_left pull-left'>
 
@@ -106,7 +106,7 @@
 
           </div>
 
-        </form>
+        <?php echo form_close(); ?>
 
       </div> 
 

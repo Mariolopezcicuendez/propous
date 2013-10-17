@@ -16,6 +16,7 @@ $(document).ready(function()
     data_post.user_email = $('.login_user_email').val();
     data_post.user_password = $('.login_user_password').val();
     data_post.user_remember = $('.login_user_remember').is(':checked');
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var error_occurred = validate_login(data_post);
     if (!error_occurred)

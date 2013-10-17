@@ -13,6 +13,7 @@ $(document).ready(function()
     var data_post = {};
     data_post.user_id = user_id;
     data_post.type = premium_tag;
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var req = {};
     req.url = '/premium/add';
@@ -60,6 +61,7 @@ function premium_forced()
     data_post.user_id = user_id;
     data_post.type = premium_selected;
     data_post.force = true;
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var req = {};
     req.url = '/premium/add';

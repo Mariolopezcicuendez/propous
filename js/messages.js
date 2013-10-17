@@ -3,10 +3,13 @@ var chating_now = null;
 var last_message_from = null;
 var user_id = null;
 var timeout_writing = null;
+var last_id_message_printed = null;
 
 $(document).ready(function() 
 {
   user_id = $(".gdata_user_id").val();
+
+  $('.div_content_chat_messages_conversation').html('');
 
   localStorage.setItem("users_list_count",DEFAULT_NUMBER_USERS_MESSAGED_SHOWED);
   localStorage.setItem("messages_list_count",DEFAULT_NUMBER_MESSAGES_SHOWED);
@@ -17,12 +20,18 @@ $(document).ready(function()
 
   $('.div_content_chat_users_count_select').on("change", function()
   {
+    console.log("borramos");
+    $('.div_content_chat_users_list_div div.user_in_user_list_container').remove();
+
     var showed = $(this).val();
     localStorage.setItem("users_list_count",showed);
     actualize_messages_info();
   });
   $('.div_content_chat_messages_count_select').on("change", function()
   {
+    last_id_message_printed = 1;
+    localStorage.setItem("last_id_message_printed",last_id_message_printed);
+
     var showed = $(this).val();
     localStorage.setItem("messages_list_count",showed);
     actualize_messages_info();
@@ -43,7 +52,9 @@ $(document).ready(function()
     {
       if (localStorage.getItem("writing") !== true) localStorage.setItem("writing",true);
       clearTimeout(timeout_writing);
-      timeout_writing = setTimeout( "set_no_writing()"  , TIME_SECONDS_LEAVE_WRITING_STATUS * 1000 );
+      timeout_writing = setTimeout(function() {
+        set_no_writing();
+      }, TIME_SECONDS_LEAVE_WRITING_STATUS * 1000);
     }
 
     if (event.which == 13)
@@ -87,6 +98,11 @@ function print_user_list()
 
   $('.user_in_user_list').on("click", function()
   {
+    $('.div_content_chat_messages_conversation').html('');
+
+    last_id_message_printed = 1;
+    localStorage.setItem("last_id_message_printed",last_id_message_printed);
+
     var user_talking = $(this).attr("user_id");
     chating_now = user_talking;
     localStorage.setItem("chating_now",chating_now);
@@ -117,6 +133,11 @@ function actualize_print_user_list()
         
         $('.user_in_user_list[user_id='+user.id+']').on("click", function()
         {
+          $('.div_content_chat_messages_conversation').html('');
+
+          last_id_message_printed = 1;
+          localStorage.setItem("last_id_message_printed",last_id_message_printed);
+
           var user_talking = $(this).attr("user_id");
           chating_now = user_talking;
           localStorage.setItem("chating_now",chating_now);
@@ -197,6 +218,9 @@ function actualize_users_list_with_no_readen_messages()
 
 function select_first_user_in_user_list()
 {
+  last_id_message_printed = 1;
+  localStorage.setItem("last_id_message_printed",last_id_message_printed);
+
   $('.div_content_chat_messages_conversation').html('');
 
   if (data_actualize_messages_info.users_list.length > 0)
@@ -215,8 +239,6 @@ function select_first_user_in_user_list()
 
 function select_user_in_user_list()
 {
-  $('.div_content_chat_messages_conversation').html('');
-
   var user;
 
   $.each(user = $('.div_content_chat_users_list_div div.media'), function (i) 
@@ -288,10 +310,7 @@ function actualize_conversation()
           var readen = '';
           if (conversation[i].user_from_id == user_id)
           {
-            if (conversation[i].readen === '1')
-            {
-              readen = "<img class='conversation_chat_content_message_readen_image' src='" + baseurl + "/assets/icons/ok.png'></img>";
-            }
+            readen = "<span class='readen_message_draw hidden'></span>";
           }
 
           var p_text = $('<p></p>').addClass('conversation_chat_content_message').html(readen + escapeHTML(conversation[i].message)+"<span class='chat_date_joined_off'> - "+time_message+"</span>");
@@ -307,21 +326,33 @@ function actualize_conversation()
           var readen = '';
           if (conversation[i].user_from_id == user_id)
           {
-            if (conversation[i].readen === '1')
-            {
-              readen = "<img class='conversation_chat_content_message_readen_image' src='" + baseurl + "/assets/icons/ok.png'></img>";
-            }
+            readen = "<span class='readen_message_draw hidden'></span>";
           }
 
           $(div_conv).append($('<p></p>').addClass('conversation_chat_content_message').html(readen + escapeHTML(conversation[i].message)+"<span class='chat_date_joined_off'> - "+time_message+"</span>"));
         }
 
-        last_message_from = (conversation[i].user_from_id == user_id) ? 'me' : conversation[i].user_from_id ;
+        last_message_from = (conversation[i].user_from_id == user_id) ? user_id : conversation[i].user_from_id ;
+
+        localStorage.setItem("last_id_message_printed",conversation[i].id);
 
         move_chat_scroll_to_finish();
       });
     }
   }
+}
+
+function actualize_conversation_with_readen(last_id)
+{
+  var mydiv;
+  $.each(mydiv = $("div.conversation_chat_div_frommetouser"), function (i) 
+  {
+    var id = $(mydiv[i]).attr("message_id");
+    if (id <= last_id)
+    {
+      $("div.conversation_chat_div_frommetouser[message_id="+id+"] p.conversation_chat_content_message span.readen_message_draw").removeClass('hidden');
+    }
+  });
 }
 
 function move_chat_scroll_to_finish()
@@ -406,7 +437,6 @@ function send_write_text()
 
   localStorage.setItem("user_message",JSON.stringify(message));
 
-  last_message_from = 'me';
   actualize_messages_info();
 }
 

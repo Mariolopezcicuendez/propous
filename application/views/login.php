@@ -8,7 +8,7 @@
 
     <div class='content_login_body panel-body'>
 
-      <form class="form-horizontal" role="form">
+      <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
         <div class="form-group">
           <label for="login_register_zone" class="col-md-3 control-label"></label>
@@ -93,7 +93,7 @@
           </div>
         </div>
 
-      </form>
+      <?php echo form_close(); ?>
 
     </div>
 

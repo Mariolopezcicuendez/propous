@@ -16,7 +16,7 @@
 
 				<div class='content_newprop_data_right col-md-10'>
 
-					<form class="form-horizontal" role="form">
+					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 						<div class="form-group">
 							<label for="newprop_prop_title" class="col-md-3 control-label"><?php echo lang('p_proposal_title'); ?> (<?php echo lang('p_proposal_title_max_200'); ?>):</label>	
@@ -73,7 +73,7 @@
 					    </div>
 						</div>
 
-					</form>
+					<?php echo form_close(); ?>
 
 				</div>
 
@@ -87,7 +87,7 @@
 
 			<div class='content_newprop_photos_right col-md-10'>
 
-				<form class="form-horizontal" role="form">
+				<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 					<div class="form-group">
 						<div class="col-md-9">
@@ -95,7 +95,7 @@
 				    </div>
 					</div>	
 
-				</form>
+				<?php echo form_close(); ?>
 
 			</div>
 
@@ -111,7 +111,7 @@
 
 			<div class='content_newprop_category_right col-md-10'>
 
-				<form class="form-horizontal" role="form">
+				<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 					<div class="form-group">
 						<div class="col-md-9">
@@ -119,7 +119,7 @@
 				    </div>
 					</div>
 
-				</form>
+				<?php echo form_close(); ?>
 
 			</div>
 

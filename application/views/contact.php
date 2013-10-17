@@ -22,7 +22,7 @@
 
       <h3 class='title_zone'><?php echo lang('p_title_send_form'); ?></h3>
 
-      <form class="form-horizontal" role="form">
+      <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
       	<div class="form-group">
           <label for="contact_user_name" class="col-md-3 control-label"><?php echo lang('p_username'); ?>:</label>  
@@ -85,8 +85,6 @@
 			    </div>
 				</div>
 
-				<?php if (USE_CAPTHAS_IN_FORMS === "true") : ?>
-
         	<div class="form-group">
 	          <label class="col-md-3 control-label"></label>  
 	          <div class="col-md-9">
@@ -118,8 +116,6 @@
 	          </div>
 	        </div>
 
-        <?php endif; ?>
-
         <div class="form-group">
           <label for="contact_button_enter" class="col-md-3 control-label"></label>
           <div class="col-md-9">
@@ -137,7 +133,7 @@
           </div>
         </div>
 
-      </form>
+      <?php echo form_close(); ?>
 
     </div>
 

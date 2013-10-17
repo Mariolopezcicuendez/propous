@@ -71,7 +71,8 @@ function get_search_props()
   data_post.user_not_id = $(".gdata_user_id").val();
   data_post.search = search.s_search;
   data_post.showed = PROPOSAL_MAX_TO_GET_IN_LISTS;
-
+  data_post.filter_t = $('input[name=filter_t]').val();
+  
   if (advanced_searching)
   {
     $(".advanced_search_link_show").addClass("hidden");
@@ -106,6 +107,7 @@ function get_main_props()
   data_post.state_id = user_state_id;
   data_post.country_id = user_country_id;
   data_post.showed = PROPOSAL_MAX_TO_GET_IN_LISTS;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/proposal/list_proposals';
@@ -357,6 +359,7 @@ function save_prop_to_favorites(prop_id)
 
   var data_post = {};
   data_post.proposal_id = prop_id;
+  data_post.filter_t = $('input[name=filter_t]').val();
   
   var req = {};
   req.url = '/favorite/add_favorite/'+user_id;

@@ -29,6 +29,8 @@ class Jsonresponse extends CI_Model
 
   function show($result)
   {
+    set_status_header(200);
+
   	$json_result = new StdClass();
   	$json_result->status = 200;
   	$json_result->count = count($result);
@@ -40,6 +42,8 @@ class Jsonresponse extends CI_Model
 
   function show_error(Exception $e)
   {
+    set_status_header(200);
+
   	$error = new StdClass();
   	$error->code = $e->getCode(); 
  	  $error->message = $e->getMessage();

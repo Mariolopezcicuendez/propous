@@ -31,6 +31,7 @@ $(document).ready(function()
     data_post.user_sex = $('.register_radio_gender').val();
     data_post.user_country_id = $('.register_select_country').val();
     data_post.user_state_id = $('.register_select_state').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var error_occurred = validate_register(data_post);
     if (!error_occurred)

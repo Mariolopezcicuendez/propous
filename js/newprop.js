@@ -31,7 +31,8 @@ $(document).ready(function()
     data_post.proposal_country_id = $('.newprop_select_country').val();
     data_post.proposal_state_id = $('.newprop_select_state').val();
     data_post.proposal_visibility = ($('.newprop_visibility_onoffswitch .onoffswitch-checkbox').is(':checked') === true) ? 1 : 0 ;
-
+    data_post.filter_t = $('input[name=filter_t]').val();
+    
     var error_occurred = validate_newprop(data_post);
     if (!error_occurred)
     {

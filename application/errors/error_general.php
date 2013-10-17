@@ -1,7 +1,12 @@
 <?php
-$e = new Exception(lang('exception_error_1845'), 1845);
-$jsonresponse = new Jsonresponse();
-$jsonresponse->set_message($message);
-echo  $jsonresponse->show_error($e);
-exit();
+$error = new StdClass();
+$error->code = $status_code; 
+$error->message = $message;
+
+$json_result = new StdClass();
+$json_result->status = $error->code;
+$json_result->error = $error;
+
+header("Content-Type: text/json");
+echo json_encode($json_result);
 ?>

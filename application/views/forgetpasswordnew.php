@@ -12,7 +12,7 @@
 
     <div class='content_forgetpasswordnew_body panel-body'>
 
-      <form class="form-horizontal" role="form">
+      <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
       	<div class="form-group">
           <label for="forgetpasswordnew_user_password" class="col-md-3 control-label"><?php echo lang('p_password'); ?>:</label>  
@@ -39,8 +39,6 @@
             </div>
           </div>
         </div>
-
-        <?php if (USE_CAPTHAS_IN_FORMS === "true") : ?>
 
         	<div class="form-group">
 	          <label class="col-md-3 control-label"></label>  
@@ -73,8 +71,6 @@
 	          </div>
 	        </div>
 
-        <?php endif; ?>
-
         <div class="form-group">
           <label for="forgetpasswordnew_button_enter" class="col-md-3 control-label"></label>
           <div class="col-md-9">
@@ -100,7 +96,7 @@
           </div>
         </div>
 
-      </form>
+      <?php echo form_close(); ?>
 
     </div>
 

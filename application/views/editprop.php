@@ -16,7 +16,7 @@
 
 				<div class='content_editprop_data_right col-md-10'>
 
-					<form class="form-horizontal" role="form">
+					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 						<div class="form-group">
 							<label for="editprop_prop_title" class="col-md-3 control-label"><?php echo lang('p_proposal_title'); ?> (<?php echo lang('p_proposal_title_max_200'); ?>):</label>	
@@ -87,7 +87,7 @@
 					    </div>
 					  </div>
 
-					</form>
+					<?php echo form_close(); ?>
 
 				</div>
 
@@ -101,7 +101,7 @@
 
 			<div class='content_editprop_photos_right col-md-10'>
 
-				<form class="editprop_upload_photo_form form-horizontal" enctype="multipart/form-data" role="form">
+				<?php echo form_open('#',array("class"=>"editprop_upload_photo_form form-horizontal","role"=>"form", "enctype"=>"multipart/form-data")); ?>
 
 					<div class="form-group">
 						<label for="editprop_photos_carousel" class="col-md-3 control-label"><?php echo lang('p_uploaded_photos'); ?>:</label>
@@ -130,7 +130,7 @@
 						</div>
 					</div>
 
-				</form>
+				<?php echo form_close(); ?>
 
 			</div>
 
@@ -146,7 +146,7 @@
 
 			<div class='content_editprop_category_right col-md-10'>
 
-				<form class="form-horizontal" role="form">
+				<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 					<div class="form-group">
 						<label class="col-md-3 control-label"><?php echo lang('p_categories'); ?>:</label>	
@@ -177,7 +177,7 @@
 						</div>
 					</div>
 
-				</form>
+				<?php echo form_close(); ?>
 
 			</div>
 

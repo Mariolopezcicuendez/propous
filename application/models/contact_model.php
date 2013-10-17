@@ -17,6 +17,11 @@ class Contact_model extends CI_Model
     if ($id < VALIDATE_ID_MIN_VALUE) throw new Exception(lang('exception_error_1001'), 1001);
   }
 
+  function validate_contact()
+  {
+    return true;
+  }
+
   function send()
   {
     $this->user_name = $this->input->post('user_name');
@@ -25,18 +30,13 @@ class Contact_model extends CI_Model
     $this->user_country_id = $this->input->post('user_country_id');
     $this->user_comment = $this->input->post('user_comment');
 
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $captcha_word = $this->input->post('captcha_word');
-      $ip = $this->input->ip_address();
-      $session_id = $this->session->userdata('session_id');
-    }
+    $captcha_word = $this->input->post('captcha_word');
+    $ip = $this->input->ip_address();
+    $session_id = $this->session->userdata('session_id');
 
     $this->validate_contact();
-    if (USE_CAPTHAS_IN_FORMS === "true")
-    {
-      $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
-    }
+
+    $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
 
     $contact = array();
     $contact['name'] = $this->user_name;

@@ -26,11 +26,9 @@ $(document).ready(function()
     data_post.user_old_password = $('.chgpassword_user_oldpassword').val();
     data_post.user_password = $('.chgpassword_user_password').val();
     data_post.user_re_password = $('.chgpassword_user_repassword').val();
+    data_post.filter_t = $('input[name=filter_t]').val();
 
-    if (USE_CAPTHAS_IN_FORMS)
-    {
-      data_post.captcha_word = $('.captcha_input').val();
-    }
+    data_post.captcha_word = $('.captcha_input').val();
 
     var error_occurred = validate_chgpassword(data_post);
     if (!error_occurred)
@@ -90,12 +88,9 @@ function chgpassword_clean_form()
   $('.error_validation_chgpassword_user_repassword').addClass('hidden');
   $('.chgpassword_user_repassword_validation_error').text("");
 
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.chgpassword_div_captcha').parent().parent().removeClass('has-error');
-    $('.error_validation_chgpassword_captcha').addClass('hidden');
-    $('.chgpassword_captcha_validation_error').text("");
-  }
+  $('.chgpassword_div_captcha').parent().parent().removeClass('has-error');
+  $('.error_validation_chgpassword_captcha').addClass('hidden');
+  $('.chgpassword_captcha_validation_error').text("");
 }
 
 function success_change_password(data)
@@ -110,12 +105,9 @@ function success_change_password(data)
   $('.chgpassword_user_oldpassword').parent().parent().addClass('hidden');
   $('.chgpassword_user_password').parent().parent().addClass('hidden');
   
-  if (USE_CAPTHAS_IN_FORMS)
-  {
-    $('.chgpassword_div_captcha').parent().parent().addClass('hidden');
-    $('.chgpassword_reload_captcha_zone').parent().parent().addClass('hidden');
-    $('.chgpassword_image_captcha').parent().parent().addClass('hidden');
-  }
+  $('.chgpassword_div_captcha').parent().parent().addClass('hidden');
+  $('.chgpassword_reload_captcha_zone').parent().parent().addClass('hidden');
+  $('.chgpassword_image_captcha').parent().parent().addClass('hidden');
 }
 
 function error_change_password(data)
@@ -161,15 +153,12 @@ function error_change_password(data)
     show_fail("chgpassword_data_alert", error_message);
     return;
   }
-  if (USE_CAPTHAS_IN_FORMS)
+  if (error_number === 1801)
   {
-    if (error_number === 1801)
-    {
-      $('.chgpassword_div_captcha').parent().parent().addClass('has-error');
-      $('.error_validation_chgpassword_captcha').removeClass('hidden');
-      $('.chgpassword_captcha_validation_error').text(error_message);
-      return;
-    }
+    $('.chgpassword_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_chgpassword_captcha').removeClass('hidden');
+    $('.chgpassword_captcha_validation_error').text(error_message);
+    return;
   }
 }
 

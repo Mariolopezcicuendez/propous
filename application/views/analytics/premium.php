@@ -6,6 +6,9 @@
       
       <h3 class='title_zone'>Premium</h3>
 
+      <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
       <div class='content link_back'>
         <?php echo anchor('/' . getActLang() . '/analytics/main', "<< Atrás"); ?>
       </div>

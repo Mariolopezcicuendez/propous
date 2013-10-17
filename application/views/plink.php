@@ -4,6 +4,9 @@
       
       <h3 class='title_zone'><?php echo lang('p_title_'.$tag); ?></h3>
 
+      <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
       <div class="div_content_plink form-group">
         <div class="col-md-9">
           <p id='plink_zone' class="plink_zone form-control-static">

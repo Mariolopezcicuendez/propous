@@ -4,6 +4,9 @@
       
       <h3 class='title_zone'><?php echo lang('p_delete_prop'); ?></h3>
 
+      <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>
+    <?php echo form_close(); ?>
+    
       <div class="page_info_paragraph form-group">
         <div class="col-md-12">
           <p id='info_zone' class="info_zone form-control-static">

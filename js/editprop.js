@@ -30,6 +30,7 @@ $(document).ready(function()
     data_post.proposal_country_id = $('.editprop_select_country').val();
     data_post.proposal_state_id = $('.editprop_select_state').val();
     data_post.proposal_visibility = ($('.editprop_visibility_onoffswitch .onoffswitch-checkbox').is(':checked') === true) ? 1 : 0 ;
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     var error_occurred = validate_editprop(data_post);
     if (!error_occurred)
@@ -100,6 +101,7 @@ $(document).ready(function()
     
     var data_post = {};
     data_post.proposal_category_id = category;
+    data_post.filter_t = $('input[name=filter_t]').val();
 
     if (typeof category !== "undefined" && category !== null && category !== '')
     {
