@@ -102,18 +102,20 @@ function build_proposal_popover_html(proposal)
   html += "<strong>"+lang('p_photos')+":</strong> <span class='popover_body_pphotos'>" + (((proposal.photos !== null) && (typeof proposal.photos !== "undefined")) ? proposal.photos.length : 0 ) + "</span><br/>"; 
   html += "<hr class='popover_body_phr'/>";
   html += "<strong>"+lang('p_user')+":</strong> <span class='popover_body_pusername'>" + proposal.user.name + "</span><br/>"; 
-  var online, tag_image;
+  var online, tag_image, image_status;
   if (proposal.user.connected === true)
   {
+    image_status = "<img class='status_image' src='"+baseurl+"/assets/icons/online.png' />";
     online = lang("p_connected");
     tag_image = "connected";
   }
   else
   {
+    image_status = "<img class='status_image' src='"+baseurl+"/assets/icons/offline.png' />";
     online = lang("p_disconnected");
     tag_image = "disconnected";
   }
-  html += "<strong>"+lang('p_status')+":</strong> <span class='popover_body_pstatus user_text_"+tag_image+"'>" + online + "</span><br/>";
+  html += "<strong>"+lang('p_status')+":</strong> <span class='popover_body_pstatus user_text_"+tag_image+"'>" + online + "</span> "+image_status+"<br/>";
   html += "<strong>"+lang('p_gender')+":</strong> <span class='popover_body_pgender'>" + ((proposal.user.sex === 'F') ? lang('p_female') : lang('p_male')) + "</span><br/>";
   if ((proposal.user.show_in_proposal !== null) && (typeof proposal.user.show_in_proposal !== "undefined")) 
   {

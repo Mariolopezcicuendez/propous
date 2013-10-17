@@ -167,15 +167,15 @@ function add_user_to_list(user)
 
   var user_to_chat_div_body = $('<div></div>').addClass('media-body');
   var user_to_chat_div_name = $('<span></span>').text(user.name);
-  var user_to_chat_div_noreaden = $('<span></span>').addClass('badge').addClass('hidden').text("");
+  var user_to_chat_div_noreaden = $('<span></span>').addClass('badge').addClass('hidden').text("3");
 
-  var user_to_chat_img_connected = $("<img></img>").addClass('status_image').addClass("chat_users_online_image").attr("src",baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png");
+  var user_to_chat_img_connected = $("<img></img>").addClass('status_image').addClass("chat_users_online_image").addClass("pull-right").attr("src",baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png");
 
   var user_to_chat_button_close_img = $('<button type="button" user_id="'+user.id+'" class="close" aria-hidden="true">&times;</button>');
 
   $(user_to_chat_div_body).append(user_to_chat_div_name);
-  $(user_to_chat_div_body).append(user_to_chat_img_connected);
   $(user_to_chat_div_body).append(user_to_chat_div_noreaden);
+  $(user_to_chat_div_body).append(user_to_chat_img_connected);
 
   $(user_to_chat_link).append(user_to_chat_link_img);
   $(user_to_chat).append(user_to_chat_link);
@@ -313,7 +313,15 @@ function actualize_conversation()
             readen = "<span class='readen_message_draw hidden'></span>";
           }
 
-          var p_text = $('<p></p>').addClass('conversation_chat_content_message').html(readen + escapeHTML(conversation[i].message)+"<span class='chat_date_joined_off'> - "+time_message+"</span>");
+          if (conversation[i].user_from_id == user_id)
+          {
+            var p_text = $('<p></p>').addClass('conversation_chat_content_message').html(readen + escapeHTML(conversation[i].message)+"<span class='chat_date_joined_off'> - "+time_message+"</span>");
+          }
+          else
+          {
+            var p_text = $('<p></p>').addClass('conversation_chat_content_message').html("<span class='chat_date_joined_off'>"+time_message+" - </span>" + escapeHTML(conversation[i].message));
+          }
+
           $(div_conv).append(p_text);
           $(p_text).parent().addClass('chat_text_joined_up');
         }
@@ -321,7 +329,15 @@ function actualize_conversation()
         {
           var image_user = "<img class='conversation_chat_title_user_image' src='" + baseurl + conversation[i].user_from_photo + "'></img>";
 
-          $(div_conv).append($('<span></span>').addClass('conversation_chat_title_message').html(image_user + " " + conversation[i].user_from_name+"<span class='chat_date_joined_off'> - "+time_title+"</span>"));
+
+          if (conversation[i].user_from_id == user_id)
+          {
+            $(div_conv).append($('<span></span>').addClass('conversation_chat_title_message').html(image_user + " " + conversation[i].user_from_name+"<span class='chat_date_joined_off'> - "+time_title+"</span>"));
+          }
+          else
+          {
+            $(div_conv).append($('<span></span>').addClass('conversation_chat_title_message').html("<span class='chat_date_joined_off'>"+time_title+" - </span>" + " " + conversation[i].user_from_name + " " + image_user));            
+          }
 
           var readen = '';
           if (conversation[i].user_from_id == user_id)
@@ -329,7 +345,14 @@ function actualize_conversation()
             readen = "<span class='readen_message_draw hidden'></span>";
           }
 
-          $(div_conv).append($('<p></p>').addClass('conversation_chat_content_message').html(readen + escapeHTML(conversation[i].message)+"<span class='chat_date_joined_off'> - "+time_message+"</span>"));
+          if (conversation[i].user_from_id == user_id)
+          {
+            $(div_conv).append($('<p></p>').addClass('conversation_chat_content_message').html(readen + escapeHTML(conversation[i].message)+"<span class='chat_date_joined_off'> - "+time_message+"</span>"));
+          }
+          else
+          {
+            $(div_conv).append($('<p></p>').addClass('conversation_chat_content_message').html("<span class='chat_date_joined_off'>"+time_message+" - </span>" + escapeHTML(conversation[i].message)));
+          }  
         }
 
         last_message_from = (conversation[i].user_from_id == user_id) ? user_id : conversation[i].user_from_id ;

@@ -132,9 +132,9 @@
 </div>
 
 <div class='content_viewprop_buttons container'>
-	<button type="button" class="btn btn-link viewprop_addfavorite_prop_link viewprop_addfavorite_prop_link_add"><?php echo lang('p_add_favorite'); ?></button>
-	<button type="button" class="btn btn-link viewprop_viewuser_prop_link"><?php echo lang('p_view_user'); ?></button>
-	<button type="button" class="btn btn-link viewprop_sendmessage_prop_link pull-right"><?php echo lang('p_send_message_to_user'); ?></button>
+	<button type="button" class="btn btn-link viewprop_addfavorite_prop_link viewprop_addfavorite_prop_link_add"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/favorite_on.png'/> <?php echo lang('p_add_favorite'); ?></button>
+	<button type="button" class="btn btn-link viewprop_viewuser_prop_link"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/viewuser.png'/> <?php echo lang('p_view_user'); ?></button>
+	<button type="button" class="btn btn-link viewprop_sendmessage_prop_link pull-right"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/messages.png'/> <?php echo lang('p_send_message_to_user'); ?></button>
 </div>
 
 <div class="form-group container hidden">

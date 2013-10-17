@@ -51,6 +51,7 @@ TODO:
 - rellenar todos los hints del dom en los popover
 - encontrar buen sonido de chat
 - Los mensajes no deberian de borrarse ¿¿¿?????
+- Si añades un usuario y se encuentra en la lista en posiciones bajas, debería de posicionarse sobre ese usuario
 
 FUTURE:
 - Solo los usuarios premium, opción de ver predefinidas busquedas o categorias solo en las props del inicio

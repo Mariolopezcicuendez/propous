@@ -130,7 +130,7 @@
 </div>
 
 <div class='content_newprop_buttons container'>
-	<button type="button" class="btn btn-link newprop_save_prop_link pull-right"><?php echo lang('p_create_prop'); ?></button>
+	<button type="button" class="btn btn-link newprop_save_prop_link pull-right"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/newprop.png'/> <?php echo lang('p_create_prop'); ?></button>
 </div>
 
 <div class="form-group container hidden">

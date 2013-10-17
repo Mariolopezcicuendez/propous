@@ -35,5 +35,5 @@
 </div>
 
 <div class='content_prop_buttons container'>
-  <button type="button" class="btn btn-link prop_new_prop pull-right"><?php echo lang('p_create_new_prop'); ?></button>
+  <button type="button" class="btn btn-link prop_new_prop pull-right"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/newprop.png'/> <?php echo lang('p_create_new_prop'); ?></button>
 </div>

@@ -67,7 +67,11 @@
 
         </div>
 
-        <div class='div_content_chat_messages_actions content'>
+    </div>
+
+  </div>
+
+  <div class='div_content_chat_messages_actions content'>
 
           <div class="form-group">
             <div class="col-md-12 input-group">
@@ -86,10 +90,6 @@
         </div>
 
       </div>
-
-    </div>
-
-  </div>
 
 </div>
 

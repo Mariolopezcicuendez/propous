@@ -368,9 +368,9 @@
 </div>
 
 <div class='content_editprofile_buttons container'>
-	<button type="button" class="btn btn-link editprofile_change_password_link"><?php echo lang('p_change_password'); ?></button>
-	<button type="button" class="btn btn-link editprofile_delete_account_link"><?php echo lang('p_delete_account'); ?></button>
-	<button type="button" class="btn btn-link editprofile_save_profile_link pull-right"><?php echo lang('p_save'); ?></button>
+	<button type="button" class="btn btn-link editprofile_change_password_link"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/change.png'/> <?php echo lang('p_change_password'); ?></button>
+	<button type="button" class="btn btn-link editprofile_delete_account_link"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/delete.png'/> <?php echo lang('p_delete_account'); ?></button>
+	<button type="button" class="btn btn-link editprofile_save_profile_link pull-right"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/save.png'/> <?php echo lang('p_save'); ?></button>
 </div>
 
 <div class="form-group container hidden">

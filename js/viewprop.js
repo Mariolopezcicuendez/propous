@@ -270,8 +270,11 @@ function success_save_prop_to_favorites(data)
   if ((typeof data.result !== "undefined") && (data.result !== null))
   {
   	favorite_id = data.result.id;
+
+    var image_icon = "<img class='image_icon' src='"+ baseurl + "/assets/icons/actions/favorite_off.png'/> ";
+
     $('.viewprop_addfavorite_prop_link').removeClass('viewprop_addfavorite_prop_link_add').addClass('viewprop_addfavorite_prop_link_delete');
-    $('.viewprop_addfavorite_prop_link').text(lang('p_favorite_on'));
+    $('.viewprop_addfavorite_prop_link').html(image_icon + lang('p_favorite_on'));
     get_num_favorites();
   }
 }
@@ -286,8 +289,11 @@ function success_delete_prop_from_favorites(data)
 	if ((typeof data.result !== "undefined") && (data.result !== null))
   {
 	  favorite_id = null;
+
+    var image_icon = "<img class='image_icon' src='"+ baseurl + "/assets/icons/actions/favorite_on.png'/> ";
+
     $('.viewprop_addfavorite_prop_link').removeClass('viewprop_addfavorite_prop_link_delete').addClass('viewprop_addfavorite_prop_link_add');
-    $('.viewprop_addfavorite_prop_link').text(lang('p_favorite_off'));
+    $('.viewprop_addfavorite_prop_link').html(image_icon + lang('p_favorite_off'));
     get_num_favorites();
 	}
 }
@@ -317,8 +323,11 @@ function success_get_proposal_favorites(data)
     	if (data.result[i].proposal_id == proposal_id)
     	{
     		favorite_id = data.result[i].id;
+
+        var image_icon = "<img class='image_icon' src='"+ baseurl + "/assets/icons/actions/favorite_off.png'/> ";
+
     		$('.viewprop_addfavorite_prop_link').removeClass('viewprop_addfavorite_prop_link_add').addClass('viewprop_addfavorite_prop_link_delete');
-    		$('.viewprop_addfavorite_prop_link').text(lang('p_favorite_on'));
+    		$('.viewprop_addfavorite_prop_link').html(image_icon + lang('p_favorite_on'));
     	}
     });
   }

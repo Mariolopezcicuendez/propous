@@ -188,8 +188,8 @@
 </div>
 
 <div class='content_editprop_buttons container'>
-	<button type="button" class="btn btn-link editprop_delete_prop_link"><?php echo lang('p_delete_prop'); ?></button>
-	<button type="button" class="btn btn-link editprop_save_prop_link pull-right"><?php echo lang('p_save_prop'); ?></button>
+	<button type="button" class="btn btn-link editprop_delete_prop_link"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/delete.png'/> <?php echo lang('p_delete_prop'); ?></button>
+	<button type="button" class="btn btn-link editprop_save_prop_link pull-right"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/save.png'/> <?php echo lang('p_save_prop'); ?></button>
 </div>
 
 <div class="form-group container hidden">

@@ -99,22 +99,22 @@
 
       <div class='header_main_buttons btn-group btn-group-justified'> 
 
-        <a class='btn btn-default header_main_buttons_button_single' id='header_button_props'><?php echo lang('p_props'); ?></a>
-        <a class='btn btn-default header_main_buttons_button_single' id='header_button_messages'><?php echo lang('p_messages'); ?> <span class='badge messages_main_link_page_text_messages_noreaden hidden'></span></a>
+        <a class='btn btn-default header_main_buttons_button_single' id='header_button_props'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/props.png'/> <?php echo lang('p_props'); ?></a>
+        <a class='btn btn-default header_main_buttons_button_single' id='header_button_messages'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/messages.png'/> <?php echo lang('p_messages'); ?> <span class='badge messages_main_link_page_text_messages_noreaden hidden'></span></a>
         <div class="btn-group header_main_buttons_button_group">
             <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              <?php echo lang('p_more'); ?>
+              <img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/more.png'/> <?php echo lang('p_more'); ?>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a id='header_button_profile'><?php echo lang('p_profile'); ?></a></li>
-              <li><a id='header_button_myprops'><?php echo lang('p_my_props'); ?> <span class='menu_myprops_button_count'></span></a></li>
-              <li><a id='header_button_favorites'><?php echo lang('p_favorites'); ?> <span class='menu_favorites_button_count'></span></a></li>
-              <li><a id='header_button_premium'><?php echo lang('p_premium'); ?></a></li>
+              <li><a id='header_button_profile'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/profile.png'/> <?php echo lang('p_profile'); ?></a></li>
+              <li><a id='header_button_myprops'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/myprops.png'/> <?php echo lang('p_my_props'); ?> <span class='menu_myprops_button_count badge pull-right'></span></a></li>
+              <li><a id='header_button_favorites'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/favorite_on.png'/> <?php echo lang('p_favorites'); ?> <span class='menu_favorites_button_count badge pull-right'></span></a></li>
+              <li><a id='header_button_premium'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/premium.png'/> <?php echo lang('p_premium'); ?></a></li>
               <?php if ($user_data['rol'] !== null) : ?>
-                <li><?php echo anchor('cms/main', 'CMS', array('id' => 'header_button_cms')); ?></li>
+                <li><a href='<?php echo $this->config->item('base_url'); ?><?php echo getActLang(); ?>/cms/main' id='header_button_cms'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/cms.png'/> CMS</a></li>
                 <?php if ($user_data['rol'] === 'superadmin') : ?>
-                  <li><?php echo anchor('analytics/main', 'ANALYTICS', array('id' => 'header_button_analytics')); ?></li>
+                  <li><a href='<?php echo $this->config->item('base_url'); ?><?php echo getActLang(); ?>/analytics/main' id='header_button_analytics'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/analitycs.png'/> Analitycs</a></li>
                 <?php endif; ?>
               <?php endif; ?>
             </ul>
@@ -146,7 +146,7 @@
         $user_data = $this->session->userdata('logged_in'); 
         $user_premium = ($user_data['premium'] !== null) ? $user_data['premium'] : "no premium" ;
         ?>
-        <?php echo anchor('/' . getActLang() . '/premium', lang('p_user') . " " . $user_premium); ?></a>
+        <a class='link' href='premium' id='header_button_premium'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/premium.png'/> <?php echo lang('p_user') . " " . $user_premium; ?></a>
         <br/>
         <a class='logout_link'><?php echo lang('p_close_session'); ?></a>
       </div>

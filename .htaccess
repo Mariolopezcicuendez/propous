@@ -8,5 +8,5 @@ RewriteRule ^(favicon\.ico)$ webroot/$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule ^(.*)$ /propous/index.php?$1 [L]
-RewriteRule ^(.*)$ /localtests/propous/index.php?$1 [L]
+RewriteRule ^(.*)$ /propous/index.php?$1 [L]
+# RewriteRule ^(.*)$ /localtests/propous/index.php?$1 [L]

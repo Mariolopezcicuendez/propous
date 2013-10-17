@@ -1,7 +1,28 @@
+@font-face 
+{
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Inconsolata'), url('../assets/fonts/Inconsolata.otf') format('truetype');
+}
+
 body 
 {
+	font-family: 'Inconsolata';
+	font-size: 14px;
 	padding: 0;
 	margin: 0;
+}
+
+div
+{
+	font-family: 'Inconsolata' !important;
+	font-size: 14px;
+}
+
+h3
+{
+	font-family: 'Inconsolata' !important;
 }
 
 .span_validation_label
@@ -140,6 +161,11 @@ textarea
   margin-top: 6px;
 }
 
+.dropdown-menu
+{
+	min-width: 185px;
+}
+
 .content_page
 {
 	min-height: 700px;
@@ -238,6 +264,17 @@ a.paginate_button:focus
 .content_premium_mod_div
 {
 	cursor: pointer;
+}
+
+.link
+{
+	cursor: pointer;
+}
+
+.image_icon
+{
+	width: 20px;
+	height: 20px;
 }
 
 .prop_list_select_length
@@ -548,8 +585,8 @@ a.paginate_button:focus
 
 .status_image
 {
-	width : 20px;
-	height: 20px;
+	width : 17px;
+	height: 17px;
 }
 
 .chat_users_list_user_selected
@@ -568,30 +605,50 @@ a.paginate_button:focus
 {
 	overflow-x:hidden;
 	overflow-y:auto;
-	height: 370px;
+	height: 470px;
 	border-bottom: 1px solid silver;
+	padding-bottom: 10px;
 }
 
 .conversation_chat_div_frommetouser
 {
 	float: left;
-	width: 400px;
+	width: 99%;
 	margin: 5px;
 	margin-bottom: 0;
+	border: 1px solid rgba(85, 7, 224, 0.25);
+	border-bottom: 1px solid rgba(85, 7, 224, 0.1);
+	padding: 4px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+	background-color: rgba(101, 12, 129, 0.06);
 }
 
 .conversation_chat_div_fromusertome
 {
 	float: right;
-	width: 400px;
+	width: 99%;
 	margin: 5px;
 	margin-bottom: 0;
+	border: 1px solid rgba(224, 172, 7, 0.25);
+	border-bottom: 1px solid rgba(224, 155, 7, 0.1);
+	padding: 4px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+	background-color: rgba(185, 121, 6, 0.06);
 	text-align: right;
+}
+
+.conversation_chat_title_message
+{
+	font-weight: bold;
 }
 
 .chat_text_joined_up
 {
 	margin-top: 0;
+	border-top: 0;
+	border-radius: 0;
 }
 
 .chat_date_joined_off
@@ -606,6 +663,11 @@ a.paginate_button:focus
 	font-size: 10px;
 }
 
+.content_chat_body
+{
+	padding-bottom: 0;
+}
+
 .conversation_chat_content_message
 {
 	margin: 0;
@@ -617,19 +679,33 @@ a.paginate_button:focus
 	height: 10px;
 }
 
+.div_content_chat_users
+{
+	padding-left: 5px; 
+	padding-right: 10px;
+}
+
+.div_content_chat_messages
+{
+	padding-left: 10px; 
+	padding-right: 5px;
+}
+
 .div_content_chat_users_list
 {
 	overflow:auto;
-	height: 500px;
+	height: 510px;
 	border-top: 1px solid silver;
 	border-bottom: 1px solid silver;
 }
 
 .div_content_chat_messages_title
 {
-	height: 50px;
+	height: 40px;
+	padding: 4px;
 	border-top: 1px solid silver;
 	border-bottom: 1px solid silver;
+	text-align: center;
 }
 
 .div_content_chat_users_list_div div.media
@@ -639,19 +715,35 @@ a.paginate_button:focus
 
 .user_in_user_list_container
 {
-	width: 240px;
+	width: 100%;
 	margin-top: 7px;
 	display: inline-block;
 }
 
+.badge
+{
+	background-color: orange;
+}
+
+.dropdown-menu > li > a
+{
+	padding-left: 13px;
+	padding-right: 13px;
+}
+
+.user_in_user_list span.badge
+{
+	margin-left: 5px;
+}
+
 .user_in_user_list
 {
-	width: 80%;
+	width: 91%;
 }
 
 .user_in_user_list_button_div
 {
-	width: 20%;
+	width: 9%;
 }
 
 .div_content_chat_users_count *, .div_content_chat_messages_pagination *
@@ -659,6 +751,12 @@ a.paginate_button:focus
 	font-size: 10px;
 	padding-left: 3px;
 	padding-right: 3px;
+}
+
+.div_content_chat_users_count div.form-group, .div_content_chat_messages_pagination div.form-group
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 .div_content_chat_users_count_select
@@ -673,13 +771,23 @@ a.paginate_button:focus
 
 .div_content_chat_messages_actions_textbox
 {
-	width: 85%;
+	width: 90%;
 	display: inline-block;
+}
+
+.div_content_chat_messages_actions_textbox textarea
+{
+	height: 34px;
+}
+
+.messages_send_button
+{
+	width: 100%;
 }
 
 .div_content_chat_messages_actions_sendbutton
 {
-	width: 15%;
+	width: 10%;
 	display: inline-block;
 	vertical-align: bottom;
 	padding-left: 5px;
@@ -693,6 +801,9 @@ a.paginate_button:focus
 	display: inline-block;
 	width: 15px;
 	height: 15px;
+	margin-right: 4px;
+	position: relative;
+	top: 3px;
 }
 
 /*

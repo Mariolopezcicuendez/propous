@@ -204,7 +204,7 @@
 </div>
 
 <div class='content_viewprofile_buttons container'>
-	<button type="button" class="btn btn-link viewprofile_sendmessage_profile_link pull-right"><?php echo lang('p_send_message_to_user'); ?></button>
+	<button type="button" class="btn btn-link viewprofile_sendmessage_profile_link pull-right"><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/messages.png'/> <?php echo lang('p_send_message_to_user'); ?></button>
 </div>
 
 <div class="form-group hidden">
