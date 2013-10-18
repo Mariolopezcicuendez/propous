@@ -6,6 +6,7 @@ class Contact extends CI_Controller
 	{
     parent::__construct();
     $this->load->model('captcha_model','',TRUE);
+    $this->load->model('user_model');
 	}
 
 	public function index()

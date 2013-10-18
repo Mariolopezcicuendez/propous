@@ -2,11 +2,11 @@ Options +FollowSymlinks
 RewriteEngine on
 
 RewriteCond %{REQUEST_URI} (index\.php|webroot/|images/|css/|js/|robots\.txt|favicon\.ico)
-RewriteCond %{REQUEST_FILENAME} !\.(css|js|png|gif|jpg|jpeg)$
+RewriteCond %{REQUEST_FILENAME} !\.(css|js|png|gif|jpg|jpeg|wav|mp3|ogg)$
 RewriteRule ^(images|css|files|js)/(.*)$ webroot/$1/$2 [L]
 RewriteRule ^(favicon\.ico)$ webroot/$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule ^(.*)$ /propous/index.php?$1 [L]
-RewriteRule ^(.*)$ /localtests/propous/index.php?$1 [L]
+RewriteRule ^(.*)$ /propous/index.php?$1 [L]
+# RewriteRule ^(.*)$ /localtests/propous/index.php?$1 [L]

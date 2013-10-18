@@ -13,7 +13,7 @@
 			<div class="form-group">
 
 				<div class='content_editprofile_data_left col-md-2'>
-					<img class='img-rounded' style='width:<?php echo MAIN_PHOTO_WIDTH; ?>px; height:<?php echo MAIN_PHOTO_HEIGHT; ?>px;' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/photos/no_photo.png' class='content_editprofile_main_photo'></img>
+					<img style='width:<?php echo MAIN_PHOTO_WIDTH; ?>px; height:<?php echo MAIN_PHOTO_HEIGHT; ?>px;' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/photos/no_photo.png' class='content_editprofile_main_photo img-rounded'></img>
 				</div>
 
 				<div class='content_editprofile_data_right col-md-10'>

@@ -165,8 +165,8 @@
       foreach ($notifies as $key => $notify) 
       {
         echo "<div class='div_notify_text' id='div_notify_text_".$notify->id."'>
-        <li id='notify_text_".$notify->id."' class='notify_text'>NOTIFICACIÓN DEL EQUIPO DE ADMINISTRADORES: ".$notify->notification."</li>
-        <button id='notify_button_".$notify->id."' class='notify_button_accept btn btn-default'>Lo entiendo, no volverá a pasar</button>
+        <li id='notify_text_".$notify->id."' class='notify_text'><strong>".lang('p_admin_notification').":</strong> ".$notify->notification."</li>
+        <button id='notify_button_".$notify->id."' class='notify_button_accept btn btn-default'>".lang('p_understand_will_not_do')."</button>
         </div>";        
       }
     }

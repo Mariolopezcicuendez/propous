@@ -18,7 +18,7 @@ class Notify_model extends CI_Model
 
   function get_all_no_readen_for_user($user_id)
   {
-    $query = $this->db->query("SELECT id, notification FROM {$this->table} WHERE user_id = {$user_id} AND readen = 0 ORDER BY id DESC");
+    $query = $this->db->query("SELECT id, notification FROM {$this->table} WHERE user_id = {$user_id} AND readen = 0 ORDER BY time DESC");
     if ($query->num_rows() > 0)
     {
       $results = array();

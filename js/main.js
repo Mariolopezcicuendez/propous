@@ -1279,9 +1279,8 @@ function print_messages_no_readen_in_messages_text(no_readen_messages)
 
 function play_messages_sound()
 {
-  console.log("played sound");
-  // var snd = new Audio(baseurl + "/assets/sounds/message.wav");
-  // snd.play();
+  var snd = new Audio(baseurl + "/assets/sounds/message.ogg");
+  snd.play();
 }
 
 function clean_field(text)
