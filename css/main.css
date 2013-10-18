@@ -1,14 +1,7 @@
-@font-face 
-{
-  font-family: 'Inconsolata';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Inconsolata'), url('../assets/fonts/Inconsolata.otf') format('truetype');
-}
-
 body 
 {
-	font-family: 'Inconsolata';
+
+	font-family: "Helvetica Neue",Arial,sans-serif;
 	font-size: 14px;
 	padding: 0;
 	margin: 0;
@@ -16,13 +9,13 @@ body
 
 div
 {
-	font-family: 'Inconsolata' !important;
+	font-family: "Helvetica Neue",Arial,sans-serif !important;
 	font-size: 14px;
 }
 
 h3
 {
-	font-family: 'Inconsolata' !important;
+	font-family: "Helvetica Neue",Arial,sans-serif !important;
 }
 
 .span_validation_label
@@ -33,6 +26,11 @@ h3
 .hidden
 {
 	display: none;
+}
+
+.img-rounded 
+{
+	border-radius: 4px;
 }
 
 .main_logo_link,
@@ -145,6 +143,11 @@ input[disabled]
 {
 	width: 33.3% !important; 
 	display: inline;	
+}
+
+.badge
+{
+	background-color: orange;
 }
 
 textarea 
@@ -343,7 +346,7 @@ a.paginate_button:focus
 .image_carousel img
 {
 	background-color: #f0f0f0;
-	border: 5px solid #ccc;
+	border: 2px solid #ccc;
 	width: 75px;
 	height: 75px;
 	padding: 0;
@@ -720,9 +723,9 @@ a.paginate_button:focus
 	display: inline-block;
 }
 
-.badge
+.div_content_chat_messages_title_iswriting_span
 {
-	background-color: orange;
+	color: green;
 }
 
 .dropdown-menu > li > a
@@ -778,6 +781,9 @@ a.paginate_button:focus
 .div_content_chat_messages_actions_textbox textarea
 {
 	height: 34px;
+	resize:none;
+	margin-left: 6px;
+	width: 99% !important;
 }
 
 .messages_send_button
@@ -841,4 +847,38 @@ a.paginate_button:focus
 .user_text_disconnected
 {
 	color: gray;
+}
+
+/*
+	NOTIFICACIONES
+*/
+
+.content_div_notification_to_user
+{
+	border: 1px solid silver;
+	height: auto;
+	width: 100%;
+	margin-bottom: 10px;
+	border-radius: 6px;
+	box-shadow: 0px 0px 5px silver;
+	padding: 10px;
+}
+
+.div_notify_text
+{
+	margin-top: 7px;
+	margin-bottom: 7px;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+.notify_text
+{
+	display: inline-block;
+	width: 76%;
+}
+
+.notify_button_accept
+{
+	width: 23%;
 }

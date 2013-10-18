@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Contacts extends CI_Controller 
+class Notifies extends CI_Controller 
 {
-  protected $tag = 'contacts';
+  protected $tag = 'notifies';
 
 	public function __construct()
 	{
     parent::__construct();
-    $this->load->model('contact_model');
+    $this->load->model('notify_model');
 	}
 
 	public function index()
@@ -33,9 +33,9 @@ class Contacts extends CI_Controller
       exit();
     }  
 
-    $textareas = array("comment");
+    $textareas = array("notification");
 
-    $data = $this->contact_model->cms_get($id);
+    $data = $this->notify_model->cms_get($id);
     $data = array("data" => $data, 'textareas' => $textareas, 'action' => 'edit', 'back' => $this->tag);
 
     $this->load->view('header');
@@ -52,18 +52,14 @@ class Contacts extends CI_Controller
       exit();
     }  
 
-    $textareas = array("comment");
+    $textareas = array("notification");
 
     $data = new StdClass();
     $data->id = null;
-    $data->name = null;
-    $data->email = null;
-    $data->phone = null;
-    $data->country_id = null;
+    $data->user_id = null;
     $data->time = null;
-    $data->comment = null;
-    $data->in_progress = null;
-    $data->solved = null;
+    $data->notification = null;
+    $data->readen = null;
 
     $data = array("data" => $data, 'textareas' => $textareas, 'action' => 'new', 'back' => $this->tag);
 
@@ -73,5 +69,5 @@ class Contacts extends CI_Controller
   }
 }
 
-/* End of file contacts.php */
-/* Location: ./application/controllers/cms/contacts.php */
+/* End of file notify.php */
+/* Location: ./application/controllers/cms/notify.php */

@@ -13,8 +13,8 @@ $(document).ready(function()
     login_clean_form();
 
     var data_post = {};
-    data_post.user_email = $('.login_user_email').val();
-    data_post.user_password = $('.login_user_password').val();
+    data_post.user_email = clean_field($('.login_user_email').val());
+    data_post.user_password = clean_field($('.login_user_password').val());
     data_post.user_remember = $('.login_user_remember').is(':checked');
     data_post.filter_t = $('input[name=filter_t]').val();
 
@@ -130,7 +130,7 @@ function error_login(data)
   if (error_number === 1137)
   {
     // BANNED
-    show_fail("login_data_alert", lang('p_user_banned_reason') + ": " + error_message);
+    show_fail("login_data_alert", lang('p_user_banned_reason') + ": " + error_message, true);
     return;
   }
 }

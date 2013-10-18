@@ -23,7 +23,7 @@ $(document).ready(function()
     deleteaccount_clean_form();
 
     var data_post = {};
-    data_post.user_password = $('.deleteaccount_user_password').val();
+    data_post.user_password = clean_field($('.deleteaccount_user_password').val());
     data_post.filter_t = $('input[name=filter_t]').val();
 
     data_post.captcha_word = $('.captcha_input').val();

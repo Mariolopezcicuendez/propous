@@ -9,6 +9,9 @@ $(document).ready(function()
 {
   user_id = $(".gdata_user_id").val();
 
+  last_id_message_printed = 1;
+  localStorage.setItem("last_id_message_printed",last_id_message_printed);
+
   $('.div_content_chat_messages_conversation').html('');
 
   localStorage.setItem("users_list_count",DEFAULT_NUMBER_USERS_MESSAGED_SHOWED);
@@ -20,7 +23,6 @@ $(document).ready(function()
 
   $('.div_content_chat_users_count_select').on("change", function()
   {
-    console.log("borramos");
     $('.div_content_chat_users_list_div div.user_in_user_list_container').remove();
 
     var showed = $(this).val();
@@ -163,15 +165,15 @@ function add_user_to_list(user)
   var user_to_chat_button_close = $('<div></div>').attr("user_id",user.id).addClass('user_in_user_list_button_div').addClass('pull-left');
 
   var user_to_chat_link = $('<a></a>').addClass('pull-left');
-  var user_to_chat_link_img = $('<img></img>').addClass('chat_users_main_image').attr("src",baseurl + "/" + user.photo);
+  var user_to_chat_link_img = $('<img></img>').addClass('chat_users_main_image').addClass('img-rounded').attr("src",baseurl + "/" + user.photo);
 
   var user_to_chat_div_body = $('<div></div>').addClass('media-body');
   var user_to_chat_div_name = $('<span></span>').text(user.name);
-  var user_to_chat_div_noreaden = $('<span></span>').addClass('badge').addClass('hidden').text("3");
+  var user_to_chat_div_noreaden = $('<span></span>').addClass('badge').addClass('hidden').text("");
 
-  var user_to_chat_img_connected = $("<img></img>").addClass('status_image').addClass("chat_users_online_image").addClass("pull-right").attr("src",baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png");
+  var user_to_chat_img_connected = $("<img></img>").addClass('status_image').addClass("chat_users_online_image").addClass("pull-right").attr("title",lang(((user.connected === false) ? 'p_disconnected' : 'p_connected' ))).attr("src",baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png");
 
-  var user_to_chat_button_close_img = $('<button type="button" user_id="'+user.id+'" class="close" aria-hidden="true">&times;</button>');
+  var user_to_chat_button_close_img = $('<button title="'+lang("p_delete_chat_conversation")+'" type="button" user_id="'+user.id+'" class="close" aria-hidden="true">&times;</button>');
 
   $(user_to_chat_div_body).append(user_to_chat_div_name);
   $(user_to_chat_div_body).append(user_to_chat_div_noreaden);
@@ -226,7 +228,6 @@ function select_first_user_in_user_list()
   if (data_actualize_messages_info.users_list.length > 0)
   {
     var first_user_id = $('.user_in_user_list').first().attr("user_id");
-
     if (typeof first_user_id !== "undefined" && first_user_id !== null && first_user_id !== '')
     {
       chating_now = first_user_id;
@@ -247,6 +248,7 @@ function select_user_in_user_list()
     {
       $(user[i]).addClass("chat_users_list_user_selected");
       $(user[i]).removeClass("chat_users_list_user_noselected");
+      localStorage.setItem("chating_now",chating_now);
     }
     else
     {
@@ -262,10 +264,10 @@ function load_chat_title()
   {
     var user = data_actualize_messages_info.user_chating_now;
 
-    var image_conected = "<img class='status_image chat_users_online_image' src='"+baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png'></img>";
-    var image_user = "<img class='conversation_chat_title_user_image' src='" + baseurl + user.photo + "'></img>";
+    var image_conected = "<img class='status_image chat_users_online_image' title='" + lang(((user.connected === false) ? 'p_disconnected' : 'p_connected' )) + "' src='"+baseurl + "/" + "assets/icons/" + ((user.connected === false) ? 'off' : 'on' )+"line.png'></img>";
+    var image_user = "<img class='conversation_chat_title_user_image img-rounded' src='" + baseurl + user.photo + "'></img>";
 
-    $('.div_content_chat_messages_title').html(image_user + " <span class='conversation_chat_title_user_name'>"+user.name + "</span> " + image_conected + " <span class='hidden div_content_chat_messages_title_iswriting_span'>"+lang('p_writing')+"</span>");
+    $('.div_content_chat_messages_title').html(image_user + " <span class='conversation_chat_title_user_name'>"+user.name + "</span> " + image_conected + " <span class='hidden div_content_chat_messages_title_iswriting_span pull-right'>"+lang('p_writing')+"</span>");
     $('.div_content_chat_messages_title').removeClass('hidden');
   }
   else
@@ -305,7 +307,7 @@ function actualize_conversation()
         var time_title = convert_chat_timestamp_title(conversation[i].time);
         var time_message = convert_chat_timestamp_message(conversation[i].time);
 
-        if ((last_message_from !== null) && (conversation[i].user_from_id === last_message_from))
+        if ((last_message_from !== null) && (conversation[i].user_from_id === last_message_from) && ($(".div_content_chat_messages_conversation").children().length !== 1))
         {
           var readen = '';
           if (conversation[i].user_from_id == user_id)
@@ -327,7 +329,7 @@ function actualize_conversation()
         }
         else
         {
-          var image_user = "<img class='conversation_chat_title_user_image' src='" + baseurl + conversation[i].user_from_photo + "'></img>";
+          var image_user = "<img class='conversation_chat_title_user_image img-rounded' src='" + baseurl + conversation[i].user_from_photo + "'></img>";
 
 
           if (conversation[i].user_from_id == user_id)
@@ -494,7 +496,7 @@ function delete_conversation_confirmed(id)
 
   if (chating_now != id)
   {
-    select_user_in_user_list(chating_now)
+    select_user_in_user_list()
   }
   else
   {

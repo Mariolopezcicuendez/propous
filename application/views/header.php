@@ -132,7 +132,7 @@
     <?php if (!$this->session->userdata('logged_in')) : ?>
 
       <div class='div_header_right_content pull-right'>
-        <select class='home_select_language form-control'>
+        <select title='<?php echo lang('p_change_language_here'); ?>' class='home_select_language form-control'>
           <option <?php if (getActLang() === 'en') { echo 'selected'; } ?> value='en'><?php echo lang('lang_english'); ?></option>
           <option <?php if (getActLang() === 'es') { echo 'selected'; } ?> value='es'><?php echo lang('lang_spanish'); ?></option>
         </select>
@@ -146,7 +146,7 @@
         $user_data = $this->session->userdata('logged_in'); 
         $user_premium = ($user_data['premium'] !== null) ? $user_data['premium'] : "no premium" ;
         ?>
-        <a class='link' href='premium' id='header_button_premium'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/premium.png'/> <?php echo lang('p_user') . " " . $user_premium; ?></a>
+        <a class='link' title='<?php echo lang('p_user_premium_you_are'); ?>' href='<?php echo $this->config->item('base_url'); ?><?php echo getActLang(); ?>/premium' id='header_button_premium'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/premium.png'/> <?php echo lang('p_user') . " " . $user_premium; ?></a>
         <br/>
         <a class='logout_link'><?php echo lang('p_close_session'); ?></a>
       </div>
@@ -155,5 +155,24 @@
   </div>
 
 </div>
+
+<?php if ($this->session->userdata('logged_in')) : ?>
+
+  <div class='content_div_notification_to_user container col-md-12 content <?php if (!isset($notifies) || ($notifies === null) || (count($notifies) === 0)) : ?>hidden<?php endif; ?>'>
+    <?php 
+    if (isset($notifies) && ($notifies !== null))
+    {
+      foreach ($notifies as $key => $notify) 
+      {
+        echo "<div class='div_notify_text' id='div_notify_text_".$notify->id."'>
+        <li id='notify_text_".$notify->id."' class='notify_text'>NOTIFICACIÓN DEL EQUIPO DE ADMINISTRADORES: ".$notify->notification."</li>
+        <button id='notify_button_".$notify->id."' class='notify_button_accept btn btn-default'>Lo entiendo, no volverá a pasar</button>
+        </div>";        
+      }
+    }
+    ?>
+  </div>
+
+<?php endif; ?>
 
 <div class='content_page container'>

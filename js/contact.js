@@ -29,10 +29,10 @@ $(document).ready(function()
     contact_clean_form();
 
     var data_post = {};
-    data_post.user_name = $('.contact_user_name').val();
-    data_post.user_email = $('.contact_user_email').val();
-    data_post.user_phone = $('.contact_user_phone').val();
-    data_post.user_comment = $('.contact_comment').val();
+    data_post.user_name = clean_field($('.contact_user_name').val());
+    data_post.user_email = clean_field($('.contact_user_email').val());
+    data_post.user_phone = clean_field($('.contact_user_phone').val());
+    data_post.user_comment = clean_field($('.contact_comment').val());
     data_post.user_country_id = $('.contact_select_country').val();
     data_post.filter_t = $('input[name=filter_t]').val();
 

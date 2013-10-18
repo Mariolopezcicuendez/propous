@@ -25,8 +25,8 @@ $(document).ready(function()
 
     var data_post = {};
     data_post.proposal_user_id = $('.gdata_user_id').val();
-    data_post.proposal_text = $('.editprop_prop_title').val();
-    data_post.proposal_description = $('.editprop_prop_description').val();
+    data_post.proposal_text = clean_field($('.editprop_prop_title').val());
+    data_post.proposal_description = clean_field($('.editprop_prop_description').val());
     data_post.proposal_country_id = $('.editprop_select_country').val();
     data_post.proposal_state_id = $('.editprop_select_state').val();
     data_post.proposal_visibility = ($('.editprop_visibility_onoffswitch .onoffswitch-checkbox').is(':checked') === true) ? 1 : 0 ;
@@ -519,7 +519,7 @@ function success_get_proposal_photos(data)
       var link_to_box = $('<a class="fancybox" rel="group" href="'+baseurl + photo.route+'"></a>');
       $(div_images).append(link_to_box);
 
-      $(link_to_box).append($('<img></img>').attr("class", "editprop_photos_carousel_img").attr("id", "editprop_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));
+      $(link_to_box).append($('<img></img>').addClass("editprop_photos_carousel_img").addClass("img-rounded").attr("id", "editprop_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));
 
       var div_images_caption = $('<div></div>').addClass("caption");
       $(div_images).append(div_images_caption);

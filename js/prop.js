@@ -286,7 +286,7 @@ function stilize_datatable()
 
 function get_photo_icon()
 {
-  return "<img class='prop_list_images_img' title='"+lang('p_photos')+"' src='"+baseurl + "/assets/icons/photo.png"+"'></img>";
+  return "<img class='prop_list_images_img' title='"+lang('p_prop_with_photos')+"' src='"+baseurl + "/assets/icons/photo.png"+"'></img>";
 }
 
 function error_get_main_props(data)

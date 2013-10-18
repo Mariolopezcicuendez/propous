@@ -19,7 +19,7 @@ $(document).ready(function()
     forgetpassword_clean_form();
 
     var data_post = {};
-    data_post.user_email = $('.forgetpassword_user_email').val();
+    data_post.user_email = clean_field($('.forgetpassword_user_email').val());
     data_post.filter_t = $('input[name=filter_t]').val();
 
     data_post.captcha_word = $('.captcha_input').val();
@@ -47,8 +47,8 @@ $(document).ready(function()
 
     var data_post = {};
     data_post.user_token = $('.forgetpasswordnew_token').val();
-    data_post.user_password = $('.forgetpasswordnew_user_password').val();
-    data_post.user_re_password = $('.forgetpasswordnew_user_repassword').val();
+    data_post.user_password = clean_field($('.forgetpasswordnew_user_password').val());
+    data_post.user_re_password = clean_field($('.forgetpasswordnew_user_repassword').val());
     data_post.filter_t = $('input[name=filter_t]').val();
 
     data_post.captcha_word = $('.captcha_input').val();

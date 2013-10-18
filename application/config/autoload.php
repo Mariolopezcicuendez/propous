@@ -109,7 +109,7 @@ $autoload['language'] = array('calendar','propous','errors','languages');
 |
 */
 
-$autoload['model'] = array('jsonresponse');
+$autoload['model'] = array('jsonresponse','notify_model');
 
 
 /* End of file autoload.php */

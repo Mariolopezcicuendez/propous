@@ -20,7 +20,7 @@ $(document).ready(function()
 
   $('.viewprofile_sendmessage_profile_link').on("click",function() 
   {
-    localStorage.setItem("chating_now",user_id)
+    localStorage.setItem("chating_now",user_id);
   	window.location = baseurl + "/" + m_lang + "/messages";
   });
 
@@ -187,7 +187,7 @@ function success_get_user_photos(data)
       var link_to_box = $('<a class="fancybox" rel="group" href="'+baseurl + photo.route+'"></a>');
       $(div_images).append(link_to_box);
 
-      $(link_to_box).append($('<img></img>').attr("class", "viewprofile_photos_carousel_img").attr("id", "viewprofile_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));
+      $(link_to_box).append($('<img></img>').addClass("viewprofile_photos_carousel_img").addClass("img-rounded").attr("id", "viewprofile_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));
     });
 
     $(".viewprofile_photos_carousel").removeClass("hidden");

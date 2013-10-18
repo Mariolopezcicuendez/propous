@@ -20,7 +20,16 @@ class Chgpassword extends CI_Controller
 		$capcha = $this->captcha_model->get_captcha();
     $data = array("captcha" => $capcha);
 
-		$this->load->view('header');
+		$data_header = array();
+    $data_header["notifies"] = array();
+    if ($this->user_model->logged())
+    {
+      $user_data = $this->session->userdata('logged_in');
+      $notifies = $this->notify_model->get_all_no_readen_for_user($user_data['id']);
+      $data_header["notifies"] = $notifies;
+    }
+
+		$this->load->view('header',$data_header);
     $this->load->view('chgpassword',$data);
     $this->load->view('footer');
 	}

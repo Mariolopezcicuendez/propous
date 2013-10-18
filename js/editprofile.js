@@ -34,22 +34,22 @@ $(document).ready(function()
     editprofile_clean_form();
 
     var data_post = {};
-    data_post.user_name = $('.editprofile_user_name').val();
+    data_post.user_name = clean_field($('.editprofile_user_name').val());
     data_post.user_birthdate = get_birthdate_from_form();
     data_post.user_sex = $('.editprofile_radio_gender').val();
     data_post.user_country_id = $('.editprofile_select_country').val();
     data_post.user_state_id = $('.editprofile_select_state').val();
     
-    data_post.user_nationality = $('.editprofile_nationality').val();
-    data_post.user_dwelling = $('.editprofile_dwelling').val();
-    data_post.user_car = $('.editprofile_car').val();
-    data_post.user_sexuality = $('.editprofile_sexuality').val();
-    data_post.user_partner = $('.editprofile_partner').val();
-    data_post.user_children = $('.editprofile_children').val();
-    data_post.user_occupation = $('.editprofile_occupation').val();
-    data_post.user_hobbies = $('.editprofile_hobbies').val();
-    data_post.user_phone = $('.editprofile_phone').val();
-    data_post.user_description = $('.editprofile_description').val();
+    data_post.user_nationality = clean_field($('.editprofile_nationality').val());
+    data_post.user_dwelling = clean_field($('.editprofile_dwelling').val());
+    data_post.user_car = clean_field($('.editprofile_car').val());
+    data_post.user_sexuality = clean_field($('.editprofile_sexuality').val());
+    data_post.user_partner = clean_field($('.editprofile_partner').val());
+    data_post.user_children = clean_field($('.editprofile_children').val());
+    data_post.user_occupation = clean_field($('.editprofile_occupation').val());
+    data_post.user_hobbies = clean_field($('.editprofile_hobbies').val());
+    data_post.user_phone = clean_field($('.editprofile_phone').val());
+    data_post.user_description = clean_field($('.editprofile_description').val());
     data_post.filter_t = $('input[name=filter_t]').val();
 
     var error_occurred = validate_editprofile(data_post);
@@ -791,7 +791,7 @@ function success_get_user_photos(data)
       var link_to_box = $('<a class="fancybox" rel="group" href="'+baseurl + photo.route+'"></a>');
       $(div_images).append(link_to_box);
 
-      $(link_to_box).append($('<img></img>').attr("class", "editprofile_photos_carousel_img").attr("id", "editprofile_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));
+      $(link_to_box).append($('<img></img>').addClass("editprofile_photos_carousel_img").addClass("img-rounded").attr("id", "editprofile_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));
 
       var div_images_caption = $('<div></div>').addClass("caption");
       $(div_images).append(div_images_caption);
@@ -799,7 +799,7 @@ function success_get_user_photos(data)
       var div_images_caption_p = $('<p></p>');
       $(div_images_caption).append(div_images_caption_p);
 
-      var icon_main = $('<a></a>').attr("tagid", photo.id).addClass("btn").addClass("btn-default").addClass("btn-block").addClass("editprofile_photos_carousel_img_btn_main").text(lang('p_main'));
+      var icon_main = $('<a></a>').attr("tagid", photo.id).attr("title",lang("p_mark_photo_as_main_for_user")).addClass("btn").addClass("btn-default").addClass("btn-block").addClass("editprofile_photos_carousel_img_btn_main").text(lang('p_main'));
       if (photo.main_for_user == "1")
       {
         $(icon_main).addClass("btn-success");
@@ -958,7 +958,7 @@ function success_get_user_sociality(data)
       var div_images_caption_p = $('<p></p>').text(sociality.name);
       $(div_images_caption).append(div_images_caption_p);
 
-      var icon_main = $('<a></a>').attr("tagid", sociality.sociality_id).addClass("btn").addClass("btn-default").addClass("btn-block").addClass("editprofile_sociality_images_btn_main").text(lang('p_main'));
+      var icon_main = $('<a></a>').attr("tagid", sociality.sociality_id).attr("title",lang("p_mark_sociality_as_main_for_proposal")).addClass("btn").addClass("btn-default").addClass("btn-block").addClass("editprofile_sociality_images_btn_main").text(lang('p_main'));
       if (sociality.show_in_proposal == "1")
       {
         $(icon_main).addClass("btn-success");

@@ -266,6 +266,13 @@ $lang['p_want_to_be_premium'] = "Dejame ver como ser usuario premium";
 $lang['p_page_restringed_message'] = "Has accedido a una zona privada";
 $lang['p_status'] = "Estado";
 $lang['p_writing'] = "Escribiendo";
+$lang['p_change_language_here'] = "Cambia tu idioma aquí";
+$lang['p_user_premium_you_are'] = "Accede para obtener un privilegio premium y así poder disfrutar más";
+$lang['p_mark_photo_as_main_for_user'] = "Marca la foto para que sea usada como foto principal de tu perfil";
+$lang['p_mark_sociality_as_main_for_proposal'] = "Marca la sociality para que sea usada como principal en los listados de tus props";
+$lang['p_prop_with_photos'] = "Prop con fotos";
+$lang['p_remember_for_next_access'] = "Te permite recordar tu login para la próxima vez que accedas";
+$lang['p_delete_chat_conversation'] = "Elimina una conversación de chat";
 
 $lang['p_title_about_page'] = "About";
 $lang['p_paragraph_about_1'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra scelerisque nibh, nec elementum nibh luctus hendrerit. Donec quis dui id arcu malesuada tempor. Suspendisse at tempor ante, a commodo leo. Cras felis risus, sodales sed nulla bibendum, varius facilisis urna. Suspendisse a nisl eros. Fusce elit orci, tempor a vehicula et, aliquet quis enim. Mauris sollicitudin rutrum suscipit.";

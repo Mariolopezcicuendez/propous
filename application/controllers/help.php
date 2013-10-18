@@ -9,7 +9,16 @@ class Help extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('header');
+		$data_header = array();
+    $data_header["notifies"] = array();
+    if ($this->user_model->logged())
+    {
+      $user_data = $this->session->userdata('logged_in');
+      $notifies = $this->notify_model->get_all_no_readen_for_user($user_data['id']);
+      $data_header["notifies"] = $notifies;
+    }
+
+		$this->load->view('header',$data_header);
     $this->load->view('help');
     $this->load->view('footer');
 	}

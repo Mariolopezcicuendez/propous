@@ -48,7 +48,7 @@
         <div class="form-group">
           <label for="login_user_remember" class="col-md-3 control-label"></label>
           <div class="col-md-9 checkbox">
-            <label id='login_user_remember' class="login_user_remember form-control-static">
+            <label id='login_user_remember' title='<?php echo lang('p_remember_for_next_access'); ?>' class="login_user_remember form-control-static">
               <input type='checkbox' class='login_user_remember'/> <?php echo lang('p_remember_login'); ?>
             </label>
           </div>

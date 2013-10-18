@@ -26,8 +26,8 @@ $(document).ready(function()
 
     var data_post = {};
     data_post.proposal_user_id = user_id;
-    data_post.proposal_text = $('.newprop_prop_title').val();
-    data_post.proposal_description = $('.newprop_prop_description').val();
+    data_post.proposal_text = clean_field($('.newprop_prop_title').val());
+    data_post.proposal_description = clean_field($('.newprop_prop_description').val());
     data_post.proposal_country_id = $('.newprop_select_country').val();
     data_post.proposal_state_id = $('.newprop_select_state').val();
     data_post.proposal_visibility = ($('.newprop_visibility_onoffswitch .onoffswitch-checkbox').is(':checked') === true) ? 1 : 0 ;

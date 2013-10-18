@@ -156,11 +156,9 @@ function show_success(element, message, static_time)
       $("."+element+"_success").parent().parent().addClass("hidden");
     });
 
-    if (static_time === null || typeof static_time === "undefined" || static_time !== true)
+    if (static_time !== true)
     {
-      setTimeout(function() {
-        hide_alert("."+element+"_success");
-      }, TIME_MILISECONDS_ALERTS_HIDE * 1000);
+      setTimeout( 'hide_alert(".'+element+'_success")' , TIME_MILISECONDS_ALERTS_HIDE );
     }
   }
 }
@@ -183,11 +181,9 @@ function show_fail(element, message, static_time)
       $("."+element+"_fail").parent().parent().addClass("hidden");
     });
 
-    if (static_time === null || typeof static_time === "undefined" || static_time !== true)
+    if (static_time !== true)
     {
-      setTimeout(function() {
-        hide_alert("."+element+"_fail");
-      }, TIME_MILISECONDS_ALERTS_HIDE * 1000);
+      setTimeout( 'hide_alert(".'+element+'_fail")' , TIME_MILISECONDS_ALERTS_HIDE );
     }
   }
 }
@@ -396,6 +392,14 @@ $(document).ready(function()
   $('#header_button_premium').on("click", function()
   {
     window.location = baseurl + "/" + m_lang + "/premium";
+  });
+
+  $('.notify_button_accept').on("click", function()
+  {
+    var id = $(this).attr("id");
+    var id_arr = id.split("_");
+    id = id_arr[2];
+    close_notification(id);
   });
 
   if (!maintenance_page_showed()) 
@@ -908,7 +912,7 @@ function search_props()
     if ($('.search_simple_input').val() !== '')
     {
       var data_search = {};
-      data_search.s_search = $('.search_simple_input').val();
+      data_search.s_search = clean_field($('.search_simple_input').val());
 
       search_redirect_to_props_page(data_search);
     }
@@ -1177,7 +1181,7 @@ function actualize_messages_info()
 }
 
 function success_actualize_messages_info(data)
-{
+{ 
   data = data.result;
 
   save_localstorage_messages_info_data(data);
@@ -1197,7 +1201,6 @@ function success_actualize_messages_info(data)
     if (empty_user_list()) 
     {
       print_user_list();
-      select_first_user_in_user_list();
     }
     else
     {
@@ -1205,7 +1208,7 @@ function success_actualize_messages_info(data)
     }
 
     var chating_now = localStorage.getItem("chating_now");
-    if (chating_now === null)
+    if ((chating_now === null) || (chating_now === 'null'))
     {
       select_first_user_in_user_list();
     }
@@ -1279,4 +1282,42 @@ function play_messages_sound()
   console.log("played sound");
   // var snd = new Audio(baseurl + "/assets/sounds/message.wav");
   // snd.play();
+}
+
+function clean_field(text)
+{
+  var text_mod = $.trim(text);
+  return text_mod;
+}
+
+function close_notification(id)
+{
+  var user_id = $(".gdata_user_id").val();
+
+  var data_post = {};
+  data_post.user_id = user_id;
+  data_post.notify_id = id;
+  data_post.filter_t = $('input[name=filter_t]').val();
+
+  var req = {};
+  req.url = '/notify/set_readen';
+  req.type = 'POST';
+  req.success = "success_notification_set_readen";
+  req.error = "error_notification_set_readen";
+  req.data = data_post;
+  ajaxp(req);
+}
+
+function success_notification_set_readen(data)
+{
+  var id = data.result;
+
+  $("#div_notify_text_"+id).remove();
+
+  if ($(".content_div_notification_to_user").children().length === 0) $(".content_div_notification_to_user").addClass('hidden');
+}
+
+function error_notification_set_readen(data)
+{
+
 }

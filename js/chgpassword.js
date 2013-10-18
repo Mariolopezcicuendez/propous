@@ -23,9 +23,9 @@ $(document).ready(function()
     chgpassword_clean_form();
 
     var data_post = {};
-    data_post.user_old_password = $('.chgpassword_user_oldpassword').val();
-    data_post.user_password = $('.chgpassword_user_password').val();
-    data_post.user_re_password = $('.chgpassword_user_repassword').val();
+    data_post.user_old_password = clean_field($('.chgpassword_user_oldpassword').val());
+    data_post.user_password = clean_field($('.chgpassword_user_password').val());
+    data_post.user_re_password = clean_field($('.chgpassword_user_repassword').val());
     data_post.filter_t = $('input[name=filter_t]').val();
 
     data_post.captcha_word = $('.captcha_input').val();

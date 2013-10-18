@@ -24,6 +24,10 @@
       <br/>
       <?php echo anchor('cms/contacts', 'Ver Comentarios [Contacto]'); ?>
       <br/>
+      <?php echo anchor('cms/notifies', 'Notificaciones privadas a usuarios'); ?>
+      <br/>
+      <?php echo anchor('cms/banneds', 'Baneos de usuarios'); ?>
+      <br/>
       <?php echo anchor('cms/maintenance', 'Portal en mantenimiento'); ?>
 
     </div>

@@ -23,10 +23,10 @@ $(document).ready(function()
     register_clean_form();
 
     var data_post = {};
-    data_post.user_name = $('.register_user_name').val();
-    data_post.user_email = $('.register_user_email').val();
-    data_post.user_password = $('.register_user_password').val();
-    data_post.user_re_password = $('.register_user_repassword').val();
+    data_post.user_name = clean_field($('.register_user_name').val());
+    data_post.user_email = clean_field($('.register_user_email').val());
+    data_post.user_password = clean_field($('.register_user_password').val());
+    data_post.user_re_password = clean_field($('.register_user_repassword').val());
     data_post.user_birthdate = get_birthdate_from_form();
     data_post.user_sex = $('.register_radio_gender').val();
     data_post.user_country_id = $('.register_select_country').val();

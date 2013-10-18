@@ -119,7 +119,7 @@ function success_get_proposal_photos(data)
       var link_to_box = $('<a class="fancybox" rel="group" href="'+baseurl + photo.route+'"></a>');
       $(div_images).append(link_to_box);
 
-      $(link_to_box).append($('<img></img>').attr("class", "viewprop_photos_carousel_img").attr("id", "viewprop_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));      
+      $(link_to_box).append($('<img></img>').addClass("viewprop_photos_carousel_img").addClass("img-rounded").attr("id", "viewprop_photos_carousel_img"+photo.id).attr("src", baseurl + photo.thumbnail));      
     });
 
     $(".viewprop_photos_carousel").removeClass("hidden");

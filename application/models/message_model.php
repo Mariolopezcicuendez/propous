@@ -106,7 +106,7 @@ class Message_model extends CI_Model
       FROM `message` 
       WHERE user_to_id = {$this->user_id}
       GROUP BY user_from_id 
-      ORDER BY time DESC
+      ORDER BY time
       LIMIT {$users_list_count}
     ");
 

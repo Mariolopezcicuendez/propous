@@ -45,13 +45,8 @@ TODO:
 - revisión de estilo y código funcional en navegadores
 - correcto funcionamiento de errores de perdida de conexión
 - correcto funcionamiento de errores de formularios
-- añadir validaciones de campos con textos en blanco
 - añadir más validaciones de passwords y campos...
-- placeholders en los inputs de los formularios
-- rellenar todos los hints del dom en los popover
 - encontrar buen sonido de chat
-- Los mensajes no deberian de borrarse ¿¿¿?????
-- Si añades un usuario y se encuentra en la lista en posiciones bajas, debería de posicionarse sobre ese usuario
 
 FUTURE:
 - Solo los usuarios premium, opción de ver predefinidas busquedas o categorias solo en las props del inicio
@@ -68,6 +63,7 @@ FUTURE:
 - Las propuestas pueden ir dirigidas a que las vea sólo usuarios con determinadas socialitys
 - Estudio de Integración de CometChat en el chat
 - Salas de chat
+- Borrado de los mensajes, echarle una pensada
 
 
 http://192.168.5.3/propous/es/plink/activeaccount/b4271348177c77bca2cb27b27269a3bc26a5fe51
