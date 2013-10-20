@@ -157,6 +157,13 @@ function validate_register(data)
     $('.register_user_password_validation_error').text(lang('p_password_not_valid'));
     return true;
   }
+  if (!data.user_password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,255}$/))
+  {
+    $('.register_user_password').parent().parent().addClass('has-error');
+    $('.error_validation_register_user_password').removeClass('hidden');
+    $('.register_user_password_validation_error').text(lang('p_password_not_valid'));
+    return true;
+  }
   if (data.user_re_password !== data.user_password)
   {
     $('.register_user_repassword').parent().parent().addClass('has-error');

@@ -3,7 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><?php echo NAME_PROJECT; ?></title>
+
+  <?php
+  $post_title_page = "";
+  switch ($this->uri->segment(2))
+  {
+    case 'messages': 
+      $post_title_page = " / ".lang('p_messages');
+    break;
+    default:
+      $post_title_page = "";
+  }
+  ?>
+  <title><?php echo NAME_PROJECT . $post_title_page; ?></title>
+
+  <link rel="icon" type="image/png" href="<?php echo  $this->config->item('file_base_url_relative'); ?>assets/icons/favicon.png" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0" />

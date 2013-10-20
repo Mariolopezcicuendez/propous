@@ -138,6 +138,13 @@ function validate_contact(data)
     $('.contact_comment_validation_error').text(lang('p_comment_too_short'));
     return true;
   }
+  if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
+  {
+    $('.contact_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_contact_captcha').removeClass('hidden');
+    $('.contact_captcha_validation_error').text(lang('p_invalid_captcha'));
+    return true;
+  }
 
   return false;
 }

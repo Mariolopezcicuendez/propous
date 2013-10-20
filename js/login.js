@@ -56,27 +56,6 @@ function validate_login(data)
     $('.login_user_email_validation_error').text(lang('p_email_not_valid'));
     return true;
   }
-  if (data.user_password.length < USER_PASSWORD_MIN_SIZE)
-  {
-    $('.login_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_login_user_password').removeClass('hidden');
-    $('.login_user_password_validation_error').text(lang('p_password_too_short'));
-    return true;
-  }
-  if (data.user_password.length > USER_PASSWORD_MAX_SIZE)
-  {
-    $('.login_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_login_user_password').removeClass('hidden');
-    $('.login_user_password_validation_error').text(lang('p_password_too_long'));
-    return true;
-  }
-  if (!data.user_password.match(/[A-Za-z0-9_\-.#@%&áéíóúÁÉÍÓÚüÜñÑ]{1,255}/))
-  {
-    $('.login_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_login_user_password').removeClass('hidden');
-    $('.login_user_password_validation_error').text(lang('p_password_not_valid'));
-    return true;
-  }
 
   return false;
 }
@@ -92,34 +71,12 @@ function error_login(data)
   var error_number = data.status;
   var error_message = data.error.message;
 
-  show_fail("login_data_alert", lang('p_not_logged_by_error'));
-
   if (error_number === 1104)
   {
     $('.login_user_email').parent().parent().addClass('has-error');
     $('.error_validation_login_user_email').removeClass('hidden');
     $('.login_user_email_validation_error').text(error_message);
-    return;
-  }
-  if (error_number === 1105)
-  {
-    $('.login_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_login_user_password').removeClass('hidden');
-    $('.login_user_password_validation_error').text(error_message);
-    return;
-  }
-  if (error_number === 1106)
-  {
-    $('.login_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_login_user_password').removeClass('hidden');
-    $('.login_user_password_validation_error').text(error_message);
-    return;
-  }
-  if (error_number === 1107)
-  {
-    $('.login_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_login_user_password').removeClass('hidden');
-    $('.login_user_password_validation_error').text(error_message);
+    show_fail("login_data_alert", lang('p_not_logged_by_error'));
     return;
   }
   if (error_number === 1130)

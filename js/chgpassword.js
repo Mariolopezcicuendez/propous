@@ -185,11 +185,25 @@ function validate_chgpassword(data)
     $('.chgpassword_user_password_validation_error').text(lang('p_password_not_valid'));
     return true;
   }
+  if (!data.user_password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,255}$/))
+  {
+    $('.chgpassword_user_password').parent().parent().addClass('has-error');
+    $('.error_validation_chgpassword_user_password').removeClass('hidden');
+    $('.chgpassword_user_password_validation_error').text(lang('p_password_not_valid'));
+    return true;
+  }
   if (data.user_re_password !== data.user_password)
   {
     $('.chgpassword_user_repassword').parent().parent().addClass('has-error');
     $('.error_validation_chgpassword_user_repassword').removeClass('hidden');
     $('.chgpassword_user_repassword_validation_error').text(lang('p_password_repassword_not_equals'));
+    return true;
+  }
+  if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
+  {
+    $('.chgpassword_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_chgpassword_captcha').removeClass('hidden');
+    $('.chgpassword_captcha_validation_error').text(lang('p_invalid_captcha'));
     return true;
   }
 

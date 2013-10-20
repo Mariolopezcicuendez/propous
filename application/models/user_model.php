@@ -166,6 +166,7 @@ class User_model extends CI_Model
     if (strlen($this->user_password) < USER_PASSWORD_MIN_SIZE) throw new Exception(lang('exception_error_1105'), 1105);
     if (strlen($this->user_password) > USER_PASSWORD_MAX_SIZE) throw new Exception(lang('exception_error_1106'), 1106);
     if (!preg_match("/[A-Za-z0-9_\-.#@%&áéíóúÁÉÍÓÚüÜñÑ]{1,".USER_PASSWORD_MAX_SIZE."}/", $this->user_password)) throw new Exception(lang('exception_error_1107'), 1107);
+    if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,".USER_PASSWORD_MAX_SIZE."}$/", $this->user_password)) throw new Exception(lang('exception_error_1107'), 1107);
 
     if ($this->user_password !== $this->user_re_password) throw new Exception(lang('exception_error_1108'), 1108);
 
@@ -220,15 +221,9 @@ class User_model extends CI_Model
     if (strlen($this->user_password) < USER_PASSWORD_MIN_SIZE) throw new Exception(lang('exception_error_1105'), 1105);
     if (strlen($this->user_password) > USER_PASSWORD_MAX_SIZE) throw new Exception(lang('exception_error_1106'), 1106);
     if (!preg_match("/[A-Za-z0-9_\-.#@%&áéíóúÁÉÍÓÚüÜñÑ]{1,".USER_PASSWORD_MAX_SIZE."}/", $this->user_password)) throw new Exception(lang('exception_error_1107'), 1107);
+    if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,".USER_PASSWORD_MAX_SIZE."}$/", $this->user_password)) throw new Exception(lang('exception_error_1107'), 1107);
 
     if ($this->user_password !== $this->user_re_password) throw new Exception(lang('exception_error_1108'), 1108);
-  }
-
-  function validate_delete()
-  {
-    if (strlen($this->user_old_password) < USER_PASSWORD_MIN_SIZE) throw new Exception(lang('exception_error_1105'), 1105);
-    if (strlen($this->user_old_password) > USER_PASSWORD_MAX_SIZE) throw new Exception(lang('exception_error_1106'), 1106);
-    if (!preg_match("/[A-Za-z0-9_\-.#@%&áéíóúÁÉÍÓÚüÜñÑ]{1,".USER_PASSWORD_MAX_SIZE."}/", $this->user_old_password)) throw new Exception(lang('exception_error_1107'), 1107);
   }
 
   function check_exists_email($email)
@@ -375,7 +370,6 @@ class User_model extends CI_Model
     $ip = $this->input->ip_address();
     $session_id = $this->session->userdata('session_id');
 
-    $this->validate_delete();
     $this->check_old_password($user_id);
 
     $this->captcha_model->captcha_exist($captcha_word, $ip, $session_id);
@@ -532,10 +526,6 @@ class User_model extends CI_Model
   function validate_login()
   {
     if (!preg_match("/[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}/", $this->user_email)) throw new Exception(lang('exception_error_1104'), 1104);
-
-    if (strlen($this->user_password) < USER_PASSWORD_MIN_SIZE) throw new Exception(lang('exception_error_1105'), 1105);
-    if (strlen($this->user_password) > USER_PASSWORD_MAX_SIZE) throw new Exception(lang('exception_error_1106'), 1106);
-    if (!preg_match("/[A-Za-z0-9_\-.#@%&áéíóúÁÉÍÓÚüÜñÑ]{1,".USER_PASSWORD_MAX_SIZE."}/", $this->user_password)) throw new Exception(lang('exception_error_1107'), 1107);
   }
 
   function logged()
@@ -549,7 +539,7 @@ class User_model extends CI_Model
     $this->user_password = $this->input->post('user_password');
     $this->user_remember_credentials = $this->input->post('user_remember');
 
-    $this->validate_login();
+    // $this->validate_login();
 
     // Check if user Banned
     $query = $this->db->query("SELECT reason_tag FROM banneds WHERE email = '{$this->user_email}' ORDER BY id LIMIT 1");

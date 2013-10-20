@@ -109,27 +109,6 @@ function error_delete_account(data)
   var error_number = data.status;
   var error_message = data.error.message;
 
-  if (error_number === 1105)
-  {
-    $('.deleteaccount_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_deleteaccount_user_password').removeClass('hidden');
-    $('.deleteaccount_user_password_validation_error').text(error_message);
-    return;
-  }
-  if (error_number === 1106)
-  {
-    $('.deleteaccount_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_deleteaccount_user_password').removeClass('hidden');
-    $('.deleteaccount_user_password_validation_error').text(error_message);
-    return;
-  }
-  if (error_number === 1107)
-  {
-    $('.deleteaccount_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_deleteaccount_user_password').removeClass('hidden');
-    $('.deleteaccount_user_password_validation_error').text(error_message);
-    return;
-  }
   if (error_number === 1129)
   {
     show_fail("deleteaccount_data_alert", data.error.message);
@@ -146,25 +125,11 @@ function error_delete_account(data)
 
 function validate_deleteaccount(data)
 {
-  if (data.user_password.length < USER_PASSWORD_MIN_SIZE)
+  if (!data.captcha_word.match(/[A-Za-z0-9]{1,255}/))
   {
-    $('.deleteaccount_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_deleteaccount_user_password').removeClass('hidden');
-    $('.deleteaccount_user_password_validation_error').text(lang('p_password_too_short'));
-    return true;
-  }
-  if (data.user_password.length > USER_PASSWORD_MAX_SIZE)
-  {
-    $('.deleteaccount_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_deleteaccount_user_password').removeClass('hidden');
-    $('.deleteaccount_user_password_validation_error').text(lang('p_password_too_long'));
-    return true;
-  }
-  if (!data.user_password.match(/[A-Za-z0-9_\-.#@%&áéíóúÁÉÍÓÚüÜñÑ]{1,255}/))
-  {
-    $('.deleteaccount_user_password').parent().parent().addClass('has-error');
-    $('.error_validation_deleteaccount_user_password').removeClass('hidden');
-    $('.deleteaccount_user_password_validation_error').text(lang('p_password_not_valid'));
+    $('.deleteaccount_div_captcha').parent().parent().addClass('has-error');
+    $('.error_validation_deleteaccount_captcha').removeClass('hidden');
+    $('.deleteaccount_captcha_validation_error').text(lang('p_invalid_captcha'));
     return true;
   }
 

@@ -97,11 +97,21 @@
 			
 			<strong><?php echo lang('p_share'); ?></strong>
 			<br/>
-			Face
+			<iframe src="//www.facebook.com/plugins/subscribe.php?href=https%3A%2F%2Fwww.facebook.com%2Fzuck&amp;layout=button_count&amp;show_faces=false&amp;colorscheme=light&amp;font&amp;width=150&amp;height=21&amp;appId=315795285165261" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width:150px;" allowTransparency="true"></iframe>
 			<br/>
-			Tweet
+			<a href="https://twitter.com/share" class="social_button twitter-share-button" data-via="Clyft" data-lang="es">Twittear</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 			<br/>
-			G+
+      <div class="social_button g-plusone" data-size="medium"></div>
+      <script type="text/javascript">
+        window.___gcfg = {lang: 'es'};
+
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/plusone.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      </script>
 
 		</div>
 

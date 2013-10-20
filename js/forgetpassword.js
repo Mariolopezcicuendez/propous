@@ -201,6 +201,13 @@ function validate_forgetpasswordnew(data)
     $('.forgetpasswordnew_user_password_validation_error').text(lang('p_password_not_valid'));
     return;
   }
+  if (!data.user_password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{1,255}$/))
+  {
+    $('.forgetpasswordnew_user_password').parent().parent().addClass('has-error');
+    $('.error_validation_forgetpasswordnew_user_password').removeClass('hidden');
+    $('.forgetpasswordnew_user_password_validation_error').text(lang('p_password_not_valid'));
+    return true;
+  }
   if (data.user_re_password !== data.user_password)
   {
     $('.forgetpasswordnew_user_repassword').parent().parent().addClass('has-error');
