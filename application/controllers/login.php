@@ -11,6 +11,9 @@ class Login extends CI_Controller
 
 	public function index()
 	{
+    $data_header = array();
+    $data_header["post_title_page"] = "";
+
 		if ($this->maintenance_model->on_maintenance())
     {
       redirect('/' . getActLang() . '/maintenance');
@@ -34,21 +37,21 @@ class Login extends CI_Controller
           } 
           catch (Exception $e)
           {
-            $this->load->view('header');
+            $this->load->view('header',$data_header);
             $this->load->view('login');
             $this->load->view('footer');
           }
         }
         else
         {
-          $this->load->view('header');
+          $this->load->view('header',$data_header);
           $this->load->view('login');
           $this->load->view('footer');
         }
       }
       else
       {
-        $this->load->view('header');
+        $this->load->view('header',$data_header);
         $this->load->view('login');
         $this->load->view('footer');
       }

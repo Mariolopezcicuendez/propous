@@ -66,6 +66,22 @@ class Proposal_model extends CI_Model
     if ($this->proposal_state_id < VALIDATE_ID_MIN_VALUE) throw new Exception(lang('exception_error_1605'), 1605);
   }
 
+  function get_proposal_title($prop_id)
+  {
+    $query = $this->db->query("
+      SELECT id, proposal 
+      FROM `proposal` 
+      WHERE id = {$prop_id}
+    ");
+    if ($query->num_rows() > 0)
+    {
+      $row = $query->row();
+      $proposal = $row->proposal;
+      return $proposal;
+    }
+    return "";
+  }
+
   function create()
   {
     $this->proposal_user_id = $this->input->post('proposal_user_id');

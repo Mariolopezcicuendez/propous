@@ -9,7 +9,10 @@ class Maintenance extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('header');
+		$data_header = array();
+    $data_header["post_title_page"] = " / " . lang('p_maintenance_page');
+
+    $this->load->view('header', $data_header);
     $this->load->view('maintenance');
     $this->load->view('footer');
 	}

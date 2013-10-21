@@ -3,7 +3,7 @@ var user_id = null;
 
 $(document).ready(function() 
 {
-	user_id = localStorage.getItem("user_id");
+	user_id = $(".v_profile_id").val();
 
   var get_user_data = function()
   {

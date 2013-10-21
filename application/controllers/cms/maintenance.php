@@ -22,7 +22,10 @@ class Maintenance extends CI_Controller
     $data = $this->maintenance_model->on_maintenance();
     $data = array("data" => $data, 'back' => $this->tag);
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / CMS";
+
+    $this->load->view('header',$data_header);
     $this->load->view("cms/{$this->tag}",$data);
     $this->load->view('footer');
   }

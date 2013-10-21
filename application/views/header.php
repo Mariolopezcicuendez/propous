@@ -5,15 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <?php
-  $post_title_page = "";
-  switch ($this->uri->segment(2))
-  {
-    case 'messages': 
-      $post_title_page = " / ".lang('p_messages');
-    break;
-    default:
-      $post_title_page = "";
-  }
+  // $post_title_page = "";
+  // switch ($this->uri->segment(2))
+  // {
+  //   case 'props': $post_title_page = " / ".lang('p_props'); break;
+  //   case 'messages': $post_title_page = " / ".lang('p_messages');
+  //   break;
+  //   case 'editprofile': $post_title_page = " / ".lang('p_profile');
+  //   break;
+  //   case 'myprops': $post_title_page = " / ".lang('p_myprops');
+  //   break;
+  //   case 'favorites': $post_title_page = " / ".lang('p_favorites');
+  //   break;
+  //   case 'cms': $post_title_page = " / CMS";
+  //   break;
+  //   case 'analitycs': $post_title_page = " / Analitycs"; break;
+  //   case 'viewprop': $post_title_page = " / ".$title_prop; break;
+  //   case 'editprop': $post_title_page = " / ".lang('p_editprop'); break;
+  //   case 'newprop': $post_title_page = " / ".lang('p_newprop'); break;
+  //   case 'viewprofile': $post_title_page = " / ".$title_profile; break;
+  //   case 'premium': $post_title_page = " / ".lang('p_premium'); break;
+  //   default:
+  //     $post_title_page = "";
+  // }
   ?>
   <title><?php echo NAME_PROJECT . $post_title_page; ?></title>
 
@@ -106,6 +120,8 @@
   <input type='hidden' class='gdata_country_id' value='<?php echo $user_data['country_id']; ?>'/>
   <input type='hidden' class='gdata_state_id' value='<?php echo $user_data['state_id']; ?>'/>
   <input type='hidden' class='actual_lang_tag' value='<?php echo getActLang(); ?>'/>
+  <input type='hidden' class='v_prop_id' value='<?php if (isset($prop_id)) echo $prop_id; ?>'/>
+  <input type='hidden' class='v_profile_id' value='<?php if (isset($profile_id)) echo $profile_id; ?>'/>
 
   <div class='div_header_center col-lg-6'> 
 

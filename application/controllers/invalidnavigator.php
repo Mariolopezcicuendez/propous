@@ -9,7 +9,10 @@ class InvalidNavigator extends CI_Controller
 
   public function index()
   {
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / " . lang('p_invalid_navigator');
+
+    $this->load->view('header', $data_header);
     $this->load->view('invalidnavigator');
     $this->load->view('footer');
   }

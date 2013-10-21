@@ -19,7 +19,10 @@ class Premium extends CI_Controller
       exit();
     }
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / CMS";
+
+    $this->load->view('header',$data_header);
     $this->load->view("cms/{$this->tag}");
     $this->load->view('footer');
 	}
@@ -38,7 +41,10 @@ class Premium extends CI_Controller
     $data = $this->premium_model->cms_get($id);
     $data = array("data" => $data, 'textareas' => $textareas, 'action' => 'edit', 'back' => $this->tag);
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / CMS";
+
+    $this->load->view('header',$data_header);
     $this->load->view("cms/{$this->tag}_edit",$data);
     $this->load->view('footer');
   }
@@ -62,7 +68,10 @@ class Premium extends CI_Controller
 
     $data = array("data" => $data, 'textareas' => $textareas, 'action' => 'new', 'back' => $this->tag);
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / CMS";
+
+    $this->load->view('header',$data_header);
     $this->load->view("cms/{$this->tag}_edit",$data);
     $this->load->view('footer');
   }

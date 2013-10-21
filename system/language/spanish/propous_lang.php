@@ -274,7 +274,13 @@ $lang['p_prop_with_photos'] = "Prop con fotos";
 $lang['p_remember_for_next_access'] = "Te permite recordar tu login para la próxima vez que accedas";
 $lang['p_delete_chat_conversation'] = "Elimina una conversación de chat";
 $lang['p_admin_notification'] = "NOTIFICACIÓN DEL EQUIPO DE ADMINISTRADORES";
-$lang['p_understand_will_not_do'] = "Lo entiendo, no volverá a pasar";
+$lang['p_understand_will_not_do'] = "Lo entiendo, actuaré en consecuencia";
+$lang['p_change_location_detected_please_logout'] = "Se ha detectado un cambio en la localización, para que se haga efectivo por favor desloguee y vuelva a loguear su cuenta";
+$lang['p_editprop'] = "Editar prop";
+$lang['p_newprop'] = "Nueva prop";
+$lang['p_activate_account'] = "Activar cuenta";
+$lang['p_invalid_navigator'] = "Navegador no válido";
+$lang['p_page_restringed'] = "Página restringida";
 
 $lang['p_title_about_page'] = "About";
 $lang['p_paragraph_about_1'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra scelerisque nibh, nec elementum nibh luctus hendrerit. Donec quis dui id arcu malesuada tempor. Suspendisse at tempor ante, a commodo leo. Cras felis risus, sodales sed nulla bibendum, varius facilisis urna. Suspendisse a nisl eros. Fusce elit orci, tempor a vehicula et, aliquet quis enim. Mauris sollicitudin rutrum suscipit.";

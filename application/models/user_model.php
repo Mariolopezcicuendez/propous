@@ -38,6 +38,7 @@ class User_model extends CI_Model
     $this->load->model('photo_model');
     $this->load->model('emailsend');
     $this->load->model('country_model');
+    $this->load->model('notify_model');
     $this->load->helper('cookie');
   }
 
@@ -318,6 +319,15 @@ class User_model extends CI_Model
 
     $this->validate_save();
 
+    $query = $this->db->query("
+      SELECT id, country_id, state_id 
+      FROM `user` 
+      WHERE id = {$user_id}
+    ");
+    $row = $query->row();
+    $last_country = $row->country_id;
+    $last_state = $row->state_id;
+
     $user['name'] = $this->user_name;
     $user['birthdate'] = $this->user_birthdate;
     $user['sex'] = $this->user_sex;
@@ -346,7 +356,18 @@ class User_model extends CI_Model
       FROM `user` 
       WHERE id = {$user_id}
     ");
-    $row[] = $query->row();
+    $row_temp = $query->row();
+    $row[] = $row_temp;
+
+    // Si hay un cambio de localización se lo comunicamos al usuario para que desloguee
+    $country = $row_temp->country_id;
+    $state = $row_temp->state_id;
+
+    if (($last_country . "_" . $last_state) !== ($country . "_" . $state))
+    {
+      $notify_text = lang("p_change_location_detected_please_logout");
+      $this->notify_model->save($user_id,$notify_text);
+    }
 
     $this->db->trans_complete();
 

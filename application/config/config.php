@@ -14,12 +14,12 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://192.168.5.3/propous/';
-$config['file_base_url']	= '/var/www/propous/';
-$config['file_base_url_relative']	= '/propous/';
-// $config['base_url']	= 'http://10.29.0.139/localtests/propous/';
-// $config['file_base_url']	= '/home/www/localtests/propous/';
-// $config['file_base_url_relative']	= '/localtests/propous/';
+// $config['base_url']	= 'http://192.168.5.3/propous/';
+// $config['file_base_url']	= '/var/www/propous/';
+// $config['file_base_url_relative']	= '/propous/';
+$config['base_url']	= 'http://10.29.0.139/localtests/propous/';
+$config['file_base_url']	= '/home/www/localtests/propous/';
+$config['file_base_url_relative']	= '/localtests/propous/';
 
 /*
 |--------------------------------------------------------------------------

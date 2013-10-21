@@ -4,7 +4,7 @@ var favorite_id = null;
 
 $(document).ready(function() 
 {
-	proposal_id = localStorage.getItem("proposal_id");
+	proposal_id = $(".v_prop_id").val();
 
 	var get_proposal_data = function()
   {
@@ -33,13 +33,12 @@ $(document).ready(function()
 
   $('.viewprop_viewuser_prop_link').on("click",function() 
   {
-    localStorage.setItem("user_id", data_proposal.user_id);
-  	window.location = baseurl + "/" + m_lang + "/viewprofile";
+  	window.location = baseurl + "/" + m_lang + "/viewprofile?id="+data_proposal.user_id;
   });
 
   $('.viewprop_sendmessage_prop_link').on("click",function() 
   {
-    localStorage.setItem("chating_now",data_proposal.user_id)
+    localStorage.setItem("chating_now",data_proposal.user_id);
   	window.location = baseurl + "/" + m_lang + "/messages";
   });
 

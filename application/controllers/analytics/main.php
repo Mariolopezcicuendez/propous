@@ -16,7 +16,10 @@ class Main extends CI_Controller
       exit();
     }  
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / Analitycs";
+
+    $this->load->view('header',$data_header);
     $this->load->view('analytics/main');
     $this->load->view('footer');
 	}

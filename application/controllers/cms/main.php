@@ -16,7 +16,10 @@ class Main extends CI_Controller
       exit();
     }
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / CMS";
+
+    $this->load->view('header',$data_header);
     $this->load->view('cms/main');
     $this->load->view('footer');
 	}

@@ -16,6 +16,7 @@ class Contact extends CI_Controller
 
 		$data_header = array();
     $data_header["notifies"] = array();
+    $data_header["post_title_page"] = " / " . lang('p_contact');
     if ($this->user_model->logged())
     {
       $user_data = $this->session->userdata('logged_in');

@@ -49,6 +49,16 @@ class Notify_model extends CI_Model
     return $notify_id;
   }
 
+  function save($user_id, $notify_message)
+  {
+    $data = array(
+      "user_id" => $user_id,
+      "notification" => $notify_message,
+      "readen" => 0
+    );
+    $this->db->insert($this->table, $data);
+  }
+
   function cms_all()
   {
     $query = $this->db->query("SELECT * FROM {$this->table} ORDER BY id DESC");

@@ -152,32 +152,13 @@ function activate_datatable_events()
   $('.prop_list_images_img_action_view_user').on("click", function()
   {
     var user_id = $(this).attr("user_id");
-    localStorage.setItem("user_id", user_id);
-    window.location = baseurl + "/" + m_lang + "/viewprofile";
+    window.location = baseurl + "/" + m_lang + "/viewprofile?id="+user_id;
   });
 
   $('.prop_list_images_img_action_view').on("click", function()
   {
     var prop_id = $(this).attr("prop_id");
-    localStorage.setItem("proposal_id", prop_id);
-    window.location = baseurl + "/" + m_lang + "/viewprop";
-  });
-
-  $('.proposal_main_view_link').on("click", function( event ) 
-  {
-    event.preventDefault();
-    if (prop_chosen === null)
-    {
-      prop_chosen = $(this).attr("prop_id");
-    }
-    localStorage.setItem("proposal_id", prop_chosen);
-    window.location = baseurl+"/"+m_lang+"/viewprop";
-  });
-
-  $('.proposal_main_view_link').on("mousedown", function( event ) 
-  {
-    prop_chosen = $(this).attr("prop_id");
-    localStorage.setItem("proposal_id", prop_chosen);
+    window.location = baseurl + "/" + m_lang + "/viewprop?id="+prop_id;
   });
 
   get_proposal_favorites();
@@ -257,7 +238,7 @@ function get_proposal_main_view_link(prop_id, prop_text)
     text_proposal = text_proposal.substring(0,PROPOSAL_NAME_MAX_SIZE_WRAP)+"...";
   }
 
-  return "<a class='proposal_main_view_link' prop_id='"+prop_id+"' href='" + baseurl + "/" + m_lang + "/viewprop'>"+text_proposal+"</a>";
+  return "<a class='proposal_main_view_link' prop_id='"+prop_id+"' href='" + baseurl + "/" + m_lang + "/viewprop?id="+prop_id+"'>"+text_proposal+"</a>";
 }
 
 function save_prop_to_favorites(prop_id)

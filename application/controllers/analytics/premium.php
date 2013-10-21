@@ -18,7 +18,10 @@ class Premium extends CI_Controller
       exit();
     }
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / Analitycs";
+
+    $this->load->view('header',$data_header);
     $this->load->view('analytics/'.$this->tag);
     $this->load->view('footer');
 	}
@@ -34,7 +37,10 @@ class Premium extends CI_Controller
 
     $data = array('back' => $this->tag);
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / Analitycs";
+
+    $this->load->view('header',$data_header);
     $this->load->view("analytics/{$this->tag}_detail",$data);
     $this->load->view('footer');
   }

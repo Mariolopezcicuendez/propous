@@ -14,7 +14,10 @@ class Forgetpassword extends CI_Controller
     $capcha = $this->captcha_model->get_captcha();
     $data = array("captcha" => $capcha);
 
-    $this->load->view('header');
+    $data_header = array();
+    $data_header["post_title_page"] = " / " . lang('p_forget_password');
+
+    $this->load->view('header',$data_header);
     $this->load->view('forgetpassword',$data);
     $this->load->view('footer');
   }
@@ -24,9 +27,12 @@ class Forgetpassword extends CI_Controller
   {
     $capcha = $this->captcha_model->get_captcha();
 
+    $data_header = array();
+    $data_header["post_title_page"] = " / " . lang('p_forget_password');
+
     // Ejemplo de link: http://xxxxxx/propous/plink/forgetpassword/{token}
     $data = array("token" => $token, "captcha" => $capcha);
-    $this->load->view('header');
+    $this->load->view('header',$data_header);
     $this->load->view('forgetpasswordnew',$data);
     $this->load->view('footer');
   }
