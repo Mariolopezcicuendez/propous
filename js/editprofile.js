@@ -284,6 +284,8 @@ function put_user_data_in_form()
 	$('.editprofile_hobbies').val(data_user.hobbies);
 	$('.editprofile_phone').val(data_user.phone);
 	$('.editprofile_description').val(data_user.description);
+
+  $('.content_editprofile_data_right').removeClass('hidden');
 }
 
 function error_get_user_data()
@@ -813,6 +815,7 @@ function success_get_user_photos(data)
     });
 
     $(".editprofile_photos_carousel").removeClass("hidden");
+    $('.content_editprofile_photos_right').removeClass('hidden');
 
     $("#editprofile_carousel").carouFredSel({
       items   : PHOTOS_IN_CARROUSEL,
@@ -854,13 +857,16 @@ function success_get_user_photos(data)
     $(".editprofile_photos_text_no_photos").text(lang('p_user_without_photos'));
     $(".editprofile_photos_text_no_photos").removeClass("hidden");
     $(".editprofile_photos_carousel").addClass("hidden");
+    $('.content_editprofile_photos_right').removeClass('hidden');
   }   
 }
 
 function error_get_user_photos(data)
 {
+  $('.content_editprofile_photos_right div.form-group').eq(0).addClass("hidden");
+  $('.content_editprofile_photos_right div.form-group').eq(1).addClass("hidden");
   $(".editprofile_photos_carousel").addClass("hidden");
-  show_fail("editprofile_photo_alert", data.error.message);
+  show_fail("editprofile_photo_alert", data.error.message, true);
 }
 
 function success_set_photo_as_main(data)
@@ -1006,11 +1012,16 @@ function success_get_user_sociality(data)
     $(".editprofile_sociality_text_no_socialities").removeClass("hidden");
     $(".editprofile_sociality_images").addClass("hidden");
   }    
+
+  $('.content_editprofile_sociality_right').removeClass('hidden');
 }
 
 function error_get_user_sociality(data)
 {
-  show_fail("editprofile_sociality_alert", data.error.message);
+  $('.content_editprofile_sociality_right div.form-group').eq(0).addClass("hidden");
+  $('.content_editprofile_sociality_right div.form-group').eq(1).addClass("hidden");
+  $('.content_editprofile_sociality_right').removeClass('hidden');
+  show_fail("editprofile_sociality_alert", data.error.message, true);
 }
 
 function get_name_sociality_from_tag(tag)
@@ -1070,7 +1081,7 @@ function error_get_all_socialities(data)
   $(".editprofile_sociality_select").prop("disabled",true);
   $(".editprofile_sociality_select_add_button").prop("disabled",true);
 
-  show_fail("editprofile_sociality_alert", data.error.message);
+  show_fail("editprofile_sociality_alert", data.error.message, true);
 }
 
 function success_save_social(data)
@@ -1123,7 +1134,8 @@ function success_get_user_spoken_languages(data)
 
 function error_get_user_spoken_languages(data)
 {
-  
+  $(".editprofile_select_spoken").parent().parent().addClass('hidden');
+  $(".editprofile_select_spoken_level").parent().parent().addClass('hidden');
 }
 
 function success_get_all_spoken_languages(data)
@@ -1145,7 +1157,7 @@ function success_get_all_spoken_languages(data)
 
 function error_get_all_spoken_languages(data)
 {
-
+  $(".editprofile_select_spoken_level").parent().parent().addClass('hidden');
 }
 
 function success_delete_spoken(data)
@@ -1156,7 +1168,7 @@ function success_delete_spoken(data)
 
 function error_delete_spoken(data)
 {
-  
+  show_fail("editprofile_data_alert", data.error.message);
 }
 
 function success_save_spoken(data)
@@ -1166,5 +1178,5 @@ function success_save_spoken(data)
 
 function error_save_spoken(data)
 {
-
+  show_fail("editprofile_data_alert", data.error.message);
 }

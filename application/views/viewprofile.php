@@ -16,7 +16,7 @@
 					<img style='width:<?php echo MAIN_PHOTO_WIDTH; ?>px; height:<?php echo MAIN_PHOTO_HEIGHT; ?>px;' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/photos/no_photo.png' class='content_viewprofile_main_photo img-rounded'></img>
 				</div>
 
-				<div class='content_viewprofile_data_right col-md-10'>
+				<div class='content_viewprofile_data_right hidden col-md-10'>
 
 					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
@@ -172,7 +172,7 @@
 				<img class='img_info' src='<?php echo $this->config->item('base_url') . 'assets/icons/info.png'; ?>'/>
 			</div>
 
-			<div class='content_viewprofile_sociality_right col-md-10'>
+			<div class='content_viewprofile_sociality_right hidden col-md-10'>
 
 				<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 

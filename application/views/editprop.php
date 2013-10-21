@@ -14,7 +14,7 @@
 
 				<div class='content_editprop_data_left col-md-2'></div>
 
-				<div class='content_editprop_data_right col-md-10'>
+				<div class='content_editprop_data_right hidden col-md-10'>
 
 					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
@@ -144,7 +144,7 @@
 				<img class='img_info' src='<?php echo $this->config->item('base_url') . 'assets/icons/info.png'; ?>'/>
 			</div>
 
-			<div class='content_editprop_category_right col-md-10'>
+			<div class='content_editprop_category_right hidden col-md-10'>
 
 				<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 

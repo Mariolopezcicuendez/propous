@@ -128,11 +128,13 @@ function put_user_data_in_form()
 		$('.viewprofile_description').removeClass("hidden");
 		$('.viewprofile_description').parent().parent().removeClass("hidden");
 	}
+
+  $('.content_viewprofile_data_right').removeClass('hidden');
 }
 
 function error_get_user_data()
 {
-  show_fail("viewprofile_data_alert", lang('p_user_data_not_load'));
+  show_fail("viewprofile_data_alert", lang('p_user_data_not_load'), true);
 }
 
 function calculate_age_from_birthdate()
@@ -191,6 +193,7 @@ function success_get_user_photos(data)
     });
 
     $(".viewprofile_photos_carousel").removeClass("hidden");
+    $('.content_viewprofile_photos_right').removeClass('hidden');
 
     $("#viewprofile_carousel").carouFredSel({
       items   : PHOTOS_IN_CARROUSEL,
@@ -205,13 +208,15 @@ function success_get_user_photos(data)
     $(".viewprofile_photos_text_no_photos").text(lang('p_user_without_photos'));
     $(".viewprofile_photos_text_no_photos").removeClass("hidden");
     $(".viewprofile_photos_carousel").addClass("hidden");
+    $('.content_viewprofile_photos_right').removeClass('hidden');
   }   
 }
 
 function error_get_user_photos(data)
 {
+  $('.content_viewprofile_photos_right div.form-group').eq(0).addClass("hidden");
   $(".viewprofile_photos_carousel").addClass("hidden");
-  show_fail("viewprofile_photo_alert", data.error.message);
+  show_fail("viewprofile_photo_alert", data.error.message, true);
 }
 
 function get_main_photo()
@@ -275,14 +280,14 @@ function success_get_user_sociality(data)
     $(".viewprofile_sociality_text_no_socialities").removeClass("hidden");
     $(".viewprofile_sociality_images").addClass("hidden");
   }    
+  $('.content_viewprofile_sociality_right').removeClass('hidden');
 }
 
 function error_get_user_sociality(data)
 {
-  $(".viewprofile_sociality_images").addClass('hidden');
-  show_fail("editprofile_sociality_alert", data.error.message);
-  $(".viewprofile_sociality_text_no_socialities").text(lang('p_user_without_socialities'));
-  $(".viewprofile_sociality_text_no_socialities").removeClass("hidden");
+  $('.content_viewprofile_sociality_right div.form-group').eq(0).addClass("hidden");
+  $('.content_viewprofile_sociality_right').removeClass('hidden');
+  show_fail("viewprofile_sociality_alert", data.error.message, true);
 }
 
 function get_name_sociality_from_tag(tag)
@@ -321,5 +326,5 @@ function success_get_user_spoken_languages(data)
 
 function error_get_user_spoken_languages(data)
 {
-  
+  $(".viewprofile_select_spoken").parent().parent().addClass('hidden');
 }

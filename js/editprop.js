@@ -221,11 +221,13 @@ function put_proposal_data_in_form()
   {
     $('.editprop_visibility_onoffswitch .onoffswitch-checkbox').parent().parent().removeClass('hidden');
   }
+
+  $('.content_editprop_data_right').removeClass('hidden');
 }
 
 function error_get_proposal_data()
 {
-  show_fail("editprop_data_alert", lang('p_proposal_data_not_load'));
+  show_fail("editprop_data_alert", lang('p_proposal_data_not_load'), true);
 }
 
 function success_get_countries(data)
@@ -534,6 +536,7 @@ function success_get_proposal_photos(data)
     });
 
     $(".editprop_photos_carousel").removeClass("hidden");
+    $('.content_editprop_photos_right').removeClass('hidden');
 
     $("#editprop_carousel").carouFredSel({
       items   : PHOTOS_IN_CARROUSEL,
@@ -560,13 +563,16 @@ function success_get_proposal_photos(data)
     $(".editprop_photos_text_no_photos").text(lang('p_proposal_without_photos'));
     $(".editprop_photos_text_no_photos").removeClass("hidden");
     $(".editprop_photos_carousel").addClass("hidden");
+    $('.content_editprop_photos_right').removeClass('hidden');
   } 
 }
 
 function error_get_proposal_photos(data)
 {
+  $('.content_editprop_photos_right div.form-group').eq(0).addClass("hidden");
+  $('.content_editprop_photos_right div.form-group').eq(1).addClass("hidden");
   $(".editprop_photos_carousel").addClass("hidden");
-  show_fail("editprop_photo_alert", data.error.message);
+  show_fail("editprop_photo_alert", data.error.message, true);
 }
 
 function success_delete_photo(data)
@@ -647,11 +653,16 @@ function success_get_proposal_category(data)
     $(".editprop_category_text_no_categories").removeClass("hidden");
     $(".editprop_category_images").addClass("hidden");
 	}   
+
+  $('.content_editprop_category_right').removeClass('hidden');
 }
 
 function error_get_proposal_category(data)
 {
-  show_fail("editprop_sociality_alert", data.error.message);
+  $('.content_editprop_category_right div.form-group').eq(0).addClass("hidden");
+  $('.content_editprop_category_right div.form-group').eq(1).addClass("hidden");
+  $('.content_editprop_category_right').removeClass('hidden');
+  show_fail("editprop_category_alert", data.error.message, true);
 }
 
 function get_name_category_from_tag(tag)
@@ -700,7 +711,7 @@ function error_get_all_categories(data)
   $(".editprop_category_select").prop("disabled",true);
   $(".editprop_category_select_add_button").prop("disabled",true);
 
-  show_fail("editprop_category_alert", data.error.message);
+  show_fail("editprop_category_alert", data.error.message, true);
 }
 
 function success_save_category(data)
@@ -727,7 +738,6 @@ function delete_proposal()
       localStorage.setItem("proposal_id", data_proposal.id);
 			window.location = baseurl + "/" + m_lang + "/deleteprop";
 		}
-  	
   }
 }
 
