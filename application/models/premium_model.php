@@ -11,6 +11,7 @@ class Premium_model extends CI_Model
   {
     // Call the Model constructor
     parent::__construct();
+    $this->load->model('notify_model');
   }
 
   function validate_id($id)
@@ -60,17 +61,29 @@ class Premium_model extends CI_Model
       }
     }
 
+    $this->db->trans_begin();
+
     $premium = array();
 		$premium['user_id'] = $this->user_id;
 		$premium['time'] = $time;
 		$premium['type'] = $this->type_id;
+		$this->db->insert('premium', $premium);
 
-		$result = $this->db->insert('premium', $premium);
-    if ($result)
+    $notify_text = lang("p_change_premium_detected_please_logout");
+    $this->notify_model->save($this->user_id,$notify_text);
+
+    $this->db->trans_complete();
+
+    if ($this->db->trans_status() === FALSE)
     {
-		  return $premium['type'];
+      $this->db->trans_rollback();
+      throw new Exception(lang('exception_error_1503'), 1503);
     }
-    throw new Exception(lang('exception_error_1503'), 1503);
+    else
+    {
+      $this->db->trans_commit();
+      return $premium['type'];
+    }
 	}
 
 	function get($user_id)

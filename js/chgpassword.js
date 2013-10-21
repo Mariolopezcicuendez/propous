@@ -73,10 +73,7 @@ function success_get_new_captcha(data)
   $('.chgpassword_image_captcha').html(data.result);
 } 
 
-function error_get_new_captcha(data)
-{
-
-}
+function error_get_new_captcha(data) {}
 
 function chgpassword_clean_form()
 {

@@ -86,10 +86,7 @@ function success_get_new_captcha(data)
   $('.forgetpassword_image_captcha').html(data.result);
 } 
 
-function error_get_new_captcha(data)
-{
-
-}
+function error_get_new_captcha(data) {}
 
 function forgetpassword_clean_form()
 {

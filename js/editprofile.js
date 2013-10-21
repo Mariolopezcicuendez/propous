@@ -288,7 +288,7 @@ function put_user_data_in_form()
 
 function error_get_user_data()
 {
-  show_fail("editprofile_data_alert", lang('p_user_data_not_load'));
+  show_fail("editprofile_data_alert", lang('p_user_data_not_load'), true);
 }
 
 function success_get_countries(data)
@@ -319,6 +319,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
+  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.editprofile_select_country').prop('disabled', true);
 }
 
@@ -358,11 +359,13 @@ function success_get_states_clean(data)
 
 function error_get_states(data)
 {
+  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.editprofile_select_state').prop('disabled', true);
 }
 
 function error_get_states_clean(data)
 {
+  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.editprofile_select_state').prop('disabled', true);
 }
 

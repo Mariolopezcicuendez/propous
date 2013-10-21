@@ -4,31 +4,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <?php
-  // $post_title_page = "";
-  // switch ($this->uri->segment(2))
-  // {
-  //   case 'props': $post_title_page = " / ".lang('p_props'); break;
-  //   case 'messages': $post_title_page = " / ".lang('p_messages');
-  //   break;
-  //   case 'editprofile': $post_title_page = " / ".lang('p_profile');
-  //   break;
-  //   case 'myprops': $post_title_page = " / ".lang('p_myprops');
-  //   break;
-  //   case 'favorites': $post_title_page = " / ".lang('p_favorites');
-  //   break;
-  //   case 'cms': $post_title_page = " / CMS";
-  //   break;
-  //   case 'analitycs': $post_title_page = " / Analitycs"; break;
-  //   case 'viewprop': $post_title_page = " / ".$title_prop; break;
-  //   case 'editprop': $post_title_page = " / ".lang('p_editprop'); break;
-  //   case 'newprop': $post_title_page = " / ".lang('p_newprop'); break;
-  //   case 'viewprofile': $post_title_page = " / ".$title_profile; break;
-  //   case 'premium': $post_title_page = " / ".lang('p_premium'); break;
-  //   default:
-  //     $post_title_page = "";
-  // }
-  ?>
   <title><?php echo NAME_PROJECT . $post_title_page; ?></title>
 
   <link rel="icon" type="image/png" href="<?php echo  $this->config->item('file_base_url_relative'); ?>assets/icons/favicon.png" />

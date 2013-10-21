@@ -11,7 +11,16 @@ class Forgetpassword extends CI_Controller
   // Muestra la pantalla principal de olvidar contraseña
   public function index()
   {
-    $capcha = $this->captcha_model->get_captcha();
+    try
+    {
+      $capcha = $this->captcha_model->get_captcha();
+    } 
+    catch (Exception $e)
+    {
+      redirect('/' . getActLang() . '/error');
+      exit();
+    } 
+    
     $data = array("captcha" => $capcha);
 
     $data_header = array();
@@ -25,7 +34,15 @@ class Forgetpassword extends CI_Controller
   // Muestra la pantalla para dar de alta una nueva contraseña de un usuario que la olvidó
   public function newpassword($token)
   {
-    $capcha = $this->captcha_model->get_captcha();
+    try
+    {
+      $capcha = $this->captcha_model->get_captcha();
+    } 
+    catch (Exception $e)
+    {
+      redirect('/' . getActLang() . '/error');
+      exit();
+    } 
 
     $data_header = array();
     $data_header["post_title_page"] = " / " . lang('p_forget_password');

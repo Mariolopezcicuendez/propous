@@ -73,10 +73,7 @@ function success_get_new_captcha(data)
   $('.contact_image_captcha').html(data.result);
 } 
 
-function error_get_new_captcha(data)
-{
-
-}
+function error_get_new_captcha(data) {}
 
 function contact_clean_form()
 {
@@ -222,6 +219,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
+  show_fail("contact_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.contact_select_country').prop('disabled', true);
 }
 

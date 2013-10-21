@@ -11,7 +11,16 @@ class Contact extends CI_Controller
 
 	public function index()
 	{
-		$capcha = $this->captcha_model->get_captcha();
+		try
+    {
+      $capcha = $this->captcha_model->get_captcha();
+    } 
+    catch (Exception $e)
+    {
+      redirect('/' . getActLang() . '/error');
+      exit();
+    } 
+    
 		$data = array("captcha" => $capcha);
 
 		$data_header = array();

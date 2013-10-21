@@ -257,6 +257,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
+  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.editprop_select_country').prop('disabled', true);
 }
 
@@ -297,11 +298,13 @@ function success_get_states_clean(data)
 
 function error_get_states(data)
 {
+  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.editprop_select_state').prop('disabled', true);
 }
 
 function error_get_states_clean(data)
 {
+  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'), true);
   $('.editprop_select_state').prop('disabled', true);
 }
 

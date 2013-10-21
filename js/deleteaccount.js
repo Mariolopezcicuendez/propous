@@ -71,10 +71,7 @@ function success_get_new_captcha(data)
   $('.deleteaccount_image_captcha').html(data.result);
 } 
 
-function error_get_new_captcha(data)
-{
-
-}
+function error_get_new_captcha(data) {}
 
 function deleteaccount_clean_form()
 {
@@ -109,6 +106,11 @@ function error_delete_account(data)
   var error_number = data.status;
   var error_message = data.error.message;
 
+  if (error_number === 1126)
+  {
+    show_fail("deleteaccount_data_alert", data.error.message);
+    return;
+  }
   if (error_number === 1129)
   {
     show_fail("deleteaccount_data_alert", data.error.message);
