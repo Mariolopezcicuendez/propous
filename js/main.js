@@ -431,6 +431,8 @@ $(document).ready(function()
   {
     hide_statistics();
   }
+
+  // console.log(BrowserDetect);
 });
 
 function is_on_maintenance()
@@ -461,10 +463,7 @@ function success_is_on_maintenance(data)
   }
 }
 
-function error_is_on_maintenance(data)
-{
-  
-}
+function error_is_on_maintenance(data) {}
 
 function logged()
 {
@@ -484,9 +483,13 @@ function success_logout(data)
 	window.location = baseurl + "/" + m_lang + "/login";
 }
 
-function error_logout(data)
+function error_logout(data) 
 {
-
+  var conf_data = {};
+  conf_data.title = lang('p_close_session');
+  conf_data.body = lang("p_logout_error_ocurred");
+  conf_data.ok_text = lang('p_accept');
+  show_popup(conf_data);
 }
 
 function get_statistics()
@@ -494,52 +497,52 @@ function get_statistics()
 	var user_country_id = $(".gdata_country_id").val();
 	var user_state_id = $(".gdata_state_id").val();
 
-	var req_props = {};
-  req_props.url = '/user/get_total_users';
-  req_props.type = 'GET';
-  req_props.success = "success_get_total_users";
-  req_props.error = "error_get_total_users";
-  ajaxp(req_props);
+	var req_props_tu = {};
+  req_props_tu.url = '/user/get_total_users';
+  req_props_tu.type = 'GET';
+  req_props_tu.success = "success_get_total_users";
+  req_props_tu.error = "error_get_total_users";
+  ajaxp(req_props_tu);
 
   if (logged())
   {
-  	req_props = {};
-    req_props.url = '/user/get_total_users_state/'+user_country_id+'/'+user_state_id;
-    req_props.type = 'GET';
-    req_props.success = "success_get_total_users_state";
-    req_props.error = "error_get_total_users_state";
-    ajaxp(req_props);
+  	req_props_tus = {};
+    req_props_tus.url = '/user/get_total_users_state/'+user_country_id+'/'+user_state_id;
+    req_props_tus.type = 'GET';
+    req_props_tus.success = "success_get_total_users_state";
+    req_props_tus.error = "error_get_total_users_state";
+    ajaxp(req_props_tus);
 
-  	req_props = {};
-    req_props.url = '/user/get_total_users_state_online/'+user_country_id+'/'+user_state_id;
-    req_props.type = 'GET';
-    req_props.success = "success_get_total_users_state_online";
-    req_props.error = "error_get_total_users_state_online";
-    ajaxp(req_props);
+  	req_props_tuso = {};
+    req_props_tuso.url = '/user/get_total_users_state_online/'+user_country_id+'/'+user_state_id;
+    req_props_tuso.type = 'GET';
+    req_props_tuso.success = "success_get_total_users_state_online";
+    req_props_tuso.error = "error_get_total_users_state_online";
+    ajaxp(req_props_tuso);
   }
 
-	req_props = {};
-  req_props.url = '/proposal/get_total_props';
-  req_props.type = 'GET';
-  req_props.success = "success_get_total_props";
-  req_props.error = "error_get_total_props";
-  ajaxp(req_props);
+	req_props_tp = {};
+  req_props_tp.url = '/proposal/get_total_props';
+  req_props_tp.type = 'GET';
+  req_props_tp.success = "success_get_total_props";
+  req_props_tp.error = "error_get_total_props";
+  ajaxp(req_props_tp);
 
   if (logged())
   {
-  	req_props = {};
-    req_props.url = '/proposal/get_total_props_state/'+user_country_id+'/'+user_state_id;
-    req_props.type = 'GET';
-    req_props.success = "success_get_total_props_state";
-    req_props.error = "error_get_total_props_state";
-    ajaxp(req_props);
+  	req_props_tps = {};
+    req_props_tps.url = '/proposal/get_total_props_state/'+user_country_id+'/'+user_state_id;
+    req_props_tps.type = 'GET';
+    req_props_tps.success = "success_get_total_props_state";
+    req_props_tps.error = "error_get_total_props_state";
+    ajaxp(req_props_tps);
 
-  	req_props = {};
-    req_props.url = '/proposal/get_total_props_state_today/'+user_country_id+'/'+user_state_id;
-    req_props.type = 'GET';
-    req_props.success = "success_get_total_props_state_today";
-    req_props.error = "error_get_total_props_state_today";
-    ajaxp(req_props);  
+  	req_props_tpst = {};
+    req_props_tpst.url = '/proposal/get_total_props_state_today/'+user_country_id+'/'+user_state_id;
+    req_props_tpst.type = 'GET';
+    req_props_tpst.success = "success_get_total_props_state_today";
+    req_props_tpst.error = "error_get_total_props_state_today";
+    ajaxp(req_props_tpst);  
   }      
 }
 
@@ -954,7 +957,19 @@ function success_get_premium(data)
 
 function error_get_premium(data)
 {
+  advanced_searching = false;
+  $('#search_button_at_simple').parent().removeClass("hidden");
+  $('#search_button_at_advance').parent().addClass("hidden");
+  $(".advanced_search_link_hide").addClass("hidden");
+  $(".advanced_search_link_show").removeClass("hidden");
+  $(".content_page_menu_div_advanced_search").addClass("hidden");
+  clear_search();
 
+  var conf_data = {};
+  conf_data.title = lang('p_search');
+  conf_data.body = lang("p_internal_error_adv_search_no_exists");
+  conf_data.ok_text = lang('p_accept');
+  show_popup(conf_data);
 }
 
 function popup_want_to_be_premium()
@@ -1230,9 +1245,12 @@ function success_actualize_messages_info(data)
   }
 }
 
-function error_actualize_messages_info(data)
+function error_actualize_messages_info(data) 
 {
-  
+  if (messages_page_showed())
+  {
+    disable_chat();
+  }
 }
 
 function get_last_no_readen_messages()
@@ -1316,7 +1334,4 @@ function success_notification_set_readen(data)
   if ($(".content_div_notification_to_user").children().length === 0) $(".content_div_notification_to_user").addClass('hidden');
 }
 
-function error_notification_set_readen(data)
-{
-
-}
+function error_notification_set_readen(data) {}

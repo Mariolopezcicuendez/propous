@@ -505,3 +505,20 @@ function delete_conversation_confirmed(id)
     select_first_user_in_user_list();
   }
 }
+
+function disable_chat()
+{
+  $('#modal_popup button.close').addClass('hidden'); 
+
+  var conf_data = {};
+  conf_data.title = lang('p_messages');
+  conf_data.body = lang("p_messages_error_ocurred");
+  conf_data.ok_text = lang('p_accept');
+  conf_data.accept = "go_to_home_page";
+  show_popup(conf_data);
+}
+
+function go_to_home_page()
+{
+  window.location = baseurl + "/"+ m_lang +"/prop";
+}

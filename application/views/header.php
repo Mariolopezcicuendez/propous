@@ -41,6 +41,8 @@
 </head>
 <body>
 
+<script type="text/javascript" src="<?php echo $this->config->item('file_base_url_relative'); ?>js/browser.js"></script>
+
 <?php echo '<script type="text/javascript" src="' . $this->config->item('file_base_url_relative') . 'js/libraries/jquery.js"></script>'; ?>
 <?php echo '<script type="text/javascript" src="' . $this->config->item('file_base_url_relative') . 'js/libraries/bootstrap.js"></script>'; ?>
 

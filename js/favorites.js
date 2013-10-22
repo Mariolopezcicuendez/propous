@@ -69,6 +69,30 @@ function success_get_favorites_props(data)
   });
 }
 
+function error_get_favorites_props(data)
+{
+  data_table.push([
+      lang('p_no_data_in_table'),
+      null, 
+      null,
+      "",
+      "",
+      "<span class='hidden_popover_zone' prop_id=''></span>"
+    ]);
+
+  $('.favorites_main_table_props').dataTable({
+    "bPaginate": false,
+    "bLengthChange": false,
+    "bFilter": false,
+    "bSort": false,
+    "bInfo": false,
+    "bAutoWidth": false,
+    "aaData": data_table
+  });
+
+  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'), true);
+}
+
 function load_popovers(data)
 {
   $.each(data.result, function (prop_id) 
@@ -175,11 +199,6 @@ function get_photo_icon()
   return "<img class='prop_list_images_img' title='"+lang('p_prop_with_photos')+"' src='"+baseurl + "/assets/icons/photo.png"+"'></img>";
 }
 
-function error_get_favorites_props(data)
-{
-
-}
-
 function get_user_socials_in_proposal(user)
 {
   if (typeof user !== "undefined" && user !== null && user !== '')
@@ -282,7 +301,7 @@ function success_save_prop_to_favorites(data)
 
 function error_save_prop_to_favorites(data)
 {
-
+  show_fail("props_data_alert", data.error.message);
 }
 
 function success_delete_prop_from_favorites(data)
@@ -293,7 +312,7 @@ function success_delete_prop_from_favorites(data)
 
 function error_delete_prop_from_favorites(data)
 {
-
+  show_fail("props_data_alert", data.error.message);
 }
 
 function get_proposal_favorites()
@@ -337,5 +356,5 @@ function success_get_proposal_favorites(data)
 
 function error_get_proposal_favorites()
 {
-  
+  show_fail("props_data_alert", lang("p_error_ocurred_by_page_charge"), true);
 }

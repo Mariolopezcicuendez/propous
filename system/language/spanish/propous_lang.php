@@ -284,6 +284,11 @@ $lang['p_invalid_navigator'] = "Navegador no válido";
 $lang['p_page_restringed'] = "Página restringida";
 $lang['p_page_error_message'] = "Un error ha ocurrido y no se puede mostrar la página correctamente";
 $lang['p_error_ocurred_by_page_charge'] = "Ocurrió un error crítico en la carga de la página, es posible que no funcione correctamente";
+$lang['p_error_ocurred_by_page_charge_list_error'] = "Ocurrió un error crítico en la carga de la página, es posible que el listado no funcione";
+$lang['p_no_data_in_table'] = "No existen datos en la tabla";
+$lang['p_internal_error_adv_search_no_exists'] = "Ha ocurrido un error interno y la búsqueda avanzada no se puede utilizar";
+$lang['p_messages_error_ocurred'] = "Ha ocurrido un error interno, el sistema de mensajes no funciona correctamente";
+$lang['p_logout_error_ocurred'] = "Ha ocurrido un error interno, no se ha podido desloguear el usuario";
 
 $lang['p_title_about_page'] = "About";
 $lang['p_paragraph_about_1'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra scelerisque nibh, nec elementum nibh luctus hendrerit. Donec quis dui id arcu malesuada tempor. Suspendisse at tempor ante, a commodo leo. Cras felis risus, sodales sed nulla bibendum, varius facilisis urna. Suspendisse a nisl eros. Fusce elit orci, tempor a vehicula et, aliquet quis enim. Mauris sollicitudin rutrum suscipit.";
