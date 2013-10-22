@@ -321,6 +321,11 @@ a.paginate_button:focus
 	margin-bottom: 0;
 }
 
+.span_inforemember_label
+{
+	color: green;
+}
+
 .image_carousel 
 {
 	padding: 15px 0 15px 40px;
