@@ -37,6 +37,7 @@ class Proposal_model extends CI_Model
     $this->load->model('photo_model');
     $this->load->model('state_model');
     $this->load->model('user_model');
+    $this->load->model('category_model');
   }
 
   function validate_count_number($number)
@@ -561,6 +562,56 @@ class Proposal_model extends CI_Model
     }
 
     return array();
+  }
+
+  function list_proposals_description_title()
+  {
+    $lang = getActLang();
+
+    $search_categories = $this->input->post('categories');
+    $search_from_date = $this->input->post('from_date');
+    $search_to_date = $this->input->post('to_date');
+    $search_country_id = $this->input->post('country_id');
+    $search_state_id = $this->input->post('state_id');
+
+    $text = lang('p_props');
+
+    // Localization
+    if (($search_country_id !== null) && ($search_country_id !== false) && ($search_country_id !== ''))
+    {
+      $text .= " " . lang('p_at') . " " . $this->country_model->get_country_name($search_country_id);
+    }
+    if (($search_state_id !== null) && ($search_state_id !== false) && ($search_state_id !== ''))
+    {
+      $text .= " / " . $this->state_model->get_state_name($search_state_id);
+    }
+
+    // Categorization
+    if (($search_categories !== null) && ($search_categories !== false) && ($search_categories !== ''))
+    {
+      $categories_arr = explode(":",$search_categories);
+      if (count($categories_arr) > 1)
+      {
+        $text .= " " . lang('p_of_some_categories');
+      }
+      else if (count($categories_arr) === 1)
+      {
+        $text .= " " . lang('p_of_category') . " " . $this->category_model->get_category_name($categories_arr[0]);
+      }
+    }
+
+    // Dates
+    if (($search_from_date !== null) && ($search_from_date !== false) && ($search_from_date !== ''))
+    {
+      $text .= " " . lang('p_from') . " " . $search_from_date;
+    }
+
+    if (($search_to_date !== null) && ($search_to_date !== false) && ($search_to_date !== ''))
+    {
+      $text .= " " . lang('p_to') . " " . $search_to_date;
+    }
+
+    return $text;
   }
 
   function check_user_can_create_proposal()

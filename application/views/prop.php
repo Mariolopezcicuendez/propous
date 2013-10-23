@@ -3,7 +3,7 @@
   <div class='div_content_prop content panel panel-default'>
 
     <div class='content_prop_title col-md-12 content panel-heading'>
-      <?php echo lang('p_props'); ?><br/>
+      <?php echo lang('p_props'); ?>
     </div>
 
     <?php echo form_open('#',array("class"=>"form-horizontal hidden","role"=>"form")); ?>

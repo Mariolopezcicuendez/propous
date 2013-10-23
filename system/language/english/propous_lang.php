@@ -1,5 +1,8 @@
 <?php 
 
+$lang['p_from'] = "from";
+$lang['p_to'] = "to";
+$lang['p_at'] = "at";
 $lang['p_browse'] = "Browse";
 $lang['p_accept'] = "Aceptar";
 $lang['p_cancel'] = "Cancelar";
@@ -291,6 +294,8 @@ $lang['p_messages_error_ocurred'] = "Ha ocurrido un error interno, el sistema de
 $lang['p_logout_error_ocurred'] = "Ha ocurrido un error interno, no se ha podido desloguear el usuario";
 $lang['p_remember_prop_not_showed_for_you'] = "Recuerda que la prop que crees no la verás en el listado de props, sólo en tu menú de mis props";
 $lang['p_remember_prop_cant_change_24h'] = "Recuerda que las primeras 24h no podrás cambiar ciertos datos de la prop como su título o localización";
+$lang['p_of_some_categories'] = "de varias categorías";
+$lang['p_of_category'] = "de la categoría";
 
 $lang['p_title_about_page'] = "About";
 $lang['p_paragraph_about_1'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra scelerisque nibh, nec elementum nibh luctus hendrerit. Donec quis dui id arcu malesuada tempor. Suspendisse at tempor ante, a commodo leo. Cras felis risus, sodales sed nulla bibendum, varius facilisis urna. Suspendisse a nisl eros. Fusce elit orci, tempor a vehicula et, aliquet quis enim. Mauris sollicitudin rutrum suscipit.";

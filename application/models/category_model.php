@@ -58,6 +58,23 @@ class Category_model extends CI_Model
     return array();
   }
 
+  function get_category_name($id)
+  {
+    $lang = getActLang();
+    $query = $this->db->query("
+      SELECT name
+      FROM  `category_i18n` 
+      WHERE category_id = {$id}
+      AND lang = '{$lang}'
+    ");
+    if ($query->num_rows() > 0)
+    {
+      $row = $query->row();
+      return $row->name;
+    }
+    throw new Exception(lang('exception_error_1204'), 1204);
+  }
+
   function save_category($proposal_id)
   {
     $query = $this->db->query("SELECT id FROM `proposal_category` WHERE proposal_id = {$proposal_id}");

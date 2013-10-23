@@ -43,6 +43,7 @@ $lang['exception_error_1137'] = "User Banned";
 $lang['exception_error_1201'] = "Error deleting category";
 $lang['exception_error_1202'] = "Only 5 categories admited";
 $lang['exception_error_1203'] = "Error saving category";
+$lang['exception_error_1204'] = "Category without name";
 $lang['exception_error_1251'] = "Error deleting favorite";
 $lang['exception_error_1252'] = "Error saving favorite";
 $lang['exception_error_1301'] = "Error deleting language";

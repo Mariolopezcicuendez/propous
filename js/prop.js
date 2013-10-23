@@ -35,10 +35,12 @@ $(document).ready(function()
       }
 
       get_search_props();
+      get_search_props_description_title();
     }
     else
     {
       get_main_props();
+      get_main_props_description_title();
     }
 
     if (advanced_searching)
@@ -51,6 +53,7 @@ $(document).ready(function()
   else
   {
     get_main_props();
+    get_main_props_description_title();
   }
 });
 
@@ -95,6 +98,32 @@ function get_search_props()
   ajaxp(req);
 }
 
+function get_search_props_description_title()
+{
+  var local_storage_item = localStorage.getItem("search_object");
+  var search = JSON.parse(local_storage_item);
+
+  var data_post = {};
+  data_post.filter_t = $('input[name=filter_t]').val();
+  
+  if (advanced_searching)
+  {
+    data_post.categories = search.s_categories;
+    data_post.from_date = search.s_from_date;
+    data_post.to_date = search.s_to_date;
+    data_post.country_id = search.s_country_id;
+    data_post.state_id = search.s_state_id;
+  }
+  
+  var req = {};
+  req.url = '/proposal/list_proposals_description_title';
+  req.type = 'POST';
+  req.success = "success_get_main_props_description_title";
+  req.error = "error_get_main_props_description_title";
+  req.data = data_post;
+  ajaxp(req);
+}
+
 function get_main_props()
 {
   show_loading();
@@ -114,6 +143,25 @@ function get_main_props()
   req.type = 'POST';
   req.success = "success_get_main_props";
   req.error = "error_get_main_props";
+  req.data = data_post;
+  ajaxp(req);
+}
+
+function get_main_props_description_title()
+{
+  var user_country_id = $(".gdata_country_id").val();
+  var user_state_id = $(".gdata_state_id").val();
+
+  var data_post = {};
+  data_post.state_id = user_state_id;
+  data_post.country_id = user_country_id;
+  data_post.filter_t = $('input[name=filter_t]').val();
+  
+  var req = {};
+  req.url = '/proposal/list_proposals_description_title';
+  req.type = 'POST';
+  req.success = "success_get_main_props_description_title";
+  req.error = "error_get_main_props_description_title";
   req.data = data_post;
   ajaxp(req);
 }
@@ -187,6 +235,17 @@ function error_get_main_props(data)
   });
 
   show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'), true);
+}
+
+function success_get_main_props_description_title(data)
+{
+  var text = data.result;
+  $('.content_prop_title').text(text);
+}
+
+function error_get_main_props_description_title(data)
+{
+  $('.content_prop_title').text(lang('p_props'));
 }
 
 function load_popovers(data)

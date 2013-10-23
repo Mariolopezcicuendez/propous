@@ -91,6 +91,22 @@ class Proposal extends CI_Controller
 		echo $this->jsonresponse->show($result);
 	}
 
+	// Devuelve el texto descriptivo de la búsqueda hecha de props
+	public function list_proposals_description_title()
+	{
+		try
+		{
+			$result = $this->proposal_model->list_proposals_description_title();
+		} 
+		catch (Exception $e)
+		{
+			echo  $this->jsonresponse->show_error($e);
+			exit();
+		}
+
+		echo $this->jsonresponse->show($result);
+	}
+
 	// Define si una propuesta es visible o no
 	public function set_proposal_visibility($proposal_id)
 	{
