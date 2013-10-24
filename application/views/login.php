@@ -1,9 +1,13 @@
 <div class='content_page_left content'>
 
+  <div class='content_login_main_words'>
+      <?php echo lang('p_login_page_words'); ?>
+    </div>
+
   <div class='div_content_login div_content_panel col-md-4 panel panel-default pull-right'>
 
     <div class='content_login_title panel-heading'>
-      <?php echo lang('p_login'); ?><br/>
+      <?php echo lang('p_login'); ?>
     </div>
 
     <div class='content_login_body panel-body'>

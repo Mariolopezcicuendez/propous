@@ -27,7 +27,6 @@
               <label class="col-md-3 control-label"><?php echo lang('p_category'); ?>:</label>  
               <div class="col-md-9">
                 <select multiple class="advanced_search_categories_select form-control">
-                  <option value="0"><?php echo lang('p_category_into_select'); ?></option>
                 </select>
               </div>
             </div>

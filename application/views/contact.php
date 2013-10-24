@@ -51,7 +51,7 @@
         </div>
 
       	<div class="form-group">
-          <label for="contact_select_country" class="col-md-3 control-label"><?php echo lang('p_localization'); ?>:</label>  
+          <label for="contact_select_country" class="col-md-3 control-label"><?php echo lang('p_country'); ?>:</label>  
           <div class="col-md-9 input-group">
             <select class='contact_select_country form-control'>
               <option value=''><?php echo lang('p_country_into_select'); ?></option>

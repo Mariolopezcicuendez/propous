@@ -15,7 +15,7 @@
       <?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
       	<div class="form-group">
-          <label for="forgetpasswordnew_user_password" class="col-md-3 control-label"><?php echo lang('p_password'); ?>:</label>  
+          <label for="forgetpasswordnew_user_password" class="col-md-3 control-label"><?php echo lang('p_new_password_only'); ?>:</label>  
           <div class="col-md-9">
             <input type='password' id='forgetpasswordnew_user_password' class='forgetpasswordnew_user_password form-control'/> 
           </div>

@@ -155,7 +155,7 @@
       <div class='div_header_right_content pull-right'>
         <?php 
         $user_data = $this->session->userdata('logged_in'); 
-        $user_premium = ($user_data['premium'] !== null) ? $user_data['premium'] : "no premium" ;
+        $user_premium = ($user_data['premium'] !== null) ? $user_data['premium'] : lang('p_without_premium') ;
         ?>
         <a class='link' title='<?php echo lang('p_user_premium_you_are'); ?>' href='<?php echo $this->config->item('base_url'); ?><?php echo getActLang(); ?>/premium' id='header_button_premium'><img class='image_icon' src='<?php echo $this->config->item('file_base_url_relative'); ?>assets/icons/actions/premium.png'/> <?php echo lang('p_user') . " " . $user_premium; ?></a>
         <br/>

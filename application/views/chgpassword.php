@@ -26,7 +26,7 @@
         </div>
 
       	<div class="form-group">
-          <label for="chgpassword_user_password" class="col-md-3 control-label"><?php echo lang('p_password'); ?>:</label>  
+          <label for="chgpassword_user_password" class="col-md-3 control-label"><?php echo lang('p_newpassword'); ?>:</label>  
           <div class="col-md-9">
             <input type='password' id='chgpassword_user_password' class='chgpassword_user_password form-control'/> 
           </div>

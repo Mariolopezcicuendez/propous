@@ -5,7 +5,7 @@
   <div class='div_content_forgetpassword div_content_panel col-md-8 panel panel-default'>
 
     <div class='content_forgetpassword_title panel-heading'>
-      <?php echo lang('p_forget_password'); ?><br/>
+      <?php echo lang('p_forget_password_int'); ?><br/>
     </div>
 
     <div class='content_forgetpassword_body panel-body'>

@@ -6,11 +6,13 @@ define('NAME_PROJECT', 'Propous');
 
 define('DEFAULT_LANGUAGE', $default_lang_short);
 
-// define('REQUEST_URL_DOMAIN', 'http://192.168.5.3/propous');
-define('REQUEST_URL_DOMAIN', 'http://10.29.0.139/localtests/propous');
-
+define('REQUEST_URL_DOMAIN', 'http://192.168.5.3/propous');
 define('REQUEST_URL_API', '/api');
-define('BASE_URL', '/localtests/propous');
+define('BASE_URL', '/propous');
+
+// define('REQUEST_URL_DOMAIN', 'http://10.29.0.139/localtests/propous');
+// define('REQUEST_URL_API', '/api');
+// define('BASE_URL', '/localtests/propous');
 
 define('COOKIE_DAYS_EXPIRATION', 365);
 define('TIME_MILISECONDS_ALERTS_HIDE', 4500);

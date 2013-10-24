@@ -49,10 +49,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-// $db['default']['username'] = 'root';
-// $db['default']['password'] = 'Ofimatic3';
-$db['default']['username'] = 'okn-user';
-$db['default']['password'] = 'okn-pass';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'Ofimatic3';
+// $db['default']['username'] = 'okn-user';
+// $db['default']['password'] = 'okn-pass';
 $db['default']['database'] = 'propous';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

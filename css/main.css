@@ -102,6 +102,14 @@ h3
 	cursor: pointer;
 }
 
+.content_login_main_words
+{
+	position: relative;
+	width: 475px;
+	top: 2px;
+	float: left;
+}
+
 .file-input-wrapper input
 {
 	cursor: pointer;
