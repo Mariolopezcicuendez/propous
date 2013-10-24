@@ -19,7 +19,7 @@
 					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 						<div class="form-group">
-							<label for="editprop_prop_title" class="col-md-3 control-label"><?php echo lang('p_proposal_title'); ?> (<?php echo lang('p_proposal_title_max_200'); ?>):</label>	
+							<label for="editprop_prop_title" class="col-md-3 control-label"><?php echo lang('p_proposal_title'); ?> (<?php echo lang('p_proposal_title_max_number',array(PROPOSAL_NAME_MAX_SIZE)); ?>):</label>	
 							<div class="col-md-9">
 								<input type='text' id='editprop_prop_title' class='editprop_prop_title form-control'/> 
 							</div>

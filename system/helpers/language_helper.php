@@ -44,7 +44,14 @@ if ( ! function_exists('lang'))
 		$CI =& get_instance();
 		$line = $CI->lang->line($line);
 
-		if ($id != '')
+		if (($id !== null) && (is_array($id)))
+		{
+			for ($i = 0; $i < count($id); $i++) 
+			{
+				$line = preg_replace('/%s/', $id[$i], $line, 1);
+			}
+		}
+		elseif ($id != '')
 		{
 			$line = '<label for="'.$id.'">'.$line."</label>";
 		}

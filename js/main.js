@@ -248,30 +248,12 @@ $(document).ready(function()
 
 	ajaxp = function(ajaxobj) 
 	{
-		if (typeof ajaxobj === "undefined") 
-		{
-			return;
-		}	
-		if (typeof ajaxobj.url === "undefined")
-		{
-			return;
-		}
-		if (typeof ajaxobj.type === "undefined")
-		{
-			return;
-		}
-		if (typeof ajaxobj.success === "undefined")
-		{
-			return;
-		}
-		if (typeof ajaxobj.error === "undefined")
-		{
-			return;
-		}
-		if ((ajaxobj.type === "POST") && (typeof ajaxobj.data === "undefined"))
-		{
-			return;
-		}
+		if (typeof ajaxobj === "undefined") return;
+		if (typeof ajaxobj.url === "undefined") return;
+		if (typeof ajaxobj.type === "undefined") return;
+		if (typeof ajaxobj.success === "undefined") return;
+		if (typeof ajaxobj.error === "undefined") return;
+		if ((ajaxobj.type === "POST") && (typeof ajaxobj.data === "undefined")) return;
 
 		var async_eval = (typeof ajaxobj.async !== "undefined") ? ajaxobj.async : true;
 		var cache_eval = (typeof ajaxobj.cache !== "undefined") ? ajaxobj.cache : false;
@@ -353,7 +335,7 @@ $(document).ready(function()
       var req = {};
       req.url = '/state/all_from_country/'+country_id;
       req.type = 'GET';
-      req.success = "success_get_states";
+      req.success = "success_get_states_clean";
       req.error = "error_get_states";
       ajaxp(req);
     }
@@ -857,6 +839,14 @@ function advanced_search_success_get_countries(data)
       req.error = "error_get_states";
       ajaxp(req);
     }
+    else
+    {
+      adv_search_select_user_localization();
+    }
+  }
+  else
+  {
+    adv_search_select_user_localization();
   }
 }
 
@@ -892,9 +882,52 @@ function success_get_states(data)
   }  
 }
 
+function success_get_states_clean(data)
+{
+  $('.advanced_search_state').prop('disabled', true);
+  $.each(data.result, function (state_id) {
+    var state = data.result[state_id];
+    $('.advanced_search_state').append($('<option></option>').attr("value", state.id).text(state.name));
+  });
+  $('.advanced_search_state').prop('disabled', false);
+}
+
 function error_get_states(data)
 {
   $('.advanced_search_state').prop('disabled', true);
+}
+
+function one_localization_selected()
+{
+  return ($('.advanced_search_country').val() !== "");
+}
+
+function adv_search_select_user_localization()
+{
+  var user_country_localization = $('.gdata_country_id').val();
+
+  $('.advanced_search_country').val(user_country_localization);
+
+  var req = {};
+  req.url = '/state/all_from_country/'+user_country_localization;
+  req.type = 'GET';
+  req.success = "success_get_states_with_user_state";
+  req.error = "error_get_states";
+  ajaxp(req);
+}
+
+function success_get_states_with_user_state(data)
+{
+  $('.advanced_search_state').prop('disabled', true);
+  $.each(data.result, function (state_id) {
+    var state = data.result[state_id];
+    $('.advanced_search_state').append($('<option></option>').attr("value", state.id).text(state.name));
+  });
+  $('.advanced_search_state').prop('disabled', false);
+
+  var user_state_localization = $('.gdata_state_id').val();
+
+  $('.advanced_search_state').val(user_state_localization);
 }
 
 function search_props()

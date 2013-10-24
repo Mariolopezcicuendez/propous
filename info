@@ -7,6 +7,7 @@ Usuario PREMIUM_DIAMOND: 200 propuestas dia (30 días)  => 59,99€
 TODO:
 - Publicitar
 - Publicar nueva web en redes sociales
+- dar de alta en http://www.google.es/addurl/  http://search.yahoo.com/info/submit.html  http://www.bing.com/toolbox/webmaster/
 - producción
 - minimizador
 - corrección de errores
@@ -40,10 +41,8 @@ TODO:
 - Iconos finales y de acciones
 - comprar biblioteca de iconos usable
 - comprar biblioteca de imágenes usable
-- Metainfo para buscadores
 - mirar carta de pago y Pago tarjeta, paypal, pruebas
 - Textos correctos
-- correcto funcionamiento de errores de perdida de conexión
 
 FUTURE:
 - Grupos de amigos
@@ -56,7 +55,7 @@ FUTURE:
 - opción preferencias de usuario, englobando eliminar cuenta y cambiar password
 - usuario empresa
 - comentarios de las props
-- usuarios bloqueados por otros usaurios
+- usuarios bloqueados por otros usuarios
 - usuarios amigos de otros usuarios
 - Emoticonos del chat y parseo de estos
 - Las propuestas pueden ir dirigidas a que las vea sólo usuarios con determinadas socialitys

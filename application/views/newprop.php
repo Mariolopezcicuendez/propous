@@ -19,7 +19,7 @@
 					<?php echo form_open('#',array("class"=>"form-horizontal","role"=>"form")); ?>
 
 						<div class="form-group">
-							<label for="newprop_prop_title" class="col-md-3 control-label"><?php echo lang('p_proposal_title'); ?> (<?php echo lang('p_proposal_title_max_200'); ?>):</label>	
+							<label for="newprop_prop_title" class="col-md-3 control-label"><?php echo lang('p_proposal_title'); ?> (<?php echo lang('p_proposal_title_max_number',array(PROPOSAL_NAME_MAX_SIZE)); ?>):</label>	
 							<div class="col-md-9">
 								<input type='text' id='newprop_prop_title' class='newprop_prop_title form-control'/> 
 							</div>
@@ -78,7 +78,7 @@
 							<div class="col-md-9">
 								<p id='newprop_prop_rememberinfo' class="span_inforemember_label newprop_prop_rememberinfo form-control-static">
 									<?php echo lang('p_remember_prop_not_showed_for_you'); ?><br/>
-									<?php echo lang('p_remember_prop_cant_change_24h'); ?>
+									<?php echo lang('p_remember_prop_cant_change_h',array(PROPOSAL_HOURS_TO_MAKE_EDITABLE)); ?>
 								</p>
 							</div>
 						</div>

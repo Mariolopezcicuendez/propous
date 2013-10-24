@@ -16,7 +16,7 @@
           <label for="register_login_zone" class="col-md-3 control-label"></label>
           <div class="col-md-9">
             <p id='register_login_zone' class="register_login_zone form-control-static">
-              <?php echo lang('p_register_or'); ?><?php echo anchor('/' . getActLang() . '/login/',lang('p_init_session')); ?>
+              <?php echo lang('p_register_or', array(anchor('/' . getActLang() . '/login/',lang('p_init_session')))); ?>
             </p>
           </div>
         </div>
@@ -164,11 +164,14 @@
           <label for="register_accept_register" class="col-md-3 control-label"></label>
           <div class="col-md-12">
             <p id='register_accept_register' class="register_accept_register form-control-static">
-              <?php echo lang('p_continue_and_accept'); ?>
-              <?php echo anchor('/' . getActLang() . '/useconditions',lang('p_use_conditions'),array('target' => '_blank')); ?>, 
-              <?php echo anchor('/' . getActLang() . '/privacy',lang('p_privacy_polity'),array('target' => '_blank')); ?> 
-              <?php echo lang('p_and'); ?>
-              <?php echo anchor('/' . getActLang() . '/privacy/#cookies',lang('p_cookies_polity'),array('target' => '_blank')); ?> 
+              <?php 
+              $data_continue = array(
+                anchor('/' . getActLang() . '/useconditions',lang('p_use_conditions'),array('target' => '_blank')),
+                anchor('/' . getActLang() . '/privacy',lang('p_privacy_polity'),array('target' => '_blank')),
+                anchor('/' . getActLang() . '/privacy/#cookies',lang('p_cookies_polity'),array('target' => '_blank'))
+              );
+              ?>
+              <?php echo lang('p_continue_and_accept_all',$data_continue); ?>
             </p>
           </div>
         </div>

@@ -7,10 +7,8 @@ define('NAME_PROJECT', 'Propous');
 define('DEFAULT_LANGUAGE', $default_lang_short);
 
 // define('REQUEST_URL_DOMAIN', 'http://192.168.5.3/propous');
-// define('REQUEST_URL_API', '/api');
-// define('BASE_URL', '/propous');
-
 define('REQUEST_URL_DOMAIN', 'http://10.29.0.139/localtests/propous');
+
 define('REQUEST_URL_API', '/api');
 define('BASE_URL', '/localtests/propous');
 
@@ -79,7 +77,8 @@ define('PROPOSAL_NAME_MIN_SIZE', 3);
 define('PROPOSAL_NAME_MAX_SIZE', 200);
 define('PROPOSAL_NAME_MAX_SIZE_WRAP', 100);
 
-define('PROPOSAL_SECONDS_TO_MAKE_EDITABLE', 86400); // 24h
+define('PROPOSAL_SECONDS_TO_MAKE_EDITABLE', 86400);
+define('PROPOSAL_HOURS_TO_MAKE_EDITABLE', 24);
 define('PROPOSAL_SECONDS_TIME_TO_MAKE_FREE_PROPOSALS', 86400);
 
 // USER

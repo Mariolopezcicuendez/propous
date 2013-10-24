@@ -49,13 +49,16 @@
 		<div class='div_statistics container'>
 
 			<div class='page_total_statistics'>
-				<span class='page_total_props'></span> <?php echo lang('p_total_props'); ?>, <span class='page_total_users'></span> <?php echo lang('p_total_users'); ?>.
+        <?php echo lang('p_total_props',array("<span class='page_total_props'></span>")); ?>,  
+        <?php echo lang('p_total_users',array("<span class='page_total_users'></span>")); ?>.
 			</div> 
 
 			<?php if ($this->session->userdata('logged_in')) : ?>
 				<?php $user_data = $this->session->userdata('logged_in'); ?>
 				<div class='page_total_statistics_state'>
-					<?php echo lang('p_into'); ?> <?php echo $user_data['state_name']; ?>: <span class='page_total_props_state'></span> <?php echo lang('p_total_props'); ?> (<span class='page_total_props_state_today'></span> <?php echo lang('p_today'); ?>), <span class='page_total_users_state'></span> <?php echo lang('p_users'); ?> (<span class='page_total_users_state_online'></span> <?php echo lang('p_online'); ?>).
+          <?php echo lang('p_into_state',array($user_data['state_name'])); ?>:
+          <?php echo lang('p_total_props_at_state',array("<span class='page_total_props_state'></span>","<span class='page_total_props_state_today'></span>")); ?>,  
+          <?php echo lang('p_total_users_at_state',array("<span class='page_total_users_state'></span>","<span class='page_total_users_state_online'></span>")); ?>.
 				</div>
 			<?php endif; ?>
 
