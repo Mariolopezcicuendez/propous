@@ -77,8 +77,8 @@
 							<label for="newprop_prop_rememberinfo" class="col-md-3 control-label"></label>	
 							<div class="col-md-9">
 								<p id='newprop_prop_rememberinfo' class="span_inforemember_label newprop_prop_rememberinfo form-control-static">
-									<?php echo lang('p_remember_prop_not_showed_for_you'); ?><br/>
-									<?php echo lang('p_remember_prop_cant_change_h',array(PROPOSAL_HOURS_TO_MAKE_EDITABLE)); ?>
+									<?php echo lang('p_remember_prop_cant_change_h',array(PROPOSAL_HOURS_TO_MAKE_EDITABLE)); ?><br/>
+									<?php echo lang('p_remember_prop_not_showed_for_you'); ?>
 								</p>
 							</div>
 						</div>

@@ -224,7 +224,7 @@
     };
 
     $.fn.filestyle.defaults = {
-        'buttonText': 'Choose file',
+        'buttonText': lang('p_browse'),
         'input': true,
         'icon': true,
         'classButton': 'btn',

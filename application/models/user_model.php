@@ -537,9 +537,39 @@ class User_model extends CI_Model
     $email->from = EMAIL_ADDRESS;
     $email->frominfo = EMAIL_ADDRESS_INFO;
     $email->to = $this->user_email;
-    $email->subject = 'Activation account Propous';
-    $email->message = "Hello {$this->user_name}.<br/>";
-    $email->message .= "Activation link: " . $this->config->item('base_url') . getActLang()."/plink/activeaccount/{$this->user_token}";
+    $email->subject = lang('p_email_activeaccount_subject');
+
+    $url_link = $this->config->item('base_url') . getActLang()."/plink/activeaccount/{$this->user_token}";
+
+    $text_title = lang('p_email_activeaccount_title');
+    $text_description = lang('p_email_activeaccount_description');
+    $text_linktitle = lang('p_email_activeaccount_linktitle');
+    $text_description2 = lang('p_email_activeaccount_description2');
+    $text_description3 = lang('p_email_activeaccount_description3');
+    $text_footer = lang('p_email_activeaccount_footer');
+
+    $html = <<<EOM
+<span class='email_automatic_title'>
+{$text_title}
+</span>
+<span class='email_automatic_description'>
+{$text_description}
+</span>
+<a target='_blank' href='{$url_link}' class='email_automatic_link'>
+{$text_linktitle}
+</a>
+<span class='email_automatic_description'>
+{$text_description2}
+</span>
+<span class='email_automatic_description'>
+{$text_description3}
+</span>
+<span class='email_automatic_description'>
+{$text_footer}
+</span>
+EOM;
+
+    $email->message = $html;
 
     $this->emailsend->send($email);
   }
@@ -568,7 +598,7 @@ class User_model extends CI_Model
     {
       $row = $query->row();
       $reason = $row->reason_tag;
-      throw new Exception(lang('banned_reason_'.$reason), 1137);
+      throw new Exception(lang('p_banned_reason_'.$reason), 1137);
     }
 
     $query = $this->db->query("
@@ -710,8 +740,39 @@ class User_model extends CI_Model
     $email->from = EMAIL_ADDRESS;
     $email->frominfo = EMAIL_ADDRESS_INFO;
     $email->to = $this->user_email;
-    $email->subject = 'Forget password Propous';
-    $email->message = "Press " . $this->config->item('base_url') . getActLang()."/plink/forgetpassword/{$this->user_token} to Propous new password";
+    $email->subject = lang('p_email_changepassword_subject');
+
+    $url_link = $this->config->item('base_url') . getActLang()."/plink/forgetpassword/{$this->user_token}";
+
+    $text_title = lang('p_email_changepassword_title');
+    $text_description = lang('p_email_changepassword_description');
+    $text_linktitle = lang('p_email_changepassword_linktitle');
+    $text_description2 = lang('p_email_changepassword_description2');
+    $text_description3 = lang('p_email_changepassword_description3');
+    $text_footer = lang('p_email_changepassword_footer');
+
+    $html = <<<EOM
+<span class='email_automatic_title'>
+{$text_title}
+</span>
+<span class='email_automatic_description'>
+{$text_description}
+</span>
+<a target='_blank' href='{$url_link}' class='email_automatic_link'>
+{$text_linktitle}
+</a>
+<span class='email_automatic_description'>
+{$text_description2}
+</span>
+<span class='email_automatic_description'>
+{$text_description3}
+</span>
+<span class='email_automatic_description'>
+{$text_footer}
+</span>
+EOM;
+
+    $email->message = $html;
 
     $this->emailsend->send($email);
   }
