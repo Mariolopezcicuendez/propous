@@ -160,7 +160,7 @@ function success_cms_all(data)
 function error_cms_all(data)
 {
   hide_loading();
-	show_fail("cms_data_alert", data.error.message, true);
+	show_fail("cms_data_alert", data.error.message);
 }
 
 function create_link_to_edit(entity,data)
@@ -175,7 +175,7 @@ function success_cms_delete(data)
 
 function error_cms_delete(data)
 {
-	show_fail("cms_data_alert", data.error.message, true);
+	show_fail("cms_data_alert", data.error.message);
 }
 
 function success_cms_save(data)
@@ -191,11 +191,11 @@ function error_cms_save(data)
 {
 	if (typeof data.error.message !== "undefined")
   {
-    show_fail("cms_data_alert", data.error.message, true);
+    show_fail("cms_data_alert", data.error.message);
   }
   else
   {
-    show_fail("cms_data_alert", data.responseText, true);
+    show_fail("cms_data_alert", data.responseText);
   }
 }
 

@@ -134,7 +134,7 @@ function put_user_data_in_form()
 
 function error_get_user_data()
 {
-  show_fail("viewprofile_data_alert", lang('p_user_data_not_load'), true);
+  show_fail("viewprofile_data_alert", lang('p_user_data_not_load'));
 }
 
 function calculate_age_from_birthdate()
@@ -216,7 +216,7 @@ function error_get_user_photos(data)
 {
   $('.content_viewprofile_photos_right div.form-group').eq(0).addClass("hidden");
   $(".viewprofile_photos_carousel").addClass("hidden");
-  show_fail("viewprofile_photo_alert", data.error.message, true);
+  show_fail("viewprofile_photo_alert", data.error.message);
 }
 
 function get_main_photo()
@@ -287,7 +287,7 @@ function error_get_user_sociality(data)
 {
   $('.content_viewprofile_sociality_right div.form-group').eq(0).addClass("hidden");
   $('.content_viewprofile_sociality_right').removeClass('hidden');
-  show_fail("viewprofile_sociality_alert", data.error.message, true);
+  show_fail("viewprofile_sociality_alert", data.error.message);
 }
 
 function get_name_sociality_from_tag(tag)

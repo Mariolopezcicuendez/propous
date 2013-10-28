@@ -87,7 +87,7 @@ function error_login(data)
   if (error_number === 1137)
   {
     // BANNED
-    show_fail("login_data_alert", lang('p_user_banned_reason') + error_message, true);
+    show_fail("login_data_alert", lang('p_user_banned_reason') + error_message);
     return;
   }
 }

@@ -347,7 +347,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
-  show_fail("register_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("register_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.register_select_country').prop('disabled', true);
 }
 
@@ -362,7 +362,7 @@ function success_get_states(data)
 
 function error_get_states(data)
 {
-  show_fail("register_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("register_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.register_select_state').prop('disabled', true);
 }
 

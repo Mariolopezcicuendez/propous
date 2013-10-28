@@ -138,7 +138,7 @@ function hide_loading()
   $('#modal_loading').modal('hide');
 }
 
-function show_success(element, message, static_time)
+function show_success(element, message)
 {
   if (typeof $("."+element+"_success").get(0) !== "undefined")
   {
@@ -151,19 +151,17 @@ function show_success(element, message, static_time)
     $("."+element+"_success").bind('close.bs.alert', function (closeEvent) 
     {
       closeEvent.preventDefault();
-      $("."+element+"_success").html('');
-      $("."+element+"_success").addClass("hidden");
-      $("."+element+"_success").parent().parent().addClass("hidden");
+      $("."+element+"_success").parent().parent().animate({
+        height: "toggle"
+      }, SUCCESS_AND_FAIL_ANIMATION_CLOSE_SPEED, function() {
+        $("."+element+"_success").html('');
+        $("."+element+"_success").addClass("hidden");
+      });
     });
-
-    if (static_time !== true)
-    {
-      setTimeout( 'hide_alert(".'+element+'_success")' , TIME_MILISECONDS_ALERTS_HIDE );
-    }
   }
 }
 
-function show_fail(element, message, static_time)
+function show_fail(element, message)
 {
   if (typeof $("."+element+"_fail").get(0) !== "undefined")
   {
@@ -176,15 +174,13 @@ function show_fail(element, message, static_time)
     $("."+element+"_fail").bind('close.bs.alert', function (closeEvent) 
     {
       closeEvent.preventDefault();
-      $("."+element+"_fail").html('');
-      $("."+element+"_fail").addClass("hidden");
-      $("."+element+"_fail").parent().parent().addClass("hidden");
+      $("."+element+"_fail").parent().parent().animate({
+        height: "toggle"
+      }, SUCCESS_AND_FAIL_ANIMATION_CLOSE_SPEED, function() {
+        $("."+element+"_fail").html('');
+        $("."+element+"_fail").addClass("hidden");
+      });
     });
-
-    if (static_time !== true)
-    {
-      setTimeout( 'hide_alert(".'+element+'_fail")' , TIME_MILISECONDS_ALERTS_HIDE );
-    }
   }
 }
 
@@ -972,6 +968,7 @@ function success_get_premium(data)
     data_search.s_to_date = get_advanced_search_to_date();
     data_search.s_country_id = $('.advanced_search_country').val();
     data_search.s_state_id = $('.advanced_search_state').val();
+    data_search.s_user_status = $('.advanced_search_select_user_status').val();
 
     search_redirect_to_props_page(data_search);
   }
@@ -1118,6 +1115,10 @@ function put_advanced_search_data_in_search_box()
   if (typeof search.s_state_id !== "undefined" && search.s_state_id !== null && search.s_state_id !== '')
   {
     $('.advanced_search_state').val(search.s_state_id);
+  }
+  if (typeof search.s_user_status !== "undefined" && search.s_user_status !== null && search.s_user_status !== '')
+  {
+    $('.advanced_search_select_user_status').val(search.s_user_status);
   }
 }
 

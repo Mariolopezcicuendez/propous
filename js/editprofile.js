@@ -290,7 +290,7 @@ function put_user_data_in_form()
 
 function error_get_user_data()
 {
-  show_fail("editprofile_data_alert", lang('p_user_data_not_load'), true);
+  show_fail("editprofile_data_alert", lang('p_user_data_not_load'));
 }
 
 function success_get_countries(data)
@@ -321,7 +321,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
-  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.editprofile_select_country').prop('disabled', true);
 }
 
@@ -361,13 +361,13 @@ function success_get_states_clean(data)
 
 function error_get_states(data)
 {
-  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.editprofile_select_state').prop('disabled', true);
 }
 
 function error_get_states_clean(data)
 {
-  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("editprofile_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.editprofile_select_state').prop('disabled', true);
 }
 
@@ -866,7 +866,7 @@ function error_get_user_photos(data)
   $('.content_editprofile_photos_right div.form-group').eq(0).addClass("hidden");
   $('.content_editprofile_photos_right div.form-group').eq(1).addClass("hidden");
   $(".editprofile_photos_carousel").addClass("hidden");
-  show_fail("editprofile_photo_alert", data.error.message, true);
+  show_fail("editprofile_photo_alert", data.error.message);
 }
 
 function success_set_photo_as_main(data)
@@ -1021,7 +1021,7 @@ function error_get_user_sociality(data)
   $('.content_editprofile_sociality_right div.form-group').eq(0).addClass("hidden");
   $('.content_editprofile_sociality_right div.form-group').eq(1).addClass("hidden");
   $('.content_editprofile_sociality_right').removeClass('hidden');
-  show_fail("editprofile_sociality_alert", data.error.message, true);
+  show_fail("editprofile_sociality_alert", data.error.message);
 }
 
 function get_name_sociality_from_tag(tag)
@@ -1081,7 +1081,7 @@ function error_get_all_socialities(data)
   $(".editprofile_sociality_select").prop("disabled",true);
   $(".editprofile_sociality_select_add_button").prop("disabled",true);
 
-  show_fail("editprofile_sociality_alert", data.error.message, true);
+  show_fail("editprofile_sociality_alert", data.error.message);
 }
 
 function success_save_social(data)

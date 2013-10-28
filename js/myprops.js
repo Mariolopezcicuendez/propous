@@ -95,7 +95,7 @@ function error_get_my_props(data)
     "aaData": data_table
   });
 
-  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'), true);
+  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'));
 }
 
 function load_popovers(data)

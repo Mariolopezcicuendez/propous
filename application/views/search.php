@@ -103,6 +103,18 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label class="col-md-3 control-label"><?php echo lang('p_users'); ?>:</label> 
+              <div class="col-md-9 input-group">
+
+                <select class='advanced_search_select_user_status form-control'>
+                  <option selected value='all'><?php echo lang('p_all'); ?></option>
+                  <option value='connected'><?php echo lang('p_connecteds'); ?></option>
+                </select> 
+
+              </div>
+            </div>
+
           </div>
 
         <?php echo form_close(); ?>

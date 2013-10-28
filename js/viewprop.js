@@ -85,7 +85,7 @@ function put_proposal_data_in_form()
 
 function error_get_proposal_data(data)
 {
-  show_fail("viewprop_data_alert", lang('p_proposal_data_not_load'), true);
+  show_fail("viewprop_data_alert", lang('p_proposal_data_not_load'));
 }
 
 function get_proposal_photos()
@@ -147,7 +147,7 @@ function error_get_proposal_photos(data)
 {
   $('.content_viewprop_photos_right div.form-group').eq(0).addClass("hidden");
   $(".viewprop_photos_carousel").addClass("hidden");
-  show_fail("viewprop_photo_alert", data.error.message, true);
+  show_fail("viewprop_photo_alert", data.error.message);
 }
 
 function get_proposal_category()
@@ -198,7 +198,7 @@ function error_get_proposal_category(data)
 {
   $('.content_viewprop_category_right div.form-group').eq(0).addClass("hidden");
   $('.content_viewprop_category_right').removeClass('hidden');
-  show_fail("viewprop_category_alert", data.error.message, true);
+  show_fail("viewprop_category_alert", data.error.message);
 }
 
 function get_name_category_from_tag(tag)

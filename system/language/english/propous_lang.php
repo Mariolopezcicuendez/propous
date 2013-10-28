@@ -1,8 +1,11 @@
 <?php 
 $lang['p_meta_description'] = "Ocio, citas, amistad, diversión...";
 $lang['p_meta_keywords'] = "Props Prop ocio citas chat mensajes amistad diversión";
-$lang['p_login_page_words'] = "Ocio, citas, amistad, diversión... Propous te ayuda para que nunca te aburras y siempre tengas algo que hacer";
+$lang['p_login_page_words'] = "Ocio, citas, amistad, diversión... Propous te ayuda para que siempre tengas algo que hacer";
 
+$lang['p_all'] = "Todos";
+$lang['p_users'] = "Usuarios";
+$lang['p_connecteds'] = "Conectados";
 $lang['p_continue_and_accept_all'] = "Al continuar confirmas que has leído y estás de acuerdo con nuestras %s, %s y %s";
 $lang['p_from'] = "desde el";
 $lang['p_to'] = "hasta el";
@@ -156,6 +159,7 @@ $lang['p_all_messages'] = "todos los mensajes";
 $lang['p_personal_data'] = "Datos personales";
 $lang['p_upload_photo'] = "Añade una foto";
 $lang['p_uploaded_photos'] = "Mis fotos";
+$lang['p_uploaded_prop_photos'] = "Fotos";
 $lang['p_user_sociality'] = "Mi personalidad";
 $lang['p_press_for_return_myprops'] = "Pulsa aquí para volver a Mis Props";
 $lang['p_modal_loading_wait'] = "Cargando, por favor espera...";

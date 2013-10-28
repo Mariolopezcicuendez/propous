@@ -133,7 +133,7 @@ function error_stats(data)
 {
   hide_loading();
 
-  show_fail("analitycs_data_alert", data.error.message, true);
+  show_fail("analitycs_data_alert", data.error.message);
 }
 
 function build_day_tables(json)
@@ -809,5 +809,5 @@ function error_detail(data)
 {
   hide_loading();
 
-  show_fail("analitycs_data_alert", data.error.message, true);
+  show_fail("analitycs_data_alert", data.error.message);
 }

@@ -90,7 +90,7 @@ function error_get_favorites_props(data)
     "aaData": data_table
   });
 
-  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'), true);
+  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'));
 }
 
 function load_popovers(data)
@@ -356,5 +356,5 @@ function success_get_proposal_favorites(data)
 
 function error_get_proposal_favorites()
 {
-  show_fail("props_data_alert", lang("p_error_ocurred_by_page_charge"), true);
+  show_fail("props_data_alert", lang("p_error_ocurred_by_page_charge"));
 }

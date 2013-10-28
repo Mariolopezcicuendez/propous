@@ -219,7 +219,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
-  show_fail("contact_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("contact_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.contact_select_country').prop('disabled', true);
 }
 

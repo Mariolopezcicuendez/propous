@@ -227,7 +227,7 @@ function put_proposal_data_in_form()
 
 function error_get_proposal_data()
 {
-  show_fail("editprop_data_alert", lang('p_proposal_data_not_load'), true);
+  show_fail("editprop_data_alert", lang('p_proposal_data_not_load'));
 }
 
 function success_get_countries(data)
@@ -259,7 +259,7 @@ function success_get_countries(data)
 
 function error_get_countries(data)
 {
-  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.editprop_select_country').prop('disabled', true);
 }
 
@@ -300,13 +300,13 @@ function success_get_states_clean(data)
 
 function error_get_states(data)
 {
-  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.editprop_select_state').prop('disabled', true);
 }
 
 function error_get_states_clean(data)
 {
-  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'), true);
+  show_fail("editprop_data_alert", lang('p_error_ocurred_by_page_charge'));
   $('.editprop_select_state').prop('disabled', true);
 }
 
@@ -572,7 +572,7 @@ function error_get_proposal_photos(data)
   $('.content_editprop_photos_right div.form-group').eq(0).addClass("hidden");
   $('.content_editprop_photos_right div.form-group').eq(1).addClass("hidden");
   $(".editprop_photos_carousel").addClass("hidden");
-  show_fail("editprop_photo_alert", data.error.message, true);
+  show_fail("editprop_photo_alert", data.error.message);
 }
 
 function success_delete_photo(data)
@@ -662,7 +662,7 @@ function error_get_proposal_category(data)
   $('.content_editprop_category_right div.form-group').eq(0).addClass("hidden");
   $('.content_editprop_category_right div.form-group').eq(1).addClass("hidden");
   $('.content_editprop_category_right').removeClass('hidden');
-  show_fail("editprop_category_alert", data.error.message, true);
+  show_fail("editprop_category_alert", data.error.message);
 }
 
 function get_name_category_from_tag(tag)
@@ -711,7 +711,7 @@ function error_get_all_categories(data)
   $(".editprop_category_select").prop("disabled",true);
   $(".editprop_category_select_add_button").prop("disabled",true);
 
-  show_fail("editprop_category_alert", data.error.message, true);
+  show_fail("editprop_category_alert", data.error.message);
 }
 
 function success_save_category(data)

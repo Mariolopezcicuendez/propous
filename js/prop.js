@@ -20,8 +20,9 @@ $(document).ready(function()
       var search_from_date_exists = (typeof search.s_from_date !== "undefined" && search.s_from_date !== null && search.s_from_date !== '');
       var search_to_date_exists = (typeof search.s_to_date !== "undefined" && search.s_to_date !== null && search.s_to_date !== '');
       var search_country_id_exists = (typeof search.s_country_id !== "undefined" && search.s_country_id !== null && search.s_country_id !== '');
+      var search_user_status_exists = (typeof search.s_user_status !== "undefined" && search.s_user_status !== null && search.s_user_status !== ''); 
 
-      advanced_searching = (search_categories_exists || search_from_date_exists || search_to_date_exists || search_country_id_exists);
+      advanced_searching = (search_categories_exists || search_from_date_exists || search_to_date_exists || search_country_id_exists || search_user_status_exists);
 
       if ((advanced_searching) && (!loaded_advanced_searching_data))
       {
@@ -87,6 +88,7 @@ function get_search_props()
     data_post.to_date = search.s_to_date;
     data_post.country_id = search.s_country_id;
     data_post.state_id = search.s_state_id;
+    data_post.user_status = search.s_user_status;
   }
   
   var req = {};
@@ -234,7 +236,7 @@ function error_get_main_props(data)
     "aaData": data_table
   });
 
-  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'), true);
+  show_fail("props_data_alert", lang('p_error_ocurred_by_page_charge_list_error'));
 }
 
 function success_get_main_props_description_title(data)
@@ -516,5 +518,5 @@ function success_get_proposal_favorites(data)
 
 function error_get_proposal_favorites()
 {
-  show_fail("props_data_alert", lang("p_error_ocurred_by_page_charge"), true);
+  show_fail("props_data_alert", lang("p_error_ocurred_by_page_charge"));
 }

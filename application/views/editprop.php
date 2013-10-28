@@ -104,7 +104,7 @@
 				<?php echo form_open('#',array("class"=>"editprop_upload_photo_form form-horizontal","role"=>"form", "enctype"=>"multipart/form-data")); ?>
 
 					<div class="form-group">
-						<label for="editprop_photos_carousel" class="col-md-3 control-label"><?php echo lang('p_uploaded_photos'); ?>:</label>
+						<label for="editprop_photos_carousel" class="col-md-3 control-label"><?php echo lang('p_uploaded_prop_photos'); ?>:</label>
 						<div class="editprop_photos_carousel image_carousel col-md-9">
 						</div>
 						<div class="col-md-9">

@@ -24,6 +24,7 @@ class Proposal_model extends CI_Model
   protected $search_country_id = null;
   protected $search_state_id = null;
   protected $search_visibility = null;
+  protected $search_user_status = null;
   protected $search_moderated_invalid = null;
 
   protected $search_favorites = null;
@@ -381,6 +382,7 @@ class Proposal_model extends CI_Model
     $this->search_to_date = $this->input->post('to_date');
     $this->search_country_id = $this->input->post('country_id');
     $this->search_state_id = $this->input->post('state_id');
+    $this->search_user_status = $this->input->post('user_status');
     $this->search_moderated_invalid = $this->input->post('moderated_invalid');
 
     if (($this->search_from_id === null) || ($this->search_from_id === false) || ($this->search_from_id === ''))
@@ -497,6 +499,13 @@ class Proposal_model extends CI_Model
         $id_row_user = $row->user_id;
         $id_row_country = $row->country_id;
         $id_row_state = $row->state_id;
+        $id_row_user_status = $this->user_model->get_is_online($id_row_user);
+
+        // including status_user
+        if ($this->search_user_status === 'connected' && !$id_row_user_status)
+        {
+          continue;
+        }
 
         // including localization info
         $row->country_tag = $this->country_model->get_country_tag($id_row_country);
